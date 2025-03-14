@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            flex-direction: column;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        .error-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .error-text {
+            font-size: 6rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .zero {
+            position: relative;
+            display: inline-block;
+            width: 70px;
+            height: 70px;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .eye {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: black;
+            border-radius: 50%;
+            top: 35%;
+            animation: blink 3s infinite;
+        }
+
+        .eye.left {
+            left: 20px;
+        }
+
+        .eye.right {
+            right: 20px;
+        }
+
+        @keyframes blink {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(0); }
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .btn-custom {
+            background: #3e02e2;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.3s ease-in-out;
+        }
+        .btn-custom:hover {
+            transform: scale(1.1);
+            background: #1402b6;
+        }
+
+        @media (max-width: 768px) {
+            .error-text {
+                font-size: 4rem;
+            }
+            .zero {
+                width: 50px;
+                height: 50px;
+            }
+            .eye {
+                width: 10px;
+                height: 10px;
+            }
+            .eye.left {
+            left: 10px;
+        }
+
+        .eye.right {
+            right: 10px;
+        }
+            p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container text-center error-container">
+        <div class="error-text">
+            4<div class="zero">
+                <div class="eye left"></div>
+                <div class="eye right"></div>
+            </div>4
+        </div>
+        <p>Oops! It looks like you're lost. This page is missing, or maybe it never existed.</p>
+        <p>Don't worry! Our zero-eyed friend is looking around for answers.</p>
+        <a href="https://cosname.web.app/" class="btn btn-custom mt-3">Go Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/png" href="https://cosname.web.app/Assets/Logo.png">
+    <meta name="description" content="Cosname Technologies provides cutting-edge digital solutions, including mobile apps, websites, and AI-driven innovations for businesses and individuals.">
+    <meta name="keywords" content="Cosname, Technology, Mobile Apps, Website Development, AI Solutions, Digital Services">
+    <meta name="author" content="Cosname Technologies">
+    <meta property="og:title" content="Cosname Technologies - Innovative Digital Solutions">
+    <meta property="og:description" content="Explore Cosname Technologies for expert app development, website design, and tech-driven solutions to enhance your business growth.">
+    <meta property="og:image" content="https://cosname.web.app/Assets/logo.png">
+    <meta property="og:url" content="https://cosname.web.app/">
+    <link rel="canonical" href="https://cosname.web.app/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+
+        /* Hero Section */
+        .contact-hero {
+            position: relative;
+            background: url('Assets/banner3.jpg') center/cover no-repeat;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .contact-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Button */
+        .neon-button {
+            background-color: #0d6efd;
+            color: white;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        .neon-button:hover {
+            box-shadow: 0 0 20px rgba(13, 110, 253, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Social Icons */
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #0d6efd;
+            margin: 0 10px;
+            transition: 0.3s ease-in-out;
+        }
+        .social-icons a:hover {
+            color: white;
+            text-shadow: 0 0 15px rgba(13, 110, 253, 0.9);
+        }
+
+        /* Default Styles (For larger screens) */
+#about-us, #our-services {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 768px) {
+    #about-us, #our-services {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    #about-us .container, #our-services .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .col-md-6 {
+        margin-bottom: 20px;
+    }
+
+    .col-md-6 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 28px;
+    }
+
+    p.lead {
+        font-size: 16px;
+    }
+}
+
+/* Larger Tablets and Small Screens */
+@media (max-width: 992px) {
+    .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .col-md-6 img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .text-center {
+        padding: 0 15px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    p.lead {
+        font-size: 18px;
+    }
+}
+
+/* Large Desktops */
+@media (min-width: 1200px) {
+    .row.mb-4 {
+        margin-bottom: 50px;
+    }
+
+    .text-center h2 {
+        font-size: 36px;
+    }
+
+    .text-center p.lead {
+        font-size: 20px;
+    }
+
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="#"><img src="Assets/Logo.png"></a>
+            <a class="navbar-brand" href="#">Cosname Technologies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#why-choose-us">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Contact.html" >Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section with Image & Overlay -->
+    <section class="contact-hero bg-darkblue text-light">
+        <div class="hero-content">
+            <h1>About Us</h1>
+            <p class="lead">We're here to assist you. Get in touch with our team today.</p>
+        </div>
+    </section>
+
+<!-- About Us Section -->
+<section id="about-us" class="py-5 bg-darkblue text-light" >
+    <div class="container"  data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="text-primary">About Us</h2>
+            <p class="lead">Empowering Brands with Technology</p>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right">
+                <img src="Assets/about.png" class="img-fluid rounded" alt="About Us">
+            </div>
+            <div class="col-md-6" data-aos="fade-left">
+                <p>At Cosname Technologies, we are dedicated to delivering innovative tech solutions that drive businesses forward. With expertise in web & app development, digital marketing, and IT consulting, we empower brands with cutting-edge technology.</p>
+                <p>Our team consists of experienced developers, designers, and strategists committed to crafting tailored solutions that enhance efficiency, engagement, and business growth. We believe in building long-term partnerships with our clients, ensuring that our solutions align with their evolving business needs. Our approach focuses on creativity, innovation, and technical excellence.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Services Section -->
+<section id="our-services " class="py-5 bg-darkblue text-light">
+    <div class="container"  data-aos="fade-up">
+        <div class="text-center mb-5">
+            <h2 class="text-primary">Our Services</h2>
+            <p class="lead">Providing top-notch digital solutions tailored to your business needs.</p>
+        </div>
+        
+        <div class="row mb-4 align-items-center" data-aos="fade-right">
+            <div class="col-md-6" data-aos="fade-left">
+                <img src="Assets/web-development.JPG" class="img-fluid rounded" alt="Web Development">
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <h3 class="text-primary">Web Development</h3>
+                <p>We build high-performance websites, web apps, and e-commerce platforms using modern technologies. Our solutions are designed to be responsive, mobile-friendly, and optimized for search engines.</p>
+                <p>Our expertise spans across various technologies, including HTML, CSS, JavaScript, and modern frameworks like React, Angular, and Vue.js. We ensure seamless user experiences with cutting-edge UI/UX design, intuitive navigation, and fast-loading pages.</p>
+                <p>We also provide custom CMS solutions, API integrations, and scalable backend development using Node.js, Django, and Laravel. Whether you're a startup or an enterprise, we tailor our solutions to meet your business goals.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="row mb-4 align-items-center" >
+            <div class="col-md-6 order-md-2" data-aos="fade-left">
+                <img src="Assets/App Development.jpg" class="img-fluid rounded" alt="App Development">
+            </div>
+            <div class="col-md-6 order-md-1" data-aos="fade-right">
+                <h3 class="text-primary">App Development</h3>
+                <p>We create high-quality mobile applications with seamless performance and engaging UI/UX. Our expertise covers Android & iOS development, cross-platform apps, backend integration, and app store optimization.</p>
+                <p>We specialize in native and hybrid app development, utilizing powerful frameworks like Flutter, React Native, and Swift for smooth and scalable applications. Our apps are designed for optimal performance, security, and user engagement.</p>
+                <p>From ideation to deployment, we handle UI/UX design, database architecture, API development, and cloud-based hosting. We also optimize apps for the Google Play Store and Apple App Store, ensuring better discoverability and user retention.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="row mb-4 align-items-center" >
+            <div class="col-md-6" data-aos="fade-left">
+                <img src="Assets/graphic-design.png" class="img-fluid rounded" alt="Graphic Design">
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <h3 class="text-primary">Graphic Design</h3>
+                <p>We deliver stunning graphic designs that enhance brand identity and marketing efforts. From logo and brand identity design to social media graphics, we help businesses establish a strong visual presence.</p>
+                <p>Our team specializes in creating visually appealing content, including business cards, brochures, posters, and digital ads. We ensure that every design aligns with your brand's personality and marketing strategy.</p>
+                <p>We use industry-standard tools such as Adobe Photoshop, Illustrator, and InDesign to craft high-quality, print-ready, and digital graphics. Whether you need custom illustrations, branding materials, or engaging infographics, we've got you covered.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="row mb-4 align-items-center">
+            <div class="col-md-6 order-md-2" data-aos="fade-left">
+                <img src="Assets/video-editing.jpg" class="img-fluid rounded" alt="Video Editing">
+            </div>
+            <div class="col-md-6 order-md-1" data-aos="fade-right">
+                <h3 class="text-primary">Video Editing</h3>
+                <p>We create professional videos, from promotional content to motion graphics and animations. Our expertise includes corporate videos, social media content, and advanced video effects.</p>
+                <p>Our video production process covers scripting, editing, color grading, and special effects to ensure your content stands out. We enhance videos with smooth transitions, typography animations, and sound design for maximum impact.</p>
+                <p>We work with Adobe Premiere Pro, After Effects, and DaVinci Resolve to produce high-quality videos tailored to your brand's needs. Whether you need product showcases, explainer videos, or engaging reels for social media, we bring your vision to life.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        <div class="row mb-4 align-items-center" >
+            <div class="col-md-6" data-aos="fade-left">
+                <img src="Assets/tech-consulting.jpg" class="img-fluid rounded" alt="Tech Consulting">
+            </div>
+            <div class="col-md-6" data-aos="fade-right">
+                <h3 class="text-primary">Tech Consulting</h3>
+                <p>We help businesses optimize their technology stack and implement innovative solutions. Our consulting services cover IT strategy, digital transformation, cloud computing, cybersecurity, and AI solutions.</p>
+                <p>Our experts provide in-depth analysis and recommendations to streamline business operations, improve efficiency, and enhance security. We assist in software selection, infrastructure upgrades, and data management strategies.</p>
+                <p>We specialize in cloud migration, network security, and AI-driven automation, helping businesses stay ahead in a rapidly evolving digital landscape. Whether you're a startup or an enterprise, we offer customized solutions that align with your goals.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        
+        <div class="row mb-4 align-items-center" >
+            <div class="col-md-6 order-md-2" data-aos="fade-left">
+                <img src="Assets/laptop-repair.jpg" class="img-fluid rounded" alt="Laptop and PC Repairs">
+            </div>
+            <div class="col-md-6 order-md-1" data-aos="fade-right">
+                <h3 class="text-primary">Laptop & PC Repairs</h3>
+                <p>We provide reliable hardware and software repair services for various devices. From computer and laptop repairs to data recovery and software upgrades, we ensure your devices run smoothly.</p>
+                <p>Our services include screen replacements, battery and keyboard repairs, motherboard troubleshooting, and cooling system maintenance. Whether your device is experiencing hardware failure or software malfunctions, our skilled technicians diagnose and resolve issues efficiently.</p>
+                <p>We also specialize in virus removal, system optimization, and operating system installations to enhance your computer's performance. Our goal is to extend the lifespan of your devices and keep them running at peak efficiency for both personal and business use.</p>
+                <a href="Contact.html" class="btn btn-primary mt-2">Contact Us</a>
+            </div>
+        </div>
+        
+        
+    </div>
+</section>
+
+
+       <!-- Footer Section -->
+<footer class="bg-darkblueHover text-light py-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5 class="text-primary">About Us</h5>
+                <p>We are dedicated to providing the best solutions for your business needs. Connect with us for innovative technology solutions.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4">
+                <h5 class="text-primary">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="https://cosname.web.app/" class="text-light text-decoration-none">Home</a></li>
+                    <li><a href="https://cosname.web.app/#services" class="text-light text-decoration-none">Services</a></li>
+                    <li><a href="Contact.html" class="text-light text-decoration-none">Contact</a></li>
+                    <li><a href="About.html" class="text-light text-decoration-none">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4">
+                <h5 class="text-primary">Contact</h5>
+                <p><i class="fas fa-envelope"></i> Cosnametech@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +254 7941227 966</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kutus, Kerugoya, Kenya</p>
+            </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="text-center mt-4 social-icons">
+            <a href="https://www.facebook.com/Cosname" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/CosnameTv1" class="social-link" target="_blank"><i class="fab fa-x"></i></a>
+            <a href="https://www.instagram.com/cosname1" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/cosnametv" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/cosname/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-3">
+            <p class="mb-0">&copy; 2025 Cosname Technologies. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Include AOS Script Before Closing Body Tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000, 
+        once: false, 
+        easing: 'ease-in-out' 
+    });
+</script>
+
+    
+    <script>
+        document.addEventListener("scroll", function() {
+            let navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Script/script.js"></script>
+
+</body>
+</html>

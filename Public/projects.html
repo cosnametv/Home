@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="icon" type="image/png" href="https://cosname.web.app/Assets/Logo.png">
+    <meta name="description" content="Cosname Technologies provides cutting-edge digital solutions, including mobile apps, websites, and AI-driven innovations for businesses and individuals.">
+    <meta name="keywords" content="Cosname, Technology, Mobile Apps, Website Development, AI Solutions, Digital Services">
+    <meta name="author" content="Cosname Technologies">
+    <meta property="og:title" content="Cosname Technologies - Innovative Digital Solutions">
+    <meta property="og:description" content="Explore Cosname Technologies for expert app development, website design, and tech-driven solutions to enhance your business growth.">
+    <meta property="og:image" content="https://cosname.web.app/Assets/logo.png"> 
+    <meta property="og:url" content="https://cosname.web.app/">
+    <link rel="canonical" href="https://cosname.web.app/">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Swiper CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+
+        /* Hero Section */
+        .contact-hero {
+            position: relative;
+            background: url('Assets/banner2.jpg') center/cover no-repeat;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .contact-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        /* Button */
+        .neon-button {
+            background-color: #0d6efd;
+            color: white;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        .neon-button:hover {
+            box-shadow: 0 0 20px rgba(13, 110, 253, 0.9);
+            transform: scale(1.05);
+        }
+
+        /* Social Icons */
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #0d6efd;
+            margin: 0 10px;
+            transition: 0.3s ease-in-out;
+        }
+        .social-icons a:hover {
+            color: white;
+            text-shadow: 0 0 15px rgba(13, 110, 253, 0.9);
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a href="#"><img src="Assets/Logo.png"></a>
+            <a class="navbar-brand" href="#">Cosname Technologies</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#why-choose-us">Why Choose Us</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Contact.html" >Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Hero Section with Image & Overlay -->
+    <section class="contact-hero">
+        <div class="hero-content">
+            <h1>Our Projects</h1>
+            <p class="lead">We're here to assist you. Get in touch with our team today.</p>
+        </div>
+    </section>
+
+        <!-- Finance Management App Section -->
+        <section id="finance-management-app" class="project-detail py-5 bg-darkblue text-light">
+            <div class="container" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="text-center mb-4" data-aos="fade-down" data-aos-duration="1000">Finance Management App</h2>
+                <div class="row">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                        <img src="Assets/icon.png" class="img-fluid" alt="Finance Management App">
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Overview</h3>
+                        <p>This app is designed to empower users to manage their personal finances effectively. It allows users to track their income, expenses, and savings with ease. The intuitive interface enables users to categorize expenses, set up budgets, and generate financial reports, helping them make informed financial decisions and achieve their financial goals.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Expense Tracking:</strong> Track daily, weekly, and monthly expenses with detailed categorization.</li>
+                            <li><strong>Budget Management:</strong> Set up monthly or yearly budgets and receive notifications when approaching your spending limit.</li>
+                            <li><strong>Reports & Analytics:</strong> Generate detailed financial reports and visual graphs to analyze spending habits, trends, and savings.</li>
+                            <li><strong>Security:</strong> User data is encrypted, ensuring privacy and security of sensitive financial information.</li>
+                            <li><strong>Multi-Currency Support:</strong> Supports multiple currencies, making it ideal for users who manage finances in different regions.</li>
+                            <li><strong>Recurring Transactions:</strong> Automate the tracking of recurring transactions like subscriptions, rent, or monthly bills.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Technologies Used and Why Choose This App Section -->
+                <div class="row mt-5">
+                    <!-- Technologies Used Section -->
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Technologies Used</h3>
+                        <p>The app was developed using modern technologies to ensure a seamless user experience:</p>
+                        <ul>
+                            <li><strong>Java/Kotlin:</strong> Utilized for building the Android mobile application, ensuring high performance and native experience.</li>
+                            <li><strong>Firebase:</strong> Used for authentication, real-time database management, and cloud storage, offering seamless sync across devices.</li>
+                            <li><strong>SQLite:</strong> Used for offline functionality, allowing users to access and track their data even without an internet connection.</li>
+                            <li><strong>Google Analytics:</strong> Integrated for tracking user behavior and app performance to improve future versions.</li>
+                            <li><strong>Charts.js:</strong> For generating dynamic and interactive financial reports and visual analytics.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Why Choose This App Section -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                        <h3>Why Choose This App?</h3>
+                        <p>Our Finance Management App is tailored to help users take control of their financial life with ease. It’s perfect for individuals looking for a simple yet effective solution for managing their income, expenses, and savings. Whether you're a freelancer, student, or working professional, this app helps you stay on top of your financial goals.</p>
+                    </div>
+                </div>
+
+                <a class="btn btn-primary mt-4" href="finance.pdf" download="finance.pdf" data-aos="zoom-in" data-aos-duration="800">Download More App Details</a>
+
+            </div>
+        </section>
+
+        <!-- Genco Company App Section -->
+        <section id="genco-company-app" class="project-detail py-5 bg-darkblue text-light">
+            <div class="container" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="text-center mb-4" data-aos="fade-down" data-aos-duration="1000">Genco Company App</h2>
+                <div class="row">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                        <img src="Assets/Genco.png" class="img-fluid" alt="Genco Company App">
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Overview</h3>
+                        <p>The Genco Company App is designed to streamline operations for livestock and fodder farmers, infrastructure tracking, and capacity building. This app enables farmers to track their livestock, monitor fodder yields, and record infrastructure usage like water boreholes and hay storage. With this app, farmers can easily manage day-to-day operations, enhance their productivity, and make informed decisions.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Livestock Management:</strong> Track livestock health, vaccination schedules, breeding, and sales.</li>
+                            <li><strong>Fodder Management:</strong> Manage and monitor fodder yields, storage, and distribution, ensuring optimal feed for livestock.</li>
+                            <li><strong>Infrastructure Tracking:</strong> Record and track usage of essential infrastructure such as boreholes for water and hay storage for efficient resource management.</li>
+                            <li><strong>Capacity Building:</strong> Access educational content and resources for improving farming operations, including best practices and training materials.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Technologies Used and Why Choose This App Section -->
+                <div class="row mt-5">
+                    <!-- Technologies Used Section -->
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Technologies Used</h3>
+                        <p>This app leverages robust technologies to ensure efficiency, scalability, and a seamless experience for farmers:</p>
+                        <ul>
+                            <li><strong>Java:</strong> A cross-platform framework for building the Android mobile app, ensuring a native and smooth user experience.</li>
+                            <li><strong>Google Firebase:</strong> Used for real-time data management, authentication, and cloud storage to enable seamless data sync and retrieval.</li>
+                            <li><strong>SQLite:</strong> Provides offline functionality, enabling users to access and manage data without an internet connection.</li>
+                            <li><strong>Google Analytics:</strong> Integrated for monitoring app usage, user behavior, and making data-driven improvements to the app.</li>
+                            <li><strong>Node.js:</strong> Used for backend development to handle data processing, reporting, and generating insights for users.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Why Choose This App Section -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                        <h3>Why Choose This App?</h3>
+                        <p>The Genco Company App offers a comprehensive solution for farmers looking to optimize their operations. Whether managing livestock, monitoring fodder, or tracking infrastructure, this app serves as a powerful tool to help farmers make data-driven decisions. It’s designed with a user-friendly interface to ensure that even farmers with limited technological experience can easily manage their farm's resources efficiently.</p>
+                    </div>
+                </div>
+
+                <a class="btn btn-primary mt-4" href="genco.pdf" download="genco.pdf" data-aos="zoom-in" data-aos-duration="800">Download More App Details</a>
+
+            </div>
+        </section>
+
+        <!-- Status Saver App Section -->
+        <section id="status-saver-app" class="project-detail py-5 bg-darkblue text-light">
+            <div class="container" data-aos="fade-up" data-aos-duration="1200">
+                <h2 class="text-center mb-4" data-aos="fade-down" data-aos-duration="1000">Status Saver App</h2>
+                <div class="row">
+                    <div class="col-md-6" data-aos="fade-right" data-aos-duration="1000">
+                        <img src="Assets/status.png" class="img-fluid" alt="Status Saver App">
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Overview</h3>
+                        <p>Status Saver is an Android application that allows users to effortlessly download and share social media statuses from WhatsApp, Facebook, Instagram, and more. With just a few clicks, users can save videos and images from their friends' and family's stories, making it easier to keep track of shared media.</p>
+                        
+                        <h3>Key Features</h3>
+                        <ul>
+                            <li><strong>Multiple Platform Support:</strong> Download statuses from popular social media platforms like WhatsApp, Instagram, Facebook, etc.</li>
+                            <li><strong>Preview and Download:</strong> Preview the status before downloading and save it with a single tap.</li>
+                            <li><strong>Media Sharing:</strong> Share downloaded media directly from the app to other platforms or contacts.</li>
+                            <li><strong>Storage Management:</strong> Manage downloaded media with ease, delete unwanted files, and organize your media library.</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Technologies Used and Why Choose This App Section -->
+                <div class="row mt-5">
+                    <!-- Technologies Used Section -->
+                    <div class="col-md-6" data-aos="fade-left" data-aos-duration="1000">
+                        <h3>Technologies Used</h3>
+                        <p>The app is built using reliable technologies to ensure smooth performance and user satisfaction:</p>
+                        <ul>
+                            <li><strong>Java:</strong> Android app development using Java or Kotlin for high performance and stability.</li>
+                            <li><strong>Android SDK:</strong> For building the app and enabling interactions with social media APIs to download statuses.</li>
+                            <li><strong>API:</strong> For fetching statuses from social media platforms, ensuring compatibility and performance.</li>
+                            <li><strong>SQLite:</strong> For local storage management of downloaded statuses and media files, ensuring offline access.</li>
+                            <li><strong>Google Analytics:</strong> Integrated to track app usage, user engagement, and to gather data for future improvements.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Why Choose This App Section -->
+                    <div class="col-md-6" data-aos="fade-up" data-aos-duration="1000">
+                        <h3>Why Choose This App?</h3>
+                        <p>Status Saver offers a simple and efficient solution for saving and sharing social media statuses. Whether you're looking to save moments from WhatsApp, Instagram, or Facebook, this app provides a hassle-free way to do it. Its intuitive interface ensures that users of all levels can easily navigate and utilize the app’s features, making it an essential tool for anyone who enjoys sharing or collecting moments from social media.</p>
+                    </div>
+                </div>
+
+                <a class="btn btn-primary mt-4" href="https://play.google.com/store/apps/details?id=com.cosname.statussaver" download="status_saver_app.py" data-aos="zoom-in" data-aos-duration="800">Download More App Details</a>
+
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+<footer class="bg-darkblueHover text-light py-4">
+    <div class="container">
+        <div class="row">
+            <!-- About Section -->
+            <div class="col-md-4">
+                <h5 class="text-primary">About Us</h5>
+                <p>We are dedicated to providing the best solutions for your business needs. Connect with us for innovative technology solutions.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-md-4">
+                <h5 class="text-primary">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                    <li><a href="index.html#services" class="text-light text-decoration-none">Services</a></li>
+                    <li><a href="Contact.html" class="text-light text-decoration-none">Contact</a></li>
+                    <li><a href="About.html" class="text-light text-decoration-none">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-md-4">
+                <h5 class="text-primary">Contact</h5>
+                <p><i class="fas fa-envelope"></i> Cosnametech@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +254 7941227 966</p>
+                <p><i class="fas fa-map-marker-alt"></i> Kutus, Kerugoya, Kenya</p>
+            </div>
+        </div>
+
+        <!-- Social Media -->
+        <div class="text-center mt-4 social-icons">
+            <a href="https://www.facebook.com/Cosname" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/CosnameTv1" class="social-link" target="_blank"><i class="fab fa-x"></i></a>
+            <a href="https://www.instagram.com/cosname1" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://github.com/cosnametv" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/cosname/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+        </div>
+
+        <!-- Copyright -->
+        <div class="text-center mt-3">
+            <p class="mb-0">&copy; 2025 Cosname Technologies. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Include AOS Script Before Closing Body Tag -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        duration: 1000, 
+        once: false, 
+        easing: 'ease-in-out' 
+    });
+</script>
+
+    
+    <script>
+        document.addEventListener("scroll", function() {
+            let navbar = document.querySelector(".navbar");
+            if (window.scrollY > 50) {
+                navbar.classList.add("scrolled");
+            } else {
+                navbar.classList.remove("scrolled");
+            }
+        });
+    </script>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="Script/script.js"></script>
+
+</body>
+</html>
