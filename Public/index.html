@@ -3,17 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosname Technologies - Digital Solutions</title>
-    <link rel="icon" type="image/png" href="https://cosname.web.app/Assets/Logo.png">
-    <meta name="description" content="Cosname Technologies provides cutting-edge digital solutions, including mobile apps, websites, and AI-driven innovations for businesses and individuals.">
-    <meta name="keywords" content="Cosname Technologies, Technology, Mobile Apps, Website Development, AI Solutions, Digital Services">
-    <meta name="author" content="Cosname Technologies">
-    <meta property="og:title" content="Cosname Technologies - Innovative Digital Solutions">
-    <meta property="og:description" content="Explore Cosname Technologies for expert app development, website design, and tech-driven solutions to enhance your business growth.">
-    <meta property="og:image" content="https://cosname.web.app/Assets/logo.png">
-    <meta property="og:url" content="https://cosname.web.app/">
-    <link rel="canonical" href="https://cosname.web.app/">
-
+    <title>Cosname Technologies</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -26,72 +16,236 @@
 
     <link rel="stylesheet" href="Style/style.css">
     <style>
-        .container-fluid-gop img{
-            height: 30px;
-            width: 30;
-        }
+:root {
+  --hero-bg-dark: #010622;
+  --hero-bg-darker: #000318;
+  --primary: #4cc9f0;
+  --primary-hover: #3aa8d8;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  min-height: 800px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.hero-gradient-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--hero-bg-dark), var(--hero-bg-darker));
+  z-index: 0;
+}
+
+.tech-sphere-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.3;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding-top: 6rem;
+}
+
+.hero-text {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, #fff, var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.company-name {
+  color: var(--primary);
+  display: inline-block;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  opacity: 0.9;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-cta {
+  padding: 0.875rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+  border: none;
+}
+
+.btn-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(76, 201, 240, 0.3);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(to bottom, var(--primary), transparent);
+  margin: 0.5rem auto 0;
+  animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { opacity: 1; }
+  100% { transform: translateY(20px); opacity: 0; }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .hero-section {
+    min-height: 700px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .hero-cta .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 600px;
+  }
+  
+  .hero-content {
+    padding-top: 4rem;
+  }
+  
+  .tech-sphere-container {
+    opacity: 0.2;
+  }
+}
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="container-fluid-gop" href="#"><img src="Assets/Logo.png"></a>
             <a class="navbar-brand" href="#">Cosname Technologies</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#why-choose-us">Why Choose Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="Contact.html" target="_blank">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link " href="Contact.html" target="_blank">Contact</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    
-    <!-- Home Section -->
-    <section id="home">
-        <div class="overlay"></div>
-        <div class="container text-center">
-            <div class="row align-items-center">
-                <div class="col-md-6 text-section">
-                    <h1 class="fade-in">Innovate with Cosname Technologies</h1>
-                    <p class="fade-in">Shaping the future through cutting-edge technology and digital transformation.</p>
-                    <a href="#services" class="btn btn-primary neon-btn fade-in">Explore More</a>
-                </div>
-                <div class="col-md-6 image-section">
-                    <img src="Assets/first.png" alt="Tech Image" class="img-fluid slide-in rounded-4 shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
 
+<!-- Home/Hero Section with 3D Tech Integration -->
+<section id="home" class="hero-section position-relative">
+  <!-- Gradient Background -->
+  <div class="hero-gradient-bg"></div>
+  
+  <!-- 3D Tech Sphere Container -->
+  <div id="tech3d-container" class="tech-sphere-container"></div>
+  
+  <div class="container position-relative z-index-2">
+    <div class="hero-content">
+      <div class="hero-text" data-aos="fade-up" data-aos-delay="100">
+        <h1 class="hero-title">
+          <span class="text-gradient">Empowering Ideas</span> with 
+          <span class="company-name">Cosname Technologies</span>
+        </h1>
+        
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="200">
+          We engineer bespoke digital solutions that transform businesses, 
+          drive growth, and inspire innovation.
+        </p>
+        
+        <div class="hero-cta" data-aos="fade-up" data-aos-delay="300">
+          <a href="#services" class="btn btn-primary btn-lg btn-cta">
+            Explore Our Solutions
+          </a>
+          <a href="Contact.html" class="btn btn-outline-light btn-lg ms-3">
+            Get Started
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
+      <span>Scroll to Discover</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
 <!-- Services Section -->
-<section id="services" class="py-5 bg-darkblue text-light ">
+<section id="services" class="py-5 bg-darkblue text-light">
     <div class="container">
-        <h2 class="text-center mb-3" data-aos="fade-down">Our Services</h2>
-        <p class="text-center mb-5" data-aos="fade-down">Providing top-notch digital solutions tailored to your business needs.</p>
+        <h2 class="text-center mb-3" data-aos="fade-down">What We Offer</h2>
+        <p class="text-center mb-5" data-aos="fade-down">
+            From innovative design to rock-solid code, we provide digital solutions that move your business forward.
+        </p>
         <div class="row gy-4">
+
             <!-- Web Development -->
             <div class="col-md-6 col-lg-4" data-aos="fade-up">
                 <div class="card service-card text-center h-100 bg-darkblue text-light">
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-code fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/web-development.JPG">
                         </div>
                         <h3 class="card-title">Web Development</h3>
-                        <p class="card-text">We build high-performance websites, web apps, and e-commerce platforms using modern technologies.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> Custom website design & development</li>
-                            <li> -> Responsive & mobile-friendly layouts</li>
-                            <li> -> E-commerce & CMS solutions</li>
-                            <li> -> SEO optimization & speed enhancements</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <p class="card-text">
+                            We design and develop custom websites that combine modern aesthetics with powerful functionality. Whether you need a responsive landing page or a full-scale e-commerce platform, our solutions are tailored for speed, accessibility, and seamless user experience. We also ensure your website is optimized for search engines and compatible across all devices.
+                        </p>
+                        <a href="About.html" class="btn btn-outline-primary mt-3">View Projects</a>
                     </div>
                 </div>
             </div>
@@ -102,16 +256,13 @@
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-mobile-alt fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/App Development.jpg">
                         </div>
                         <h3 class="card-title">App Development</h3>
-                        <p class="card-text">We create high-quality mobile applications with seamless performance and engaging UI/UX.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> Android & iOS app development</li>
-                            <li> -> Cross-platform apps (Flutter, React Native)</li>
-                            <li> -> Backend development & API integration</li>
-                            <li> -> App store optimization (ASO)</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <p class="card-text">
+                            Our team builds intuitive, high-performance mobile apps for Android and iOS. Whether you're launching a startup product or expanding enterprise services, we provide scalable cross-platform apps, seamless backend integration, and UI/UX design that keeps users engaged. We also handle publishing, testing, and optimization for app stores.
+                        </p>
+                        <a href="projects.html" class="btn btn-outline-primary mt-3">View Projects</a>
                     </div>
                 </div>
             </div>
@@ -122,16 +273,13 @@
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-paint-brush fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/graphic-design.png">
                         </div>
                         <h3 class="card-title">Graphic Design</h3>
-                        <p class="card-text">We deliver stunning graphic designs that enhance brand identity and marketing efforts.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> Logo & brand identity design</li>
-                            <li> -> Business cards, brochures, and flyers</li>
-                            <li> -> Social media graphics & ads</li>
-                            <li> -> UI/UX design for apps & websites</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <p class="card-text">
+                            We craft impactful visual designs that tell your brand's story with clarity and creativity. From logo creation and branding kits to marketing assets like brochures, banners, and social media content — our design services ensure consistency and elegance across every touchpoint. We also specialize in clean, intuitive UI/UX design for digital products.
+                        </p>
+                        <a href="About.html" class="btn btn-outline-primary mt-3">View Designs</a>
                     </div>
                 </div>
             </div>
@@ -142,16 +290,13 @@
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-video fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/video-editing.jpg">
                         </div>
                         <h3 class="card-title">Video Editing</h3>
-                        <p class="card-text">We create professional videos, from promotional content to motion graphics and animations.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> Corporate & marketing videos</li>
-                            <li> -> Social media video content</li>
-                            <li> -> Motion graphics & animation</li>
-                            <li> -> Video color grading & effects</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <p class="card-text">
+                            We transform raw footage into polished, compelling videos that engage and inform your audience. From corporate promos and event highlights to animated explainers and social reels, our editing process includes motion graphics, visual effects, sound design, and color grading to match your brand’s tone and energy.
+                        </p>
+                        <a target="_blank" href="https://www.youtube.com/@Cosname1" class="btn btn-outline-primary mt-3">See Our Work</a>
                     </div>
                 </div>
             </div>
@@ -162,16 +307,13 @@
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-lightbulb fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/tech-consulting.jpg">
                         </div>
-                        <h3 class="card-title">Tech Consulting</h3>
-                        <p class="card-text">We help businesses optimize their technology stack and implement innovative solutions.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> IT strategy & digital transformation</li>
-                            <li> -> Cloud computing & DevOps</li>
-                            <li> -> Cybersecurity & data protection</li>
-                            <li> -> AI & automation solutions</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <h3 class="card-title">Technology Consulting</h3>
+                        <p class="card-text">
+                            We guide businesses in adopting the right technologies for efficiency, innovation, and growth. From IT infrastructure planning and cloud integration to cybersecurity and automation strategy, we help you make informed tech decisions that align with your goals and keep you competitive in a digital-first world.
+                        </p>
+                        <a href="Contact.html" class="btn btn-outline-primary mt-3">Get Consultation</a>
                     </div>
                 </div>
             </div>
@@ -182,29 +324,28 @@
                     <div class="card-body">
                         <div class="icon mb-3">
                             <i class="fas fa-tools fa-2x text-primary"></i>
+                            <img class="whatweoffer" src="Assets/laptop-repair.jpg">
                         </div>
-                        <h3 class="card-title">Laptop And Pc Repairs</h3>
-                        <p class="card-text">We provide reliable hardware and software repair services for various devices.</p>
-                        <ul class="list-unstyled text-start">
-                            <li> -> Computer & laptop repairs</li>
-                            <li> -> Smartphone & tablet troubleshooting</li>
-                            <li> -> Software installation & upgrades</li>
-                            <li> -> Data recovery & backup solutions</li>
-                        </ul>
-                        <a href="projects.html" class="btn btn-primary mt-3">Learn More</a>
+                        <h3 class="card-title">Laptop & PC Repairs</h3>
+                        <p class="card-text">
+                            We offer fast and reliable repair services for laptops, PCs, and other devices. Whether you're facing hardware failure, software glitches, or system slowdowns, we provide thorough diagnostics, upgrades, virus removal, and data recovery. Our goal is to restore full functionality while extending the life of your devices.
+                        </p>
+                        <a href="Contact.html" class="btn btn-outline-primary mt-3">Request Service</a>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
+
 
 <!-- About Us Section -->
 <section id="about" class="py-5 bg-darkblue text-light">
     <div class="container">
         <h2 class="text-center mb-3" data-aos="fade-down">Who We Are</h2>
         <p class="text-center mb-5" data-aos="fade-down">
-            At Cosname Technologies, we are dedicated to delivering innovative tech solutions that drive businesses forward.
+            Cosname Technologies is a forward-thinking digital agency committed to driving innovation and delivering meaningful technology solutions.
         </p>
         <div class="row align-items-center">
             <!-- Image Column -->
@@ -213,114 +354,72 @@
             </div>
             <!-- Content Column -->
             <div class="col-md-6" data-aos="fade-left">
-                <h3 class="mb-3">Empowering Brands with Technology</h3>
+                <h3 class="mb-3">Empowering Progress Through Technology</h3>
                 <p>
-                    With expertise in web & app development, digital marketing, and IT consulting, we empower brands with cutting-edge technology. 
+                    We specialize in crafting custom web and mobile applications, dynamic branding solutions, and strategic IT consulting services. From startups to established enterprises, we help our clients scale and stay ahead in the digital age.
                 </p>
                 <p>
-                    Our team consists of experienced developers, designers, and strategists committed to crafting tailored solutions that enhance efficiency, engagement, and business growth.
+                    Our multidisciplinary team of developers, designers, and digital strategists collaborate closely to ensure each solution is technically sound, creatively inspired, and tailored to your unique goals.
                 </p>
-                <a href="#services" class="btn btn-primary mt-3" data-aos="zoom-in">Explore Our Services</a>
-                <p></p>
-                <p>
-                    We believe in building long-term partnerships with our clients, ensuring that our solutions align with their evolving business needs. Our approach focuses on creativity, innovation, and technical excellence.
+                <div class="d-flex flex-wrap gap-2 mt-3">
+                    <a href="#services" class="btn btn-primary" data-aos="zoom-in">Explore Our Services</a>
+                    <a href="about.html" class="btn btn-outline-light" data-aos="zoom-in">Learn More About Us</a>
+                </div>
+                <p class="mt-4">
+                    At the core of our work is a passion for innovation and a dedication to long-term partnerships. We don’t just build solutions — we build digital ecosystems designed for lasting impact.
                 </p>
-                <a href="About.html" class="btn btn-outline-light mt-3 ms-2" data-aos="zoom-in">Learn More About Us</a>
-                <p></p>           
             </div>
         </div>
     </div>
 </section>
 
-<!-- Why Choose Us Section -->
-<section id="why-choose-us" class="py-5 bg-darkblue text-light">
-    <div class="container">
-        <h2 class="text-center text-primary mb-4" data-aos="fade-down">Why Choose Us?</h2>
-        <p class="text-center mb-5" data-aos="fade-up">Our commitment to excellence makes us stand out in design, development, and video editing.</p>
-
-        <div class="row text-center">
-            <div class="col-md-4 bg-darkblue text-light shadow p-4" data-aos="fade-right">
-                <div class="feature-box">
-                    <img src="Assets/experi.png" alt="Years of Experience" class="feature-img">
-                    <h3>Years of Experience</h3>
-                    <p>With extensive industry experience, we have a deep understanding of what works. Our expertise allows us to deliver exceptional solutions tailored to your needs.</p>
-                </div>
-            </div>
-            <div class="col-md-4 bg-darkblue text-light shadow p-4" data-aos="zoom-in">
-                <div class="feature-box">
-                    <img src="Assets/quality.png" alt="High-Quality Work" class="feature-img">
-                    <h3>High-Quality Work</h3>
-                    <p>Quality is at the core of everything we do. From graphics to web development, we ensure precision, creativity, and attention to detail in every project.</p>
-                </div>
-            </div>
-            <div class="col-md-4 bg-darkblue text-light shadow p-4" data-aos="fade-left">
-                <div class="feature-box">
-                    <img src="Assets/fast.png" alt="Fast Turnaround Time" class="feature-img">
-                    <h3>Fast Turnaround Time</h3>
-                    <p>We value efficiency without compromising quality. Our streamlined processes enable us to meet deadlines while maintaining the highest standards.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row text-center mt-4">
-            <div class="col-md-6 bg-darkblue text-light shadow p-4" data-aos="fade-up-right">
-                <div class="feature-box">
-                    <img src="Assets/creative.png" alt="Creative Designs" class="feature-img">
-                    <h3>Custom & Creative Designs</h3>
-                    <p>We don’t just create designs; we craft experiences. Every project is uniquely designed to align with your brand and captivate your audience.</p>
-                </div>
-            </div>
-            <div class="col-md-6 bg-darkblue text-light shadow p-4" data-aos="fade-up-left">
-                <div class="feature-box">
-                    <img src="Assets/trusted.png" alt="Trusted Worldwide" class="feature-img">
-                    <h3>Trusted by Clients Worldwide</h3>
-                    <p>Our reputation speaks for itself. Businesses and individuals worldwide trust us for our reliability, professionalism, and results-driven approach.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <!-- Our Projects Section -->
 <section id="projects" class="projects py-5 bg-darkblue text-light">
     <div class="container">
         <h2 class="text-center mb-3" data-aos="fade-down">Our Projects</h2>
         <p class="text-center mb-5" data-aos="fade-down">
-            Take a look at some of the innovative solutions we've developed to help businesses thrive in the digital era.
+            Discover how we've helped businesses and individuals grow through purposeful digital innovation and intuitive user experiences.
         </p>
         <div class="row">
             <!-- Project 1 -->
-            <div class="col-md-4 mb-4 projects" data-aos="fade-up">
-                <div class="card project-card bg-darkblue text-light shadow">
-                    <img src="Assets/icon.png" class="card-img-top" alt="Project 1">
-                    <div class="card-body">
+            <div class="col-md-4 mb-4" data-aos="fade-up">
+                <div class="card project-card bg-darkblue text-light border-white border shadow h-100">
+                    <img src="Assets/icon.png" class="card-img-top" alt="Finance Management App">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Finance Management App</h5>
-                        <p class="card-text">A user-friendly personal finance app designed to help users track expenses and manage budgets efficiently.</p>
-                        <a href="projects.html" class="btn btn-primary">View Project</a>
+                        <p class="card-text">
+                            A streamlined mobile solution enabling users to monitor spending, categorize income sources, and set budgeting goals with ease and clarity.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary mt-3">View Project</a>
                     </div>
                 </div>
             </div>
+
             <!-- Project 2 -->
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="card project-card bg-darkblue text-light shadow">
+                <div class="card project-card bg-darkblue text-light border-white border shadow h-100">
                     <img src="Assets/Genco.png" class="card-img-top" alt="Genco Company App">
-                    <div class="card-body">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Genco Company App</h5>
                         <p class="card-text">
-                            A comprehensive management app designed to streamline operations for livestock and fodder farmers, infrastructure tracking, and capacity building.
+                            Built for agricultural enterprises, this app centralizes farmer profiles, resource tracking, infrastructure monitoring, and real-time reporting.
                         </p>
-                        <a href="projects.html" class="btn btn-primary">View Project</a>
+                        <a href="#" class="btn btn-outline-primary mt-3">View Project</a>
                     </div>
                 </div>
             </div>
+
             <!-- Project 3 -->
             <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="card project-card bg-darkblue text-light shadow ">
-                    <img src="Assets/status.png" class="card-img-top" alt="Project 3">
-                    <div class="card-body">
+                <div class="card project-card bg-darkblue text-light border-white border shadow h-100">
+                    <img src="Assets/status.png" class="card-img-top" alt="Status Saver App">
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title">Status Saver App</h5>
-                        <p class="card-text">An Android app that allows users to download and share social media statuses effortlessly.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.cosname.statussaver" class="btn btn-primary">View Project</a>
+                        <p class="card-text">
+                            A lightweight Android app that allows users to quickly save and manage statuses from popular messaging apps with intuitive sharing tools.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary mt-3">View Project</a>
                     </div>
                 </div>
             </div>
@@ -331,10 +430,164 @@
     </div>
 </section>
 
+<!-- Profile Section -->
+<section id="profile" class="py-5 bg-darkblue text-light">
+    <div class="container">
+        <h2 class="text-center mb-3" data-aos="fade-down">About Me</h2>
+        <p class="text-center mb-5" data-aos="fade-down">
+             I'm a tech lover who enjoys building practical digital solutions and bringing ideas to life through code, design, and video.
+        </p>
+        <div class="row align-items-center">
+            <!-- Image Column -->
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="profile-image-container position-relative">
+                    <img src="Assets/me.jpg" alt="Your Name" class="img-fluid rounded-4 shadow-lg">
+                    <div class="profile-badge bg-primary rounded-pill p-2 px-3 position-absolute bottom-0 start-50 translate-middle-x">
+                        <h5 class="mb-0">Founder & Lead Developer</h5>
+                    </div>
+                </div>
+                
+                <!-- Quick Facts -->
+                <div class="quick-facts mt-4 p-4 rounded-4" data-aos="fade-up">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-map-marker-alt text-primary me-3 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Location</h6>
+                            <p class="text-muted mb-0">Kerugoya, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope text-primary me-3 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Email</h6>
+                            <p class="text-muted mb-0">cosnametech@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-phone text-primary me-3 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Phone</h6>
+                            <p class="text-muted mb-0">+254 794 122 796</p>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <i class="fas fa-calendar-check text-primary me-3 fs-5"></i>
+                        <div>
+                            <h6 class="mb-0">Availability</h6>
+                            <p class="text-muted mb-0">Available for projects</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-card bg-darkblue p-4 rounded top-gap">
+                            <!-- Skills -->
+            <div class="mb-3">
+                <h6 class="d-flex align-items-center text-primary">
+                    <i class="fas fa-code me-2"></i> Skills
+                </h6>
+                <div class="d-flex flex-wrap gap-2 mt-2">
+                    <span class="badge bg-primary-transparent">JavaScript</span>
+                    <span class="badge bg-primary-transparent">React</span>
+                    <span class="badge bg-primary-transparent">Node.js</span>
+                    <span class="badge bg-primary-transparent">UI/UX</span>
+                    <span class="badge bg-primary-transparent">Python</span>
+                </div>
+            </div>
+                        <!-- Availability -->
+            <div class="availability">
+                <h6 class="d-flex align-items-center text-primary">
+                    <i class="fas fa-calendar-check me-2"></i> Availability
+                </h6>
+                <div class="d-flex align-items-center mt-2">
+                    <span class="availability-dot available me-2"></span>
+                    <span class="small">Available for projects</span>
+                </div>
+            </div>
+            </div>
+                                <!-- Call to Action -->
+                <div class="d-flex flex-wrap gap-3 mt-5">
+                    <a target="_blank" href="Contact.html" class="btn btn-primary btn-lg px-4">
+                        <i class="fas fa-paper-plane me-2"></i> Get In Touch
+                    </a>
+                    <a href="projects.html" class="btn btn-outline-light btn-lg px-4">
+                        <i class="fas fa-briefcase me-2"></i> View My Work
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Content Column -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <h3 class="mb-4">My Journey in Technology</h3>
+                <p>
+                    With over 5 years of professional experience in full-stack development and digital solutions, I've dedicated my career to transforming complex problems into elegant, user-friendly applications. My journey began at the University of Nairobi where I earned my Bachelor's degree in Computer Science, laying the foundation for my technical expertise.
+                </p>
+                            <!-- Experience -->
+            <div class="mb-3 profile-card bg-darkblue p-4 rounded">
+                <h6 class="d-flex align-items-center text-primary">
+                    <i class="fas fa-briefcase me-2"></i> Experience
+                </h6>
+                <p class="small mb-1">5+ Years Full Stack Development</p>
+                <p class="small mb-1">3+ Years UI/UX Design</p>
+            </div>
+                
+                <!-- Experience Timeline -->
+                <div class="timeline mt-4">
+                    <div class="timeline-item">
+                        <div class="timeline-badge bg-primary"></div>
+                        <div class="timeline-content p-3 rounded-3 mb-3">
+                            <h5>Founder & Lead Developer</h5>
+                            <p class="text-muted small mb-1">Cosname Technologies | 2020 - Present</p>
+                            <p class="mb-0">Leading a team that develops innovative web and mobile solutions for clients across various industries, while establishing technical standards and best practices.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-badge bg-primary"></div>
+                        <div class="timeline-content p-3 rounded-3 mb-3">
+                            <h5>Senior Software Engineer</h5>
+                            <p class="text-muted small mb-1">Tech Solutions Ltd | 2018 - 2020</p>
+                            <p class="mb-0">Developed and maintained enterprise applications, optimized database performance, and mentored junior developers.</p>
+                        </div>
+                    </div>
+                    <!-- Creative Expertise Timeline -->
+                <div class="mt-4" data-aos="fade-up">
+                    <h4 class="mb-3">Creative Expertise</h4>
+
+                    <!-- Graphic Design Experience -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge bg-primary"></div>
+                        <div class="timeline-content p-3 rounded-3 mb-3">
+                            <h5>Graphic Designer</h5>
+                            <p class="text-muted small mb-1">Freelance | 2017 - Present</p>
+                            <p class="mb-0">
+                                Specialized in creating visually compelling branding assets, social media content, and UI components using Adobe Photoshop, Illustrator, and Figma.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Video Editing Experience -->
+                    <div class="timeline-item">
+                        <div class="timeline-badge bg-primary"></div>
+                        <div class="timeline-content p-3 rounded-3 mb-3">
+                            <h5>Video Editor</h5>
+                            <p class="text-muted small mb-1">Freelance | 2018 - Present</p>
+                            <p class="mb-0">
+                                Edited promotional videos, tutorials, and reels for digital platforms using Adobe Premiere Pro and After Effects. Delivered engaging content for brands and personal projects.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Testimonials Section -->
 <section id="testimonials" class="py-5 bg-darkblue text-light">
     <div class="container">
-        <h2 class="text-center text-primary mb-4" data-aos="fade-down">What Our Clients Say</h2>
+        <h2 class="text-center mb-4" data-aos="fade-down">What Our Clients Say</h2>
         <p class="text-center mb-5" data-aos="fade-up">Hear from our satisfied clients who trust our design, video editing, and web solutions.</p>
 
         <div class="testimonial-slider">
@@ -342,19 +595,13 @@
                 <img src="Assets/client1.jpg" alt="Client 1">
                 <p class="review">The best video editing team I’ve worked with! Their motion graphics transformed my project.</p>
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h5>- John Doe, Filmmaker</h5>
+                <h5>- Abraham Mwangi, Filmmaker</h5>
             </div>
             <div class="testimonial" data-aos="zoom-in">
                 <img src="Assets/client1.webp" alt="Client 2">
                 <p class="review">Cosname Technologies built an amazing website for my business. Fast, sleek, and user-friendly.</p>
                 <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h5>- Jane Smith, Entrepreneur</h5>
-            </div>
-            <div class="testimonial" data-aos="fade-left">
-                <img src="Assets/client4.webp" alt="Client 3">
-                <p class="review">Top-notch graphic design services! My brand identity has never looked better.</p>
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <h5>- Mark Johnson, Brand Manager</h5>
+                <h5>- Alex Smith, Entrepreneur</h5>
             </div>
             <div class="testimonial" data-aos="fade-up">
                 <img src="Assets/Mary.jpg" alt="Client 4">
@@ -367,58 +614,80 @@
 </section>
 
 <!-- Footer Section -->
-<footer class="bg-darkblueHover text-light py-4">
+<footer class="text-light pt-5 pb-4 mark-4">
     <div class="container">
-        <div class="row">
-            <!-- About Section -->
-            <div class="col-md-4">
-                <h5 class="text-primary">About Us</h5>
-                <p>We are dedicated to providing the best solutions for your business needs. Connect with us for innovative technology solutions.</p>
+        <div class="row g-4">
+            <!-- About Us -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-brand mb-3">
+                    <h4 class="text-primary">Cosname Technologies</h4>
+                </div>
+                <p class="text-muted">
+                    Delivering smart, scalable, and creative technology solutions to help businesses grow in the digital age.
+                </p>
+                <div class="social-icons mt-3">
+                    <a href="https://www.facebook.com/Cosname" target="_blank" class="text-light me-3">F<i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/CosnameTv1" target="_blank" class="text-light me-3">X<i class="fab fa-x"></i></a>
+                    <a href="https://www.instagram.com/cosname1" target="_blank" class="text-light me-3">IG<i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/cosnametv" target="_blank" class="text-light me-3">G<i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/cosname/" target="_blank" class="text-light">L<i class="fab fa-linkedin-in"></i></a>
+                </div>
             </div>
 
             <!-- Quick Links -->
-            <div class="col-md-4">
-                <h5 class="text-primary">Quick Links</h5>
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-primary mb-3">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="https://cosname.web.app/" class="text-light text-decoration-none">Home</a></li>
-                    <li><a href="#services" class="text-light text-decoration-none">Services</a></li>
-                    <li><a href="Contact.html" class="text-light text-decoration-none">Contact</a></li>
-                    <li><a href="#about" class="text-light text-decoration-none">About Us</a></li>
+                    <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="#services" class="text-muted text-decoration-none">Services</a></li>
+                    <li class="mb-2"><a href="#about" class="text-muted text-decoration-none">About Us</a></li>
+                    <li class="mb-2"><a href="Contact.html" class="text-muted text-decoration-none">Contact</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
-            <div class="col-md-4">
-                <h5 class="text-primary">Contact</h5>
-                <p><i class="fas fa-envelope"></i> Cosnametech@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +254 7941227 966</p>
-                <p><i class="fas fa-map-marker-alt"></i> Kutus, Kerugoya, Kenya</p>
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-primary mb-3">Contact Us</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> Cosnametech@gmail.com</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +254 794 122 7966</li>
+                    <li><i class="fas fa-map-marker-alt me-2 text-primary"></i> Kutus, Kerugoya, Kenya</li>
+                </ul>
             </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-2 col-md-6">
+        <h5 class="text-primary mb-3">Newsletter</h5>
+        <form id="newsletterForm">
+            <div class="mb-3">
+            <input type="email" id="newsletterEmail" class="form-control bg-dark border-secondary" placeholder="Your Email" required>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-3">Subscribe</button>
+        </form>
         </div>
 
-        <!-- Social Media -->
-        <div class="text-center mt-4 social-icons">
-            <a href="https://www.facebook.com/Cosname" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/CosnameTv1" class="social-link" target="_blank"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://www.instagram.com/cosname1" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/cosnametv" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/cosname/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
         </div>
+
+        <hr class="my-4 border-secondary">
 
         <!-- Copyright -->
-        <div class="text-center mt-3">
-            <p class="mb-0">&copy; 2025 Cosname Technologies. All Rights Reserved.</p>
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <small class="text-muted">&copy; 2025 Cosname Technologies. All rights reserved.</small>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <small class="text-muted">Designed with <i class="fas fa-heart text-danger">Love</i> by Cosname</small>
+            </div>
         </div>
     </div>
 </footer>
-
 
 <!-- Include AOS Script Before Closing Body Tag -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
     AOS.init({
         duration: 1000, 
-        once: false, 
+        once: true, 
         easing: 'ease-in-out' 
     });
 </script>
@@ -434,10 +703,139 @@
             }
         });
     </script>
+
+    <!-- Add these script tags right before closing body tag -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
     
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Script/script.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// Initialize 3D scene
+const container = document.getElementById('tech3d-container');
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+
+renderer.setSize(window.innerWidth, window.innerHeight);
+container.appendChild(renderer.domElement);
+
+// Create tech sphere
+const geometry = new THREE.SphereGeometry(3, 32, 32);
+const material = new THREE.MeshPhongMaterial({
+  color: 0x4cc9f0,
+  transparent: true,
+  opacity: 0.5,
+  wireframe: true
+});
+const sphere = new THREE.Mesh(geometry, material);
+scene.add(sphere);
+
+// Add lights
+const ambientLight = new THREE.AmbientLight(0x404040);
+scene.add(ambientLight);
+
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(1, 1, 1);
+scene.add(directionalLight);
+
+// Position camera
+camera.position.z = 5;
+
+// Handle window resize
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// Animation loop
+function animate() {
+  requestAnimationFrame(animate);
+  
+  // Gentle rotation
+  sphere.rotation.x += 0.002;
+  sphere.rotation.y += 0.003;
+  
+  renderer.render(scene, camera);
+}
+animate();
+
+// Mouse move interaction
+document.addEventListener('mousemove', (e) => {
+  const x = (e.clientX / window.innerWidth) * 2 - 1;
+  const y = -(e.clientY / window.innerHeight) * 2 + 1;
+  
+  gsap.to(sphere.rotation, {
+    x: y * 0.2,
+    y: x * 0.3,
+    duration: 2
+  });
+});
+</script>
+<script type="module">
+  // Firebase imports
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+    authDomain: "home-1e420.firebaseapp.com",
+    databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+    projectId: "home-1e420",
+    storageBucket: "home-1e420.firebasestorage.app",
+    messagingSenderId: "237502846110",
+    appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+  };
+
+  // Initialize Firebase and Firestore
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Newsletter form handler
+  document.getElementById("newsletterForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("newsletterEmail").value;
+
+    try {
+      const q = query(
+        collection(db, "newsletter_subscribers"),
+        where("email", "==", email)
+      );
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        alert("You are already subscribed with this email.");
+        return;
+      }
+
+      await addDoc(collection(db, "newsletter_subscribers"), {
+        email: email,
+        subscribedAt: serverTimestamp()
+      });
+
+      alert("Thanks for subscribing!");
+      document.getElementById("newsletterForm").reset();
+    } catch (error) {
+      alert("Subscription failed: " + error.message);
+    }
+  });
+</script>
+
 </body>
 </html>

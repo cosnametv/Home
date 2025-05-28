@@ -3,126 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>404 - Page Not Found</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <title>Page Not Found | Cosname Technologies</title>
     <style>
+        :root {
+            --bg-dark: #010622;
+            --primary: #4cc9f0;
+            --text-light: #ffffff;
+            --text-muted: rgba(255, 255, 255, 0.7);
+        }
+        
         body {
-            background-color: #000;
-            color: #fff;
-            text-align: center;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100vh;
-            flex-direction: column;
-            font-family: 'Arial', sans-serif;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
         }
         
         .error-container {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            z-index: 2;
+            padding: 2rem;
+            max-width: 800px;
         }
         
-        .error-text {
-            font-size: 6rem;
-            font-weight: bold;
-            display: flex;
+        .error-code {
+            font-size: clamp(5rem, 20vw, 8rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), #3aa8d8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+            line-height: 1;
+        }
+        
+        .error-title {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        
+        .error-message {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .home-btn {
+            display: inline-flex;
             align-items: center;
-            gap: 10px;
-        }
-
-        .zero {
-            position: relative;
-            display: inline-block;
-            width: 70px;
-            height: 70px;
-            background-color: #fff;
-            border-radius: 50%;
-        }
-
-        .eye {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: black;
-            border-radius: 50%;
-            top: 35%;
-            animation: blink 3s infinite;
-        }
-
-        .eye.left {
-            left: 20px;
-        }
-
-        .eye.right {
-            right: 20px;
-        }
-
-        @keyframes blink {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(0); }
-        }
-
-        p {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .btn-custom {
-            background: #3e02e2;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            color: white;
-            border-radius: 10px;
+            padding: 0.75rem 2rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-hover));
+            color: var(--bg-dark);
+            border-radius: 50px;
+            font-weight: 600;
             text-decoration: none;
-            transition: transform 0.3s ease-in-out;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: 1rem;
         }
-        .btn-custom:hover {
-            transform: scale(1.1);
-            background: #1402b6;
+        
+        .home-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(76, 201, 240, 0.3);
         }
-
-        @media (max-width: 768px) {
-            .error-text {
-                font-size: 4rem;
-            }
-            .zero {
-                width: 50px;
-                height: 50px;
-            }
-            .eye {
-                width: 10px;
-                height: 10px;
-            }
-            .eye.left {
-            left: 10px;
+        
+        .tech-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            opacity: 0.15;
         }
-
-        .eye.right {
-            right: 10px;
+        
+        .tech-icon {
+            position: absolute;
+            font-family: 'Font Awesome 6 Brands';
+            color: var(--primary);
+            font-size: 1.5rem;
+            animation: float 15s infinite linear;
         }
-            p {
-                font-size: 1.2rem;
+        
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
             }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        .terminal {
+            background: rgba(10, 14, 46, 0.7);
+            border: 1px solid rgba(76, 201, 240, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            position: relative;
+        }
+        
+        .terminal-header {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .terminal-dot.red { background: #ff5f56; }
+        .terminal-dot.yellow { background: #ffbd2e; }
+        .terminal-dot.green { background: #27c93f; }
+        
+        .terminal-body {
+            color: #4cc9f0;
+        }
+        
+        .terminal-body span {
+            color: #28fe14;
+        }
+        
+        .terminal-body p {
+            margin: 0;
+            line-height: 1.5;
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <div class="container text-center error-container">
-        <div class="error-text">
-            4<div class="zero">
-                <div class="eye left"></div>
-                <div class="eye right"></div>
-            </div>4
+    <div class="tech-icons" id="techIcons"></div>
+    
+    <div class="error-container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Lost in the Digital Cosmos</h1>
+        <p class="error-message">
+            The page you're looking for has drifted into uncharted territory.<br>
+            While our team of digital astronauts searches for it, why not return to familiar space?
+        </p>
+        
+        <div class="terminal">
+            <div class="terminal-header">
+                <div class="terminal-dot red"></div>
+                <div class="terminal-dot yellow"></div>
+                <div class="terminal-dot green"></div>
+            </div>
+            <div class="terminal-body">
+                <p>$ <span>locate</span> requested_page.html</p>
+                <p>Error 404: File not found in server directory</p>
+                <p>$ <span>suggest</span> --solution</p>
+                <p>> Try checking the URL for errors</p>
+                <p>> Navigate to our <a href="/" style="color: #4cc9f0;">homepage</a></p>
+                <p>> Contact our <a href="/contact" style="color: #4cc9f0;">support team</a></p>
+                <p>$ <span>initiate</span> --return-home</p>
+            </div>
         </div>
-        <p>Oops! It looks like you're lost. This page is missing, or maybe it never existed.</p>
-        <p>Don't worry! Our zero-eyed friend is looking around for answers.</p>
-        <a href="https://cosname.web.app/" class="btn btn-custom mt-3">Go Home</a>
+        
+        <a href="/" class="home-btn">
+            <i class="fas fa-rocket me-2"></i> Launch Me Home
+        </a>
     </div>
+
+    <script>
+        // Generate floating tech icons
+        const techIcons = [
+            'fa-html5', 'fa-css3-alt', 'fa-js', 'fa-react', 
+            'fa-node-js', 'fa-git-alt', 'fa-database', 'fa-server'
+        ];
+        
+        const container = document.getElementById('techIcons');
+        
+        function createIcon() {
+            const icon = document.createElement('i');
+            icon.className = `tech-icon fa-solid ${techIcons[Math.floor(Math.random() * techIcons.length)]}`;
+            icon.style.left = `${Math.random() * 100}%`;
+            icon.style.animationDuration = `${10 + Math.random() * 20}s`;
+            icon.style.animationDelay = `${Math.random() * 5}s`;
+            container.appendChild(icon);
+            
+            // Remove icon after animation completes
+            setTimeout(() => {
+                icon.remove();
+            }, 15000);
+        }
+        
+        // Create initial icons
+        for (let i = 0; i < 15; i++) {
+            createIcon();
+        }
+        
+        // Continue creating icons
+        setInterval(createIcon, 1000);
+    </script>
 </body>
 </html>

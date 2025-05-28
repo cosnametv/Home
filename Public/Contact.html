@@ -4,15 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="icon" type="image/png" href="https://cosname.web.app/Assets/Logo.png">
-    <meta name="description" content="Cosname Technologies provides cutting-edge digital solutions, including mobile apps, websites, and AI-driven innovations for businesses and individuals.">
-    <meta name="keywords" content="Cosname, Technology, Mobile Apps, Website Development, AI Solutions, Digital Services">
-    <meta name="author" content="Cosname Technologies">
-    <meta property="og:title" content="Cosname Technologies - Innovative Digital Solutions">
-    <meta property="og:description" content="Explore Cosname Technologies for expert app development, website design, and tech-driven solutions to enhance your business growth.">
-    <meta property="og:image" content="https://cosname.web.app/Assets/logo.png">
-    <meta property="og:url" content="https://cosname.web.app/">
-    <link rel="canonical" href="https://cosname.web.app/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -23,6 +14,11 @@
     <!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="Style/style.css">
+    <!-- Firebase App (the core Firebase SDK) -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<!-- Firebase Firestore -->
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+
     <style>
 
         /* Hero Section */
@@ -104,23 +100,128 @@
             text-shadow: 0 0 15px rgba(13, 110, 253, 0.9);
         }
 
+          /* Contact Section Styles */
+    .contact-info-card {
+        background: rgba(10, 14, 46, 0.7);
+        border: 1px solid rgba(76, 201, 240, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    .contact-form-card {
+        background: rgba(10, 14, 46, 0.7);
+        border: 1px solid rgba(76, 201, 240, 0.2);
+        backdrop-filter: blur(10px);
+    }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .bg-primary-soft {
+        background-color: rgba(76, 201, 240, 0.1);
+    }
+
+    .contact-item {
+        transition: transform 0.3s ease;
+    }
+
+    .contact-item:hover {
+        transform: translateX(5px);
+    }
+
+    .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s ease;
+    }
+
+    .social-icon:hover {
+        background: var(--primary);
+        transform: translateY(-3px);
+    }
+
+    .btn-primary-gradient {
+        background: linear-gradient(135deg, #4cc9f0, #3aa8d8);
+        border: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary-gradient:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(76, 201, 240, 0.3);
+    }
+
+    .form-control.bg-darkblue {
+        background-color: rgba(0, 0, 0, 0.2);
+        color: white;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .form-control.bg-darkblue:focus {
+        background-color: rgba(0, 0, 0, 0.3);
+        color: white;
+        border-color: var(--primary);
+        box-shadow: 0 0 0 0.25rem rgba(76, 201, 240, 0.25);
+    }
+
+    .form-floating label {
+        color: rgba(255, 255, 255, 0.7);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+        .contact-info-card,
+        .contact-form-card {
+            padding: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .contact-item {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .icon-box {
+            margin: 0 auto 1rem;
+        }
+        
+        .social-links {
+            text-align: center;
+        }
+        
+        .social-links .d-flex {
+            justify-content: center;
+        }
+    }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a href="#"><img src="Assets/Logo.png"></a>
             <a class="navbar-brand" href="#">Cosname Technologies</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="About.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://cosname.web.app/#why-choose-us">Why Choose Us</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="" >Contact</a></li>
+                    <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
+                    <li class="nav-item"><a class="nav-link " href="index.html#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#profile">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="#" target="_blank">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -135,91 +236,149 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-5 bg-darkblue text-light" >
-        <div class="container" >
-            <div class="row">
-                <!-- Contact Info Box -->
-                <div class="col-md-6" data-aos="fade-right">
-                    <div class="contact-box">
-                        <h4 class="mb-3 text-primary fw-bold">Get In Touch</h4>
-                        <div class="mb-3">
-                            <h5><i class="fas fa-phone-alt"></i> Phone</h5>
-                            <p>+254 7941227 966</p>
-                        </div>
-                        <hr>
-                        <div class="mb-3">
-                            <h5><i class="fab fa-whatsapp"></i> WhatsApp</h5>
-                            <p><a href="https://wa.me/+254794127966" target="_blank" class="text-light">Chat Now</a></p>
-                        </div>
-                        <hr>
-                        <div class="mb-3">
-                            <h5><i class="fas fa-envelope"></i> Email</h5>
-                            <p>Cosnametech@gmail.com</p>
-                        </div>
-                        <hr>
-                        <div class="mb-3">
-                            <h5><i class="fas fa-map-marker-alt"></i> Location</h5>
-                            <p>C8GH+9Q7, Kutus, Kenya</p>
-                        </div>
-                        <hr>
-                        <div class="mb-3">
-                            <h5><i class="fas fa-clock"></i> Working Hours</h5>
-                            <p>Monday to Saturday<br>09:00 AM - 06:00 PM</p>
-                        </div>
-
-                        <!-- Social Media -->
-                        <div class="text-center mt-4 social-icons">
-                            <a href="https://www.facebook.com/Cosname"><i class="fab fa-facebook"></i></a>
-                            <a href="https://x.com/CosnameTv1"><i class="fab fa-x"></i></a>
-                            <a href="https://www.instagram.com/cosname1"><i class="fab fa-instagram"></i></a>
-                            <a href="https://github.com/cosnametv"><i class="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/cosname/"><i class="fab fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-
-       <!-- Contact Form -->
-       <div class="col-md-6" data-aos="fade-up-right">
-         <div class="contact-box">
-            <h4 class="mb-3 text-primary fw-bold">Send Us A Message</h4>
-            <form>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <input type="text" class="form-control" placeholder="First Name *">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <input type="text" class="form-control" placeholder="Last Name">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <input type="text" class="form-control" placeholder="Mobile No *">
-                    </div>
-                    <div class="col-md-6 mb-3">
-                        <input type="email" class="form-control" placeholder="Email ID *">
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
-                </div>
-                <button type="submit" class="btn neon-button w-100">
-                    Submit <i class="fas fa-paper-plane"></i>
-                </button>
-            </form>
-         </div>
-         <!-- Google Map (Placed Below Form) -->
-         <div class="mt-4 map-container">
-            <iframe src="https://maps.google.com/maps?q=Kutus,%20Kerugoya,%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed" 
-                    width="100%" height="200px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+<!-- Contact Section -->
+<section id="contact" class="py-5 bg-darkblue text-light">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-down">
+            <h2 class="display-5 fw-bold mb-3">Let's Build Something Amazing</h2>
+            <p class="lead">Get in touch with our team for inquiries, collaborations, or project discussions</p>
         </div>
 
+        <div class="row g-4">
+            <!-- Contact Info Card -->
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="contact-info-card p-4 p-lg-5 h-100 rounded-4">
+                    <h3 class="text-primary mb-4">Contact Information</h3>
+                    
+                    <div class="contact-item d-flex mb-4">
+                        <div class="icon-box bg-primary-soft rounded-3 p-3 me-4">
+                            <i class="fas fa-phone-alt text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Phone</h5>
+                            <p class="mb-0">+254 794 122 7966</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item d-flex mb-4">
+                        <div class="icon-box bg-primary-soft rounded-3 p-3 me-4">
+                            <i class="fab fa-whatsapp text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">WhatsApp</h5>
+                            <a href="https://wa.me/+2547941227966" target="_blank" class="text-light">Chat Now →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item d-flex mb-4">
+                        <div class="icon-box bg-primary-soft rounded-3 p-3 me-4">
+                            <i class="fas fa-envelope text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Email</h5>
+                            <p class="mb-0">Cosnametech@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item d-flex mb-4">
+                        <div class="icon-box bg-primary-soft rounded-3 p-3 me-4">
+                            <i class="fas fa-map-marker-alt text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Location</h5>
+                            <p class="mb-0">C8GH+9Q7, Kutus, Kenya</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item d-flex">
+                        <div class="icon-box bg-primary-soft rounded-3 p-3 me-4">
+                            <i class="fas fa-clock text-primary fs-4"></i>
+                        </div>
+                        <div>
+                            <h5 class="mb-1">Working Hours</h5>
+                            <p class="mb-0">Mon-Sat: 9:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+
+                    <!-- Social Media -->
+                    <div class="social-links mt-5 pt-3">
+                        <h5 class="mb-3">Follow Us</h5>
+                        <div class="d-flex gap-3">
+                            <a href="https://www.facebook.com/Cosname" class="social-icon" target="_blank">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://x.com/CosnameTv1" class="social-icon" target="_blank">
+                                <i class="fab fa-x"></i>
+                            </a>
+                            <a href="https://www.instagram.com/cosname1" class="social-icon" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://github.com/cosnametv" class="social-icon" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/cosname/" class="social-icon" target="_blank">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form & Map -->
+            <div class="col-lg-7" data-aos="fade-left">
+                <div class="contact-form-card p-4 p-lg-5 rounded-4 h-100">
+                    <h3 class="text-primary mb-4">Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-darkblue border-light" id="firstName" placeholder="First Name" required>
+                                    <label for="firstName">First Name *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control bg-darkblue border-light" id="lastName" placeholder="Last Name">
+                                    <label for="lastName">Last Name</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control bg-darkblue border-light" id="phone" placeholder="Phone Number" required>
+                                    <label for="phone">Phone Number *</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control bg-darkblue border-light" id="email" placeholder="Email Address" required>
+                                    <label for="email">Email Address *</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control bg-darkblue border-light" id="message" placeholder="Your Message" style="height: 150px" required></textarea>
+                                    <label for="message">Your Message *</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary-gradient btn-lg w-100 py-3">
+                                    Send Message <i class="fas fa-paper-plane ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                    
+                    <!-- Google Map -->
+                    <div class="map-container mt-4 rounded-4 overflow-hidden border border-light border-opacity-10">
+                        <iframe src="https://maps.google.com/maps?q=Kutus,%20Kerugoya,%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed" 
+                                width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
+</section>
 
-
-        </div>
-    </section>
 
     <!-- Footer Section -->
 <footer class="bg-darkblueHover text-light py-4">
@@ -235,8 +394,8 @@
             <div class="col-md-4">
                 <h5 class="text-primary">Quick Links</h5>
                 <ul class="list-unstyled">
-                    <li><a href="https://cosname.web.app/" class="text-light text-decoration-none">Home</a></li>
-                    <li><a href="https://cosname.web.app/#services" class="text-light text-decoration-none">Services</a></li>
+                    <li><a href="index.html" class="text-light text-decoration-none">Home</a></li>
+                    <li><a href="index.html#services" class="text-light text-decoration-none">Services</a></li>
                     <li><a href="Contact.html" class="text-light text-decoration-none">Contact</a></li>
                     <li><a href="About.html" class="text-light text-decoration-none">About Us</a></li>
                 </ul>
@@ -272,7 +431,7 @@
 <script>
     AOS.init({
         duration: 1000, 
-        once: false, 
+        once: true, 
         easing: 'ease-in-out' 
     });
 </script>
@@ -293,6 +452,54 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Script/script.js"></script>
+<!-- Firebase SDKs -->
+<script type="module">
+  // Import from CDN
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // Your Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+    authDomain: "home-1e420.firebaseapp.com",
+    databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+    projectId: "home-1e420",
+    storageBucket: "home-1e420.firebasestorage.app",
+    messagingSenderId: "237502846110",
+    appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Handle form submission
+  document.getElementById("contactForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName").value;
+    const lastName = document.getElementById("lastName").value;
+    const phone = document.getElementById("phone").value;
+    const email = document.getElementById("email").value;
+    const message = document.getElementById("message").value;
+
+    try {
+      await addDoc(collection(db, "Contacts Web"), {
+        firstName,
+        lastName,
+        phone,
+        email,
+        message,
+        timestamp: serverTimestamp()
+      });
+      alert("Message sent successfully!");
+      document.getElementById("contactForm").reset();
+    } catch (error) {
+      alert("Error sending message: " + error.message);
+    }
+  });
+</script>
+
 
 </body>
 </html>
