@@ -38,89 +38,137 @@ body {
 
 /* Navigation */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 1.5rem 0;
-  background-color: rgba(1, 6, 34, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  transition: var(--transition);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 0;
+    background-color: rgba(1, 6, 34, 0.95);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    transition: var(--transition);
 }
 
 .navbar.scrolled {
-  padding: 1rem 0;
-  box-shadow: var(--shadow-md);
+    padding: 1rem 0;
+    box-shadow: var(--shadow-md);
 }
 
 .container-fluid {
-  width: var(--container-width);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    width: var(--container-width);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .navbar-brand {
-  font-family: var(--font-heading);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: var(--text-light);
-  text-decoration: none;
-  transition: var(--transition);
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-light);
+    text-decoration: none;
+    transition: var(--transition);
 }
 
 .navbar-brand:hover {
-  color: var(--primary);
+    color: var(--primary);
 }
 
 .navbar-toggler {
-  background: transparent;
-  border: none;
-  color: var(--text-light);
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
 }
 
 .navbar-nav {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-link {
-  position: relative;
-  color: var(--text-muted);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 0;
-  transition: var(--transition);
+    position: relative;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: var(--transition);
 }
 
 .nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: var(--primary);
-  transition: var(--transition);
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    transition: var(--transition);
 }
-.active{
-  color: #4cc9f0 !important;
+
+.active {
+    color: #4cc9f0 !important;
 }
+
 .nav-link:hover,
 .nav-link.active {
-  color: var(--text-light);
+    color: var(--text-light);
 }
 
 .nav-link:hover::after,
 .nav-link.active::after {
-  width: 100%;
+    width: 100%;
+}
+.navbar-toggler-icon{
+  color: #ffffff;
+}
+
+@media (max-width: 1000px) {
+    .navbar-toggler {
+        display: block;
+    }
+    
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(1, 6, 34, 0.98);
+        backdrop-filter: blur(15px);
+    }
+    
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 0;
+    }
+    
+    .navbar-nav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-link {
+        display: block;
+        padding: 1rem 0;
+    }
+    
+    .nav-link::after {
+        width: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 80%;
+    }
 }
 
 /* Hero Section */
@@ -198,41 +246,6 @@ body {
   box-shadow: var(--shadow-lg);
 }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-  .navbar-toggler {
-    display: block;
-  }
-  
-  .navbar-nav {
-    position: fixed;
-    top: 80px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 0;
-    background-color: var(--bg-darker);
-    padding: 1rem 0;
-    clip-path: circle(0 at 90% -10%);
-    transition: clip-path 0.5s ease-out;
-  }
-  
-  .navbar-nav.active {
-    clip-path: circle(1000px at 90% -10%);
-  }
-  
-  .nav-item {
-    width: 100%;
-    text-align: center;
-    padding: 0.75rem 0;
-  }
-  
-  .nav-link {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-  }
-}
 
 @media (max-width: 768px) {
   :root {

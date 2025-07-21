@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cosname Technologies</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cosname Technologies – Web development, mobile apps, UI/UX design, and full-stack solutions for businesses and startups.">
+<meta name="keywords" content="Cosname Technologies, web development, mobile app development, UI/UX design, JavaScript, React, Node.js, Python, Kotlin, Android, Firebase, Supabase, full stack, software company, tech agency">
+<meta name="author" content="Cosname Technologies">
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- AOS Animation CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <!-- Swiper CSS -->
+<title>Cosname Technologies</title>
+
+<link rel="icon" href="Assets/Status.jpg" type="image/png">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- AOS Animation CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+
+<!-- Swiper CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 
+<link rel="stylesheet" href="Style/style.css">
 
-    <link rel="stylesheet" href="Style/style.css">
     <style>
 :root {
   --hero-bg-dark: #010622;
@@ -166,24 +174,35 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Cosname Technologies</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link " href="Contact.html" target="_blank">Contact</a></li>
-                </ul>
-            </div>
+<nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Cosname Technologies</a>
+        <button id="menu-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon">&#9776;</span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
+                <li class="nav-item"><a class="nav-link" href="Contact.html" target="_blank">Contact</a></li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
+<script>
+    // Add scroll effect
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 50) {
+            document.querySelector('.navbar').classList.add('scrolled');
+        } else {
+            document.querySelector('.navbar').classList.remove('scrolled');
+        }
+    });
+</script>
 
 <!-- Home/Hero Section with 3D Tech Integration -->
 <section id="home" class="hero-section position-relative">
@@ -219,7 +238,6 @@
     
     <!-- Scroll Indicator -->
     <div class="scroll-indicator" data-aos="fade-up" data-aos-delay="400">
-      <span>Scroll to Discover</span>
       <div class="scroll-line"></div>
     </div>
   </div>
@@ -339,7 +357,6 @@
     </div>
 </section>
 
-
 <!-- About Us Section -->
 <section id="about" class="py-5 bg-darkblue text-light">
     <div class="container">
@@ -372,7 +389,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- Our Projects Section -->
 <section id="projects" class="projects py-5 bg-darkblue text-light">
@@ -498,13 +514,29 @@
                 <h6 class="d-flex align-items-center text-primary">
                     <i class="fas fa-code me-2"></i> Skills
                 </h6>
-                <div class="d-flex flex-wrap gap-2 mt-2">
-                    <span class="badge bg-primary-transparent">JavaScript</span>
-                    <span class="badge bg-primary-transparent">React</span>
-                    <span class="badge bg-primary-transparent">Node.js</span>
-                    <span class="badge bg-primary-transparent">UI/UX</span>
-                    <span class="badge bg-primary-transparent">Python</span>
-                </div>
+            <div class="d-flex flex-wrap gap-2 mt-2">
+                <span class="badge bg-primary-transparent">JavaScript</span>
+                <span class="badge bg-primary-transparent">React</span>
+                <span class="badge bg-primary-transparent">Node.js</span>
+                <span class="badge bg-primary-transparent">UI/UX</span>
+                <span class="badge bg-primary-transparent">Python</span>
+                <span class="badge bg-primary-transparent">HTML5</span>
+                <span class="badge bg-primary-transparent">CSS3</span>
+                <span class="badge bg-primary-transparent">Bootstrap</span>
+                <span class="badge bg-primary-transparent">Tailwind CSS</span>
+                <span class="badge bg-primary-transparent">MongoDB</span>
+                <span class="badge bg-primary-transparent">Firebase</span>
+                <span class="badge bg-primary-transparent">Supabase</span>
+                <span class="badge bg-primary-transparent">MySQL</span>
+                <span class="badge bg-primary-transparent">Git & GitHub</span>
+                <span class="badge bg-primary-transparent">REST APIs</span>
+                <span class="badge bg-primary-transparent">Express.js</span>
+                <span class="badge bg-primary-transparent">Figma</span>
+                <span class="badge bg-primary-transparent">Android</span>
+                <span class="badge bg-primary-transparent">Kotlin</span>
+                <span class="badge bg-primary-transparent">Java</span>
+            </div>
+
             </div>
                         <!-- Availability -->
             <div class="availability">
@@ -729,6 +761,7 @@
     <script src="Script/script.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
 <script>
 // Initialize 3D scene
 const container = document.getElementById('tech3d-container');
