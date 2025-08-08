@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Riddle Admin Portal</title>
+  <link rel="icon" href="Status.jpg" type="image/png">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+    }
+    .login-wrapper {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f9fafb;
+    }
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+    }
+    .login-box h2 {
+      margin-bottom: 20px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 25%;
+      background-color: #1f2937;
+      color: white;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .sidebar button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 12px;
+      border: none;
+      background-color: #374151;
+      color: white;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .sidebar button:hover {
+      background-color: #4b5563;
+    }
+    .main {
+      width: 75%;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    table th {
+      background-color: #f3f4f6;
+      cursor: pointer;
+    }
+    .logout-btn {
+      background-color: #ef4444;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    .logout-btn:hover {
+      background-color: #dc2626;
+    }
+    #addUserView {
+      max-width: 500px;
+      margin-top: 30px;
+    }
+    #addUserView input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background-color: #fff;
+    }
+    #addUserView button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      background-color: #10b981;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    #addUserView button:hover {
+      background-color: #059669;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .sidebar, .main {
+        width: 100%;
+      }
+      #addUserView {
+        margin: 20px auto;
+        padding: 10px;
+      }
+    }
+    .leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #f3f4f6;
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+}
+
+.header-left h2 {
+  margin: 0;
+  font-size: 22px;
+  color: #111827;
+}
+
+.header-left p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.refresh-btn {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.refresh-btn:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 600px) {
+  .leaderboard-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .refresh-btn {
+    width: 100%;
+  }
+}
+.search-container {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+#searchInput {
+  padding: 10px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+@media (max-width: 600px) {
+  .search-container {
+    text-align: left;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+}
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+  </style>
+</head>
+<body>
+
+<div id="loginWrapper" class="login-wrapper">
+  <div class="login-box">
+    <h2>Admin Login</h2>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button id="loginBtn" onclick="login()">Login</button>
+  </div>
+</div>
+
+<div id="adminPortal" class="container hidden">
+  <div class="sidebar">
+    <h2>Admin Panel</h2>
+    <button onclick="showView('addUserView')">Add User</button>
+    <button onclick="showView('adminView')">All Users</button>
+    <button onclick="showView('AlertRiddle')">Alert Riddle</button>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
+
+  <div class="main">
+    <div id="adminView" class="hidden">
+      <div class="leaderboard-header">
+        <div class="header-left">
+          <h2>All Users Leaderboard</h2>
+          <p><span id="userCount">0</span> Users Total</p>
+        </div>
+        <div class="header-right">
+          <button class="refresh-btn" onclick="loadLeaderboard()">🔄 Refresh</button>
+        </div>
+      </div>
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search by name..." onkeyup="filterLeaderboard()" />
+      </div>
+
+      <table id="leaderboardTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th onclick="sortTable(1)">Name 🔽</th>
+            <th onclick="sortTable(2)">Score 🔽</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="leaderboardBody"></tbody>
+      </table>
+    </div>
+
+    <div id="addUserView" class="hidden">
+      <h2>Add User</h2>
+      <input type="text" id="newUsername" placeholder="Username" />
+      <input type="number" id="newUserScore" placeholder="Score" />
+      <button onclick="addUser()">Add User</button>
+    </div>
+    <div id="AlertRiddle" class="hidden">
+      <h2>Alert Riddle</h2>
+        <label for="title">Notification Title</label>
+        <input type="text" id="title" placeholder="📢 Special Alert!">
+
+        <label for="message">Notification Message</label>
+        <textarea id="message" rows="4" placeholder="A special puzzle challenge is waiting for you!"></textarea>
+
+        <button onclick="updateNotification()">Send Notification</button>
+        <div class="status" id="status"></div>
+  </div>
+</div>
+<script>
+  function filterLeaderboard() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const rows = document.querySelectorAll("#leaderboardBody tr");
+
+    rows.forEach((row) => {
+      const nameCell = row.children[1].textContent.toLowerCase();
+      row.style.display = nameCell.includes(input) ? "" : "none";
+    });
+  }
+</script>
+
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getDatabase, ref, get, set, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+  import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAqRQouKCFkryzGpCJUzmIKa5sGMY_Q85U",
+    authDomain: "infinite-riddle.firebaseapp.com",
+    databaseURL: "https://infinite-riddle-default-rtdb.firebaseio.com",
+    projectId: "infinite-riddle",
+    storageBucket: "infinite-riddle.appspot.com",
+    messagingSenderId: "913225338805",
+    appId: "1:913225338805:web:0c8df38df3ffcf5fec53fc"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const auth = getAuth(app);
+
+  const loginWrapper = document.getElementById("loginWrapper");
+  const adminPortal = document.getElementById("adminPortal");
+  const adminView = document.getElementById("adminView");
+  const addUserView = document.getElementById("addUserView");
+  const leaderboardBody = document.getElementById("leaderboardBody");
+  const loginBtn = document.getElementById("loginBtn");
+  const AlertRiddle = document.getElementById("AlertRiddle");
+
+   // Update notification in Firebase
+    window.updateNotification = function () {
+        const title = document.getElementById("title").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const statusDiv = document.getElementById("status");
+
+        if (!title || !message) {
+            statusDiv.innerText = "⚠ Please fill in both fields.";
+            statusDiv.style.color = "red";
+            return;
+        }
+
+        set(ref(db, "Notification"), { title, message })
+            .then(() => {
+                statusDiv.innerText = "✅ Notification updated successfully!";
+                statusDiv.style.color = "green";
+            })
+            .catch((error) => {
+                statusDiv.innerText = "❌ Error: " + error.message;
+                statusDiv.style.color = "red";
+            });
+    };
+
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    loginBtn.disabled = true;
+    loginBtn.textContent = "Logging in...";
+    signInWithEmailAndPassword(auth, email, password)
+      .catch(() => {
+        alert("Login failed");
+        loginBtn.disabled = false;
+        loginBtn.textContent = "Login";
+      });
+  }
+
+  function logout() {
+    signOut(auth);
+  }
+
+  function showView(viewId) {
+    adminView.classList.add("hidden");
+    addUserView.classList.add("hidden");
+    AlertRiddle.classList.add("hidden");
+    document.getElementById(viewId).classList.remove("hidden");
+  }
+
+  function loadLeaderboard() {
+    const refDB = ref(db, "leaderboard");
+    get(refDB).then(snapshot => {
+      const data = snapshot.val();
+      leaderboardBody.innerHTML = "";
+      let count = 0;
+      for (const key in data) {
+        count++;
+        const entry = data[key];
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${count}</td>
+          <td>${entry.name || key}</td>
+          <td>${entry.score || 0}</td>
+          <td><button onclick="deleteUser('${key}')" style="background:#dc2626; color:white; border:none; padding:5px 10px; border-radius:5px;">Delete</button></td>
+        `;
+        leaderboardBody.appendChild(row);
+      }
+      document.getElementById("userCount").textContent = count;
+    });
+  }
+
+  function deleteUser(userKey) {
+    if (confirm("Delete user?")) {
+      remove(ref(db, "leaderboard/" + userKey))
+        .then(() => loadLeaderboard())
+        .catch(e => alert("Error: " + e.message));
+    }
+  }
+
+  function addUser() {
+    const username = document.getElementById("newUsername").value.trim();
+    const score = parseInt(document.getElementById("newUserScore").value);
+    if (!username || isNaN(score)) return alert("Fill in all fields");
+    const userRef = ref(db, "leaderboard/" + username);
+    set(userRef, { name: username, score: score })
+      .then(() => {
+        alert("User added");
+        document.getElementById("newUsername").value = "";
+        document.getElementById("newUserScore").value = "";
+        loadLeaderboard();
+        showView("adminView");
+      })
+      .catch(e => alert("Error: " + e.message));
+  }
+
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      loginWrapper.classList.add("hidden");
+      adminPortal.classList.remove("hidden");
+      showView("adminView");
+      loadLeaderboard();
+    } else {
+      loginWrapper.classList.remove("hidden");
+      adminPortal.classList.add("hidden");
+    }
+  });
+
+  // Expose to global scope
+  window.login = login;
+  window.logout = logout;
+  window.deleteUser = deleteUser;
+  window.addUser = addUser;
+  window.showView = showView;
+</script>
+
+<script type="module">
+  let sortState = { column: null, ascending: true };
+
+  function sortTable(colIndex) {
+    const rows = Array.from(document.querySelectorAll("#leaderboardBody tr"));
+    const isNumeric = colIndex === 2;
+
+    if (sortState.column === colIndex) {
+      sortState.ascending = !sortState.ascending;
+    } else {
+      sortState.column = colIndex;
+      sortState.ascending = true;
+    }
+
+    rows.sort((a, b) => {
+      const valA = a.children[colIndex].innerText.toLowerCase();
+      const valB = b.children[colIndex].innerText.toLowerCase();
+
+      if (isNumeric) {
+        return sortState.ascending
+          ? parseInt(valA) - parseInt(valB)
+          : parseInt(valB) - parseInt(valA);
+      } else {
+        return sortState.ascending
+          ? valA.localeCompare(valB)
+          : valB.localeCompare(valA);
+      }
+    });
+
+    const leaderboardBody = document.getElementById("leaderboardBody");
+    leaderboardBody.innerHTML = "";
+    rows.forEach((row, index) => {
+      row.children[0].innerText = index + 1;
+      leaderboardBody.appendChild(row);
+    });
+
+    updateHeaderArrows(colIndex);
+  }
+
+  function updateHeaderArrows(activeCol) {
+    const headers = document.querySelectorAll("#leaderboardTable thead th");
+
+    headers.forEach((header, index) => {
+      if (index === 1 || index === 2) {
+        if (index === activeCol) {
+          const arrow = sortState.ascending ? "🔼" : "🔽";
+          header.innerHTML = (index === 1 ? "Name " : "Score ") + arrow;
+        } else {
+          header.innerHTML = index === 1 ? "Name" : "Score";
+        }
+      }
+    });
+  }
+
+  // Expose to global scope
+  window.sortTable = sortTable;
+</script>
+
+</body>
+</html>
