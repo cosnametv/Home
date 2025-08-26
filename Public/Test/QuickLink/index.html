@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>QuickLink - URL Shortener & Image To URL </title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="Style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon" />
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6979842665203661"
+     crossorigin="anonymous"></script>
+       <script async custom-element="amp-auto-ads"
+          src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+  </script>
+</head>
+<body>
+  <amp-auto-ads type="adsense"
+        data-ad-client="ca-pub-6979842665203661">
+  </amp-auto-ads>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <i class="fas fa-link"></i>
+      <span>QuickLink</span>
+    </a>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a href="#" class="tab active" data-tab="link">
+          <i class="fas fa-home"></i>
+          <span>Shorten Link</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="tab" data-tab="image">
+          <i class="fas fa-history"></i>
+          <span>Upload Image</span>
+        </a>
+      </li>
+      <ul class="nav-sign">
+        <li class="nav-item">
+          <a href="#" class="nav-link cta" id="open-auth">
+            <i class="fas fa-user-plus"></i>
+            <span>Sign Up Free</span>
+          </a>
+        </li>
+      </ul>
+    </ul>
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+    <!-- Horizontal display AdSense -->
+  <div class="ad-container" style="margin:20px auto; text-align:center;">
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-3940256099942544"
+     data-ad-slot="1234567890"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+  </div>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="app-container">
+      <!-- URL Shortener Tab -->
+      <div class="tab-content active" id="link-tab">
+        <div class="card">
+          <h2 class="card-title">
+            <i class="fas fa-minus-circle"></i> Shorten Your Long URL
+          </h2>
+          <p>Paste your lengthy link below, and we’ll generate a short, easy-to-share URL in seconds.</p>
+          <p>Supports both <strong>http://</strong> and <strong>https://</strong> links.</p>
+          
+          <form id="shorten-form" class="input-group">
+            <input id="url" type="url" placeholder="https://example.com/very-long-url..." required />
+            <button type="submit" id="shorten-btn">
+              <i class="fas fa-compress-alt"></i> Shorten
+            </button>
+          </form>
+
+          <div class="result-container" id="link-result">
+            <p class="result-title"><i class="fas fa-check-circle"></i> Your shortened URL</p>
+            <div class="result-content">
+              <a href="#" id="short-url" class="result-url" target="_blank"></a>
+              <button class="copy-btn" id="copy-link">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image Upload Tab -->
+      <div class="tab-content" id="image-tab">
+        <div class="card">
+          <h2 class="card-title"><i class="fas fa-image"></i> Upload and Share Images</h2>
+          <p>Select your images to upload and instantly get a shareable link, NO sign-up required.</p>
+
+          <div class="file-upload">
+            <label for="file" class="file-label">
+              <i class="fas fa-cloud-upload-alt"></i>
+              <span>Choose an image file</span>
+            </label>
+            <span class="file-name" id="file-name">No file selected</span>
+          </div>
+          <input id="file" type="file" accept="image/*" />
+
+          <div class="input-group">
+            <button id="upload" class="secondary">
+              <i class="fas fa-upload"></i> Upload Image
+            </button>
+          </div>
+
+          <img id="image-preview" class="image-preview" />
+
+          <div class="result-container" id="image-result">
+            <p class="result-title"><i class="fas fa-check-circle"></i> Your image URL</p>
+            <div class="result-content">
+              <a href="#" id="image-url" class="result-url" target="_blank"></a>
+              <button class="copy-btn" id="copy-image">
+                <i class="fas fa-copy"></i> Copy
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<!-- Auth Overlay -->
+<div id="auth-overlay">
+  <div class="auth-modal">
+    <h2>Sign In</h2>
+    <div class="auth-options">
+      <div class="auth-btn google" title="Sign in with Google">
+        <i class="fab fa-google"></i>
+      </div>
+      <div class="auth-btn email" title="Sign in with Email">
+        <i class="fas fa-envelope"></i>
+      </div>
+      <div class="auth-btn guest" title="Continue as Guest">
+        <i class="fas fa-user-secret"></i> 
+      </div>
+    </div>
+
+    <form id="email-form" style="display:none;">
+      <input type="email" placeholder="Email" required />
+      <input type="password" placeholder="Password" required />
+      <button type="submit">Sign In</button>
+    </form>
+
+    <div class="close-btn" id="close-auth">Cancel</div>
+  </div>
+</div>
+
+  <!-- Toast & Footer -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toast-message"></span>
+  </div>
+
+  <footer>
+    <p>Made with <i class="fas fa-heart" style="color: #ef4444"></i> | QuickLink &copy; 2023</p>
+  </footer>
+
+  <!-- Firebase & Auth Script -->
+  <script type="module" src="Script.js"></script>
+
+<!-- Firebase + Auth Script -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js";
+import { 
+  getAuth, signInAnonymously, GoogleAuthProvider, signInWithPopup, 
+  signInWithEmailAndPassword, onAuthStateChanged, signOut 
+} from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+  authDomain: "home-1e420.firebaseapp.com",
+  databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+  projectId: "home-1e420",
+  storageBucket: "home-1e420.firebasestorage.app",
+  messagingSenderId: "237502846110",
+  appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+const navSign = document.querySelector(".nav-sign");
+const overlay = document.getElementById("auth-overlay");
+const emailForm = document.getElementById("email-form");
+
+// Render Auth UI depending on state
+function renderAuthUI(user) {
+  if(user){
+    navSign.innerHTML = `
+      <li class="nav-item">
+        <a href="#" class="nav-link cta" id="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Logout
+        </a>
+      </li>`;
+    document.getElementById("logout-btn").addEventListener("click", async e => {
+      e.preventDefault();
+      await signOut(auth);
+    });
+  } else {
+    navSign.innerHTML = `
+      <li class="nav-item">
+        <a href="#" class="nav-link cta" id="open-auth">
+          <i class="fas fa-user-plus"></i> Sign Up Free
+        </a>
+      </li>`;
+    document.getElementById("open-auth").addEventListener("click", e => {
+      e.preventDefault();
+      overlay.classList.add("active");
+      emailForm.style.display = "none"; // hide email form initially
+    });
+  }
+}
+
+// Auth state listener
+onAuthStateChanged(auth, renderAuthUI);
+
+// Close overlay
+document.getElementById("close-auth").addEventListener("click", e => {
+  e.preventDefault();
+  overlay.classList.remove("active");
+});
+
+// Google login
+document.querySelector(".auth-btn.google").addEventListener("click", async () => {
+  try {
+    await signInWithPopup(auth, provider);
+    overlay.classList.remove("active");
+  } catch(err) {
+    console.error(err);
+    alert(err.message);
+  }
+});
+
+// Show email form
+document.querySelector(".auth-btn.email").addEventListener("click", () => {
+  emailForm.style.display = "block";
+});
+
+// Email/password login or create new if not exists
+emailForm.addEventListener("submit", async e => {
+  e.preventDefault();
+  const email = emailForm[0].value;
+  const password = emailForm[1].value;
+
+  if (!email || !password) {
+    alert("Please enter both email and password.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  try {
+    // Attempt to sign in first
+    await signInWithEmailAndPassword(auth, email, password);
+    overlay.classList.remove("active");
+  } catch(err) {
+    // If user not found, create a new account automatically
+    if(err.code === "auth/user-not-found") {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        overlay.classList.remove("active");
+        alert("Account created and logged in!");
+      } catch(createErr) {
+        console.error(createErr);
+        alert(createErr.message);
+      }
+    } else if(err.code === "auth/wrong-password") {
+      alert("Incorrect password.");
+    } else if(err.code === "auth/invalid-email") {
+      alert("Please enter a valid email.");
+    } else {
+      console.error(err);
+      alert(err.message);
+    }
+  }
+});
+
+// Anonymous login
+document.querySelector(".auth-btn.guest").addEventListener("click", async () => {
+  try {
+    await signInAnonymously(auth);
+    overlay.classList.remove("active");
+  } catch(err) {
+    console.error(err);
+  }
+});
+
+// Optional: push AdSense if needed
+window.addEventListener("load", () => {
+  document.querySelectorAll('.adsbygoogle').forEach(ad => {
+    try { (adsbygoogle = window.adsbygoogle || []).push({}); }
+    catch(e){ console.error(e); }
+  });
+});
+</script>
+
+</body>
+</html>
