@@ -176,33 +176,21 @@
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Cosname Technologies</a>
-        <button id="menu-toggle" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon">&#9776;</span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="#profile">Profile</a></li>
-                <li class="nav-item"><a class="nav-link" href="Contact.html" target="_blank">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
+<div id="header"></div>
 <script>
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 50) {
-            document.querySelector('.navbar').classList.add('scrolled');
-        } else {
-            document.querySelector('.navbar').classList.remove('scrolled');
-        }
-    });
+  // Scroll shrink effect
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 50) {
+      document.querySelector('.nav').classList.add('scrolled');
+    } else {
+      document.querySelector('.nav').classList.remove('scrolled');
+    }
+  });
+
+  // Toggle dropdown menu
+  const burger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+  burger.addEventListener("click", () => menu.classList.toggle("active"));
 </script>
 
 <!-- Home/Hero Section with 3D Tech Integration -->
@@ -381,7 +369,7 @@
                 </p>
                 <div class="d-flex flex-wrap gap-2 mt-3">
                     <a href="#services" class="btn btn-primary" data-aos="zoom-in">Explore Our Services</a>
-                    <a href="About.html" class="btn btn-outline-light" data-aos="zoom-in">Learn More About Us</a>
+                    <a href="About" class="btn btn-outline-light" data-aos="zoom-in">Learn More About Us</a>
                 </div>
                 <p class="mt-4">
                     At the core of our work is a passion for innovation and a dedication to long-term partnerships. We don’t just build solutions — we build digital ecosystems designed for lasting impact.
@@ -700,74 +688,7 @@
 </section>
 
 
-<!-- Footer Section -->
-<footer class="text-light pt-5 pb-4 mark-4">
-    <div class="container">
-        <div class="row g-4">
-            <!-- About Us -->
-            <div class="col-lg-4 col-md-6">
-                <div class="footer-brand mb-3">
-                    <h4 class="text-primary">Cosname Technologies</h4>
-                </div>
-                <p class="text-muted">
-                    Delivering smart, scalable, and creative technology solutions to help businesses grow in the digital age.
-                </p>
-                <div class="social-icons mt-3">
-                    <a href="https://www.facebook.com/Cosname" target="_blank" class="text-light me-3">F<i class="fab fa-facebook"></i></a>
-                    <a href="https://x.com/CosnameTv1" target="_blank" class="text-light me-3">X<i class="fab fa-x"></i></a>
-                    <a href="https://www.instagram.com/cosname1" target="_blank" class="text-light me-3">IG<i class="fab fa-instagram"></i></a>
-                    <a href="https://github.com/cosnametv" target="_blank" class="text-light me-3">G<i class="fab fa-github"></i></a>
-                    <a href="https://www.linkedin.com/in/cosname/" target="_blank" class="text-light">L<i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-lg-2 col-md-6">
-                <h5 class="text-primary mb-3">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li class="mb-2"><a href="https://cosname.web.app/" class="text-muted text-decoration-none">Home</a></li>
-                    <li class="mb-2"><a href="#services" class="text-muted text-decoration-none">Services</a></li>
-                    <li class="mb-2"><a href="#about" class="text-muted text-decoration-none">About Us</a></li>
-                    <li class="mb-2"><a href="Contact.html" class="text-muted text-decoration-none">Contact</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="col-lg-4 col-md-6">
-                <h5 class="text-primary mb-3">Contact Us</h5>
-                <ul class="list-unstyled text-muted">
-                    <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> Cosnametech@gmail.com</li>
-                    <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +254 794 122 7966</li>
-                    <li><i class="fas fa-map-marker-alt me-2 text-primary"></i> Kutus, Kerugoya, Kenya</li>
-                </ul>
-            </div>
-
-        <!-- Newsletter -->
-        <div class="col-lg-2 col-md-6">
-        <h5 class="text-primary mb-3">Newsletter</h5>
-        <form id="newsletterForm">
-            <div class="mb-3">
-            <input type="email" id="newsletterEmail" class="form-control bg-dark border-secondary" placeholder="Your Email" required>
-            </div>
-            <button type="submit" class="btn btn-outline-primary mt-3">Subscribe</button>
-        </form>
-        </div>
-
-        </div>
-
-        <hr class="my-4 border-secondary">
-
-        <!-- Copyright -->
-        <div class="row">
-            <div class="col-md-6 text-center text-md-start">
-                <small class="text-muted">&copy; 2025 Cosname Technologies. All rights reserved.</small>
-            </div>
-            <div class="col-md-6 text-center text-md-end">
-                <small class="text-muted">Designed with <i class="fas fa-heart text-danger">Love</i> by Cosname</small>
-            </div>
-        </div>
-    </div>
-</footer>
+  <div id="footer"></div>
 
 <!-- Include AOS Script Before Closing Body Tag -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -779,17 +700,91 @@
     });
 </script>
 
-    
-    <script>
-        document.addEventListener("scroll", function() {
-            let navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
-        });
-    </script>
+<!-- Add footer and header -->
+<script type="module">
+function includeHTML(id, file, callback) {
+  fetch(file)
+    .then(response => {
+      if (!response.ok) throw new Error(`Cannot load ${file}`);
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById(id).innerHTML = html;
+      if (callback) callback();
+    })
+    .catch(err => console.error(err));
+}
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+  authDomain: "home-1e420.firebaseapp.com",
+  databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+  projectId: "home-1e420",
+  storageBucket: "home-1e420.firebasestorage.app",
+  messagingSenderId: "237502846110",
+  appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+function initHeader() {
+  window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".nav");
+    if (!nav) return;
+    if (window.scrollY > 50) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+  const burger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+  if (burger && menu) {
+    burger.addEventListener("click", () => menu.classList.toggle("active"));
+  }
+  const links = document.querySelectorAll(".menu a");
+  links.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+function attachNewsletterHandler() {
+  const form = document.getElementById("newsletterForm");
+  if (!form) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const emailField = document.getElementById("newsletterEmail");
+    if (!emailField) return;
+    const email = emailField.value;
+    try {
+      const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        alert("You are already subscribed with this email.");
+        return;
+      }
+      await addDoc(collection(db, "newsletter_subscribers"), {
+        email: email,
+        subscribedAt: serverTimestamp()
+      });
+      alert("Thanks for subscribing!");
+      form.reset();
+    } catch (error) {
+      alert("Subscription failed: " + error.message);
+    }
+  });
+}
+document.addEventListener("DOMContentLoaded", () => {
+  includeHTML("header", "header.html", initHeader);
+  includeHTML("footer", "footer.html", attachNewsletterHandler);
+});
+</script>
+
+
+
 
     <!-- Add these script tags right before closing body tag -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -801,8 +796,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Script/script.js"></script>
 
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
+ <!-- 3D scene -->
 <script>
 // Initialize 3D scene
 const container = document.getElementById('tech3d-container');
@@ -865,64 +862,6 @@ document.addEventListener('mousemove', (e) => {
     duration: 2
   });
 });
-</script>
-<script type="module">
-  // Firebase imports
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    query,
-    where,
-    getDocs,
-    addDoc,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  // Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
-    authDomain: "home-1e420.firebaseapp.com",
-    databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
-    projectId: "home-1e420",
-    storageBucket: "home-1e420.firebasestorage.app",
-    messagingSenderId: "237502846110",
-    appId: "1:237502846110:web:68729122ed80d0af7bd78f"
-  };
-
-  // Initialize Firebase and Firestore
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Newsletter form handler
-  document.getElementById("newsletterForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById("newsletterEmail").value;
-
-    try {
-      const q = query(
-        collection(db, "newsletter_subscribers"),
-        where("email", "==", email)
-      );
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        alert("You are already subscribed with this email.");
-        return;
-      }
-
-      await addDoc(collection(db, "newsletter_subscribers"), {
-        email: email,
-        subscribedAt: serverTimestamp()
-      });
-
-      alert("Thanks for subscribing!");
-      document.getElementById("newsletterForm").reset();
-    } catch (error) {
-      alert("Subscription failed: " + error.message);
-    }
-  });
 </script>
 
 </body>

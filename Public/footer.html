@@ -1,0 +1,128 @@
+
+<!-- Footer Section -->
+<footer class="text-light pt-5 pb-4 mark-4">
+    <div class="container">
+        <div class="row g-4">
+            <!-- About Us -->
+            <div class="col-lg-4 col-md-6">
+                <div class="footer-brand mb-3">
+                    <h4 class="text-primary">Cosname Technologies</h4>
+                </div>
+                <p class="text-muted">
+                    Delivering smart, scalable, and creative technology solutions to help businesses grow in the digital age.
+                </p>
+                <div class="social-icons mt-3">
+                    <a href="https://www.facebook.com/Cosname" target="_blank" class="text-light me-3"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/CosnameTv1" target="_blank" class="text-light me-3"><i class="fab fa-x"></i></a>
+                    <a href="https://www.instagram.com/cosname1" target="_blank" class="text-light me-3"><i class="fab fa-instagram"></i></a>
+                    <a href="https://github.com/cosnametv" target="_blank" class="text-light me-3"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/cosname/" target="_blank" class="text-light"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6">
+                <h5 class="text-primary mb-3">Quick Links</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="https://cosname.web.app/" class="text-muted text-decoration-none">Home</a></li>
+                    <li class="mb-2"><a href="https://cosname.web.app#services" class="text-muted text-decoration-none">Services</a></li>
+                    <li class="mb-2"><a href="https://cosname.web.app#about" class="text-muted text-decoration-none">About Us</a></li>
+                    <li class="mb-2"><a href="https://cosname.web.app/Contact.html" class="text-muted text-decoration-none">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-primary mb-3">Contact Us</h5>
+                <ul class="list-unstyled text-muted">
+                    <li class="mb-2"><i class="fas fa-envelope me-2 text-primary"></i> Cosnametech@gmail.com</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2 text-primary"></i> +254 794 122 7966</li>
+                    <li><i class="fas fa-map-marker-alt me-2 text-primary"></i> Kutus, Kerugoya, Kenya</li>
+                </ul>
+            </div>
+
+        <!-- Newsletter -->
+        <div class="col-lg-2 col-md-6">
+        <h5 class="text-primary mb-3">Newsletter</h5>
+        <form id="newsletterForm">
+            <div class="mb-3">
+            <input type="email" id="newsletterEmail" class="form-control bg-dark border-secondary" placeholder="Your Email" required>
+            </div>
+            <button type="submit" class="btn btn-outline-primary mt-3">Subscribe</button>
+        </form>
+        </div>
+
+        </div>
+
+        <hr class="my-4 border-secondary">
+
+        <!-- Copyright -->
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <small class="text-muted">&copy; 2025 Cosname Technologies. All rights reserved.</small>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <small class="text-muted">Designed with <i class="fas fa-heart text-danger">Love</i> by Cosname</small>
+            </div>
+        </div>
+    </div>
+</footer>
+ <!-- Firebase -->
+<script type="module">
+  // Firebase imports
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import {
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  // Firebase config
+  const firebaseConfig = {
+    apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+    authDomain: "home-1e420.firebaseapp.com",
+    databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+    projectId: "home-1e420",
+    storageBucket: "home-1e420.firebasestorage.app",
+    messagingSenderId: "237502846110",
+    appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+  };
+
+  // Initialize Firebase and Firestore
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Newsletter form handler
+  document.getElementById("newsletterForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("newsletterEmail").value;
+
+    try {
+      const q = query(
+        collection(db, "newsletter_subscribers"),
+        where("email", "==", email)
+      );
+      const querySnapshot = await getDocs(q);
+
+      if (!querySnapshot.empty) {
+        alert("You are already subscribed with this email.");
+        return;
+      }
+
+      await addDoc(collection(db, "newsletter_subscribers"), {
+        email: email,
+        subscribedAt: serverTimestamp()
+      });
+
+      alert("Thanks for subscribing!");
+      document.getElementById("newsletterForm").reset();
+    } catch (error) {
+      alert("Subscription failed: " + error.message);
+    }
+  });
+</script>

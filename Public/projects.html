@@ -390,26 +390,7 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Cosname Technologies</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link " href="https://cosname.web.app">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#services">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="#">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="index.html#profile">Profile</a></li>
-                    <li class="nav-item"><a class="nav-link " href="Contact.html" target="_blank">Contact</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
-
+<div id="header"></div>
     <!-- Hero Section with Image & Overlay -->
     <section class="contact-hero">
         <div class="hero-content">
@@ -733,51 +714,7 @@
   </div>
 </section>
 
-        <!-- Footer Section -->
-<footer class="bg-darkblueHover text-light py-4">
-    <div class="container">
-        <div class="row">
-            <!-- About Section -->
-            <div class="col-md-4">
-                <h5 class="text-primary">About Us</h5>
-                <p>We are dedicated to providing the best solutions for your business needs. Connect with us for innovative technology solutions.</p>
-            </div>
-
-            <!-- Quick Links -->
-            <div class="col-md-4">
-                <h5 class="text-primary">Quick Links</h5>
-                <ul class="list-unstyled">
-                    <li><a href="https://cosname.web.app/" class="text-light text-decoration-none">Home</a></li>
-                    <li><a href="index.html#services" class="text-light text-decoration-none">Services</a></li>
-                    <li><a href="Contact.html" class="text-light text-decoration-none">Contact</a></li>
-                    <li><a href="About.html" class="text-light text-decoration-none">About Us</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="col-md-4">
-                <h5 class="text-primary">Contact</h5>
-                <p><i class="fas fa-envelope"></i> Cosnametech@gmail.com</p>
-                <p><i class="fas fa-phone"></i> +254 7941227 966</p>
-                <p><i class="fas fa-map-marker-alt"></i> Kutus, Kerugoya, Kenya</p>
-            </div>
-        </div>
-
-        <!-- Social Media -->
-        <div class="text-center mt-4 social-icons">
-            <a href="https://www.facebook.com/Cosname" class="social-link" target="_blank"><i class="fab fa-facebook"></i></a>
-            <a href="https://x.com/CosnameTv1" class="social-link" target="_blank"><i class="fab fa-x"></i></a>
-            <a href="https://www.instagram.com/cosname1" class="social-link" target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://github.com/cosnametv" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/cosname/" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
-        </div>
-
-        <!-- Copyright -->
-        <div class="text-center mt-3">
-            <p class="mb-0">&copy; 2025 Cosname Technologies. All Rights Reserved.</p>
-        </div>
-    </div>
-</footer>
+  <div id="footer"></div>
 
 <!-- Include AOS Script Before Closing Body Tag -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -787,6 +724,27 @@
         once: true, 
         easing: 'ease-in-out' 
     });
+</script>
+
+<!-- Add footer and header -->
+<script>
+    function includeHTML(id, file) {
+  fetch(file)
+    .then(response => {
+      if (!response.ok) throw new Error(`Cannot load ${file}`);
+      return response.text();
+    })
+    .then(html => {
+      document.getElementById(id).innerHTML = html;
+    })
+    .catch(err => console.error(err));
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  includeHTML("header", "header.html");
+  includeHTML("footer", "footer.html");
+});
+
 </script>
 
     
