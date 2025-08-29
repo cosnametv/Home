@@ -375,8 +375,8 @@
 </script>
 
 <!-- Add footer and header -->
-<script>
-    function includeHTML(id, file) {
+<script type="module">
+function includeHTML(id, file, callback) {
   fetch(file)
     .then(response => {
       if (!response.ok) throw new Error(`Cannot load ${file}`);
@@ -384,16 +384,79 @@
     })
     .then(html => {
       document.getElementById(id).innerHTML = html;
+      if (callback) callback();
     })
     .catch(err => console.error(err));
 }
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+const firebaseConfig = {
+  apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+  authDomain: "home-1e420.firebaseapp.com",
+  databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+  projectId: "home-1e420",
+  storageBucket: "home-1e420.firebasestorage.app",
+  messagingSenderId: "237502846110",
+  appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+};
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+function initHeader() {
+  window.addEventListener("scroll", () => {
+    const nav = document.querySelector(".nav");
+    if (!nav) return;
+    if (window.scrollY > 50) {
+      nav.classList.add("scrolled");
+    } else {
+      nav.classList.remove("scrolled");
+    }
+  });
+  const burger = document.getElementById("hamburger");
+  const menu = document.getElementById("menu");
+  if (burger && menu) {
+    burger.addEventListener("click", () => menu.classList.toggle("active"));
+  }
+  const links = document.querySelectorAll(".menu a");
+  links.forEach(link => {
+    if (link.href === window.location.href) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+}
+function attachNewsletterHandler() {
+  const form = document.getElementById("newsletterForm");
+  if (!form) return;
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const emailField = document.getElementById("newsletterEmail");
+    if (!emailField) return;
+    const email = emailField.value;
+    try {
+      const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
+      const querySnapshot = await getDocs(q);
+      if (!querySnapshot.empty) {
+        alert("You are already subscribed with this email.");
+        return;
+      }
+      await addDoc(collection(db, "newsletter_subscribers"), {
+        email: email,
+        subscribedAt: serverTimestamp()
+      });
+      alert("Thanks for subscribing!");
+      form.reset();
+    } catch (error) {
+      alert("Subscription failed: " + error.message);
+    }
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
-  includeHTML("header", "header.html");
-  includeHTML("footer", "footer.html");
+  includeHTML("header", "header.html", initHeader);
+  includeHTML("footer", "footer.html", attachNewsletterHandler);
 });
-
 </script>
+
 
     
     <script>
@@ -411,54 +474,6 @@ document.addEventListener("DOMContentLoaded", () => {
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Script/script.js"></script>
-<!-- Firebase SDKs -->
-<script type="module">
-  // Import from CDN
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-  // Your Firebase config
-  const firebaseConfig = {
-    apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
-    authDomain: "home-1e420.firebaseapp.com",
-    databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
-    projectId: "home-1e420",
-    storageBucket: "home-1e420.firebasestorage.app",
-    messagingSenderId: "237502846110",
-    appId: "1:237502846110:web:68729122ed80d0af7bd78f"
-  };
-
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Handle form submission
-  document.getElementById("contactForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const firstName = document.getElementById("firstName").value;
-    const lastName = document.getElementById("lastName").value;
-    const phone = document.getElementById("phone").value;
-    const email = document.getElementById("email").value;
-    const message = document.getElementById("message").value;
-
-    try {
-      await addDoc(collection(db, "Contacts Web"), {
-        firstName,
-        lastName,
-        phone,
-        email,
-        message,
-        timestamp: serverTimestamp()
-      });
-      alert("Message sent successfully!");
-      document.getElementById("contactForm").reset();
-    } catch (error) {
-      alert("Error sending message: " + error.message);
-    }
-  });
-</script>
-
 
 </body>
 </html>
