@@ -1268,3 +1268,94 @@ hr.border-secondary {
 footer > * {
   animation: fadeIn 0.6s ease-out forwards;
 }
+
+
+  :root {
+    --bot-primary: #4cc9f0; /* fallback if --primary not in main CSS */
+    --bot-primary-hover: #38bdf8;
+    --bot-bg: #0f172a;
+    --bot-text: #f1f5f9;
+    --bot-radius: 1rem;
+    --bot-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  }
+
+  .chat-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background: var(--bot-primary);
+    color: #fff;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    box-shadow: var(--bot-shadow);
+    z-index: 9999;
+    transition: background 0.3s ease;
+  }
+  .chat-toggle:hover { background: var(--bot-primary-hover); }
+
+  .chat-window {
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: min(90%, 360px);
+    max-height: 75vh;
+    display: none;
+    flex-direction: column;
+    background: var(--bot-bg);
+    color: var(--bot-text);
+    border-radius: var(--bot-radius);
+    box-shadow: var(--bot-shadow);
+    z-index: 10000;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+  .chat-window.open { display: flex; }
+
+  .chat-header {
+    background: var(--bot-primary);
+    color: #fff;
+    padding: 10px 14px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .chat-body {
+    padding: 12px;
+    flex: 1;
+    overflow-y: auto;
+    font-size: 14px;
+  }
+  .chat-footer {
+    display: flex;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+  .chat-footer textarea {
+    flex: 1;
+    padding: 10px;
+    background: #1e293b;
+    color: var(--bot-text);
+    border: none;
+    outline: none;
+    resize: none;
+  }
+  .chat-footer button {
+    background: var(--bot-primary);
+    color: #fff;
+    padding: 0 14px;
+    border: none;
+    cursor: pointer;
+  }
+#chatBody a {
+  color: #4cc9f0 !important;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+#chatBody a:hover {
+  text-decoration: underline;
+  color: #0096c7 !important;
+}
