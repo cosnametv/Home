@@ -49,7 +49,7 @@ function botReply(msg) {
     return "Yes! I develop Android apps using Java and Android Studio. 📱 See my <a href='#projects'>apps here</a>. Do you need a brand new app or updates to an existing one?";
   }
     if (msg.includes("android app") || msg.includes("mobile app") || msg.includes("app development")) {
-    return "Yes! I develop Android apps using Java and Android Studio. 📱 See my <a href='https://cosname.web.app/projects' target='_blank'>apps here</a>. Do you need a brand new app or updates to an existing one?";
+    return "Yes! I develop Android apps using Java and Android Studio. 📱 See my <a href='https://cosnametech.com/projects' target='_blank'>apps here</a>. Do you need a brand new app or updates to an existing one?";
   }
   if (msg.includes("games") || msg.includes("game") || msg.includes("game app")) {
     return "Yes! I develop Games for Android, IOS and Webpages. 🧩 Check out my own app: <a href='https://play.google.com/store/apps/details?id=com.cosname.infiniteriddle' target='_blank'>Infinite Riddle</a>. Would you like me to build something similar for you?";
@@ -64,7 +64,7 @@ function botReply(msg) {
     return "I can help you publish your app on the Google Play Store, including setup and optimization. 🛠️ Do you already have a developer account?";
   }
   if (msg.includes("logo") || msg.includes("flyer") || msg.includes("poster") || msg.includes("banner") || msg.includes("graphic design")) {
- return "Yes, I design logos, flyers, posters, business cards, brochures, social media graphics, and more! 🎨 You can explore some of my work here: <a href='https://cosname.web.app/projects' target='_blank'>my designs</a>. Feel free to share your ideas, and I’ll bring them to life!";
+ return "Yes, I design logos, flyers, posters, business cards, brochures, social media graphics, and more! 🎨 You can explore some of my work here: <a href='https://cosnametech.com/projects' target='_blank'>my designs</a>. Feel free to share your ideas, and I’ll bring them to life!";
   }
   if (msg.includes("repair") || msg.includes("laptop") || msg.includes("pc") || msg.includes("computer") || msg.includes("fix")) {
     return "I provide laptop and PC repair services, including hardware fixes, software troubleshooting, virus removal, and performance optimization. 🛠️ What issues are you experiencing with your device?";
@@ -76,7 +76,7 @@ function botReply(msg) {
     return "My prices depend on the project size and features. 💵 Can you share more about what you need so I can give you an accurate quote?";
   }
   if (msg.includes("mpesa") || msg.includes("ksh") || msg.includes("pay")) {
-    return "Yes, I accept MPesa and other payment methods. ✅ Would you like me to send you <a href='https://cosname.web.app/Contact' target='_blank'>payment details</a>?";
+    return "Yes, I accept MPesa and other payment methods. ✅ Would you like me to send you <a href='https://cosnametech.com/Contact' target='_blank'>payment details</a>?";
   }
   if (msg.includes("deposit") || msg.includes("advance")) {
    return "I usually request a 50% deposit before starting the project, as it helps secure the booking and ensures commitment from both sides. 🔒 The remaining balance is paid upon delivery, once the final work is completed to your satisfaction.";
@@ -88,16 +88,16 @@ function botReply(msg) {
     return "Yes, I offer free revisions within the project scope to make sure you're happy with the results. 🔄";
   }
   if (msg.includes("how do we start") || msg.includes("start") || msg.includes("process") || msg.includes("order") || msg.includes("begin") || msg.includes("work together") ) {
-    return "We start by discussing your requirements, then I give you a quote. After a deposit, I begin work and share updates until delivery. 🚀 You can reach me directly on <a href='https://cosname.web.app/Contact' target='_blank'>contacts page</a>.";
+    return "We start by discussing your requirements, then I give you a quote. After a deposit, I begin work and share updates until delivery. 🚀 You can reach me directly on <a href='https://cosnametech.com/Contact' target='_blank'>contacts page</a>.";
   }
   if (msg.includes("where are you") || msg.includes("location") || msg.includes("based") || msg.includes("country") || msg.includes("city")) {
-    return "I'm based in Kenya 🌍 but I work with clients worldwide through online communication. You can find me here: <a href='https://cosname.web.app/Contact' target='_blank'>contacts</a>";
+    return "I'm based in Kenya 🌍 but I work with clients worldwide through online communication. You can find me here: <a href='https://cosnametech.com/Contact' target='_blank'>contacts</a>";
   }
   if (msg.includes("whatsapp") || msg.includes("phone number") || msg.includes("call") || msg.includes("text") || msg.includes("message") || msg.includes("contact") ) {
-    return "Sure! I can share my WhatsApp number privately once we confirm your project details. 📞 See <a href='https://cosname.web.app/Contact' target='_blank'>contacts</a>.";
+    return "Sure! I can share my WhatsApp number privately once we confirm your project details. 📞 See <a href='https://cosnametech.com/Contact' target='_blank'>contacts</a>.";
   }
   if (msg.includes("logo and website") || msg.includes("multiple services") || msg.includes("both") || msg.includes("full package") || msg.includes("all in one")) {
-    return "Yes, I can handle multiple services like logos, websites, and videos together a full package! 🎯 Check <a href='https://cosname.web.app/projects' target='_blank'>projects</a> for examples.";
+    return "Yes, I can handle multiple services like logos, websites, and videos together a full package! 🎯 Check <a href='https://cosnametech.com/projects' target='_blank'>projects</a> for examples.";
   }
   if (msg.includes("seo") || msg.includes("search engine") || msg.includes("google ranking") || msg.includes("optimize") ) {
     return "I provide a basic SEO setup to ensure your website is search-friendly. 🔍 This includes optimizing page titles, meta descriptions, headers, and image alt tags. I also make sure your site is mobile-friendly and loads quickly, which helps with better ranking. These steps improve visibility on search engines, making it easier for people to discover your site.";
@@ -115,7 +115,7 @@ function botReply(msg) {
     return "Yes, I can prioritize urgent projects if the scope is clear. ⏱️ For rush work, I allocate extra time and resources to ensure fast delivery without compromising quality. Depending on the complexity, there may be an additional fee for priority handling, but this guarantees your project is completed on time and with full attention.";
   }
 if (msg.includes("about") || msg.includes("cosname") || msg.includes("who are you") || msg.includes("what do you do") || msg.includes("company") || msg.includes("business") || msg.includes("expertise") || msg.includes("specialize") ) {
-  return "We specialize in crafting custom web and mobile applications, dynamic branding solutions, and strategic IT consulting services. From startups to established enterprises, we help our clients scale and stay ahead in the digital age. You can learn more on the <a href='https://cosname.web.app/About' target='_blank'>About page</a>.";
+  return "We specialize in crafting custom web and mobile applications, dynamic branding solutions, and strategic IT consulting services. From startups to established enterprises, we help our clients scale and stay ahead in the digital age. You can learn more on the <a href='https://cosnametech.com/About' target='_blank'>About page</a>.";
 }
   if (msg.includes("thank") || msg.includes("thanks") || msg.includes("thank you") || msg.includes("thx") || msg.includes("ty")) {
   return "You're welcome! 😄 Happy to help!";
@@ -130,11 +130,11 @@ if (msg.includes("about") || msg.includes("cosname") || msg.includes("who are yo
     return "Here’s a great verse: Jeremiah 29:11 — \"For I know the plans I have for you, declares the Lord, plans to prosper you and not to harm you, plans to give you hope and a future.\" Would you like another verse?";
   }
   if (msg.includes("services") || msg.includes("help") || msg.includes("offer") || msg.includes("provide") || msg.includes("do") || msg.includes("what can you do") || msg.includes("what services do you offer") || msg.includes("what help can you provide")) {
-  return "Here’s what I can help you with:<br>• Website design & development 🌐<br>• Android app development 📱<br>• Professional video editing 🎬<br>• Laptop & PC repairs 💻<br>• Graphic design, branding & logos 🎨<br><br>Each service is tailored to your needs, ensuring quality results. You can <a href='https://cosname.web.app/Contact' target='_blank'>contact me directly here</a> to discuss your project!";
+  return "Here’s what I can help you with:<br>• Website design & development 🌐<br>• Android app development 📱<br>• Professional video editing 🎬<br>• Laptop & PC repairs 💻<br>• Graphic design, branding & logos 🎨<br><br>Each service is tailored to your needs, ensuring quality results. You can <a href='https://cosnametech.com/Contact' target='_blank'>contact me directly here</a> to discuss your project!";
   }
   if (msg.includes("good") || msg.includes("great") || msg.includes("awesome") || msg.includes("fantastic") || msg.includes("excellent") || msg.includes("amazing") || msg.includes("wonderful") || msg.includes("perfect") || msg.includes("nice") || msg.includes("superb") || msg.includes("fabulous") || msg.includes("terrific") || msg.includes("brilliant") || msg.includes("outstanding") || msg.includes("impressive") || msg.includes("marvelous") || msg.includes("splendid") || msg.includes("exceptional") || msg.includes("magnificent") || msg.includes("phenomenal") || msg.includes("incredible") || msg.includes("remarkable") || msg.includes("sensational") || msg.includes("stunning") || msg.includes("spectacular")) {
   return "I’m glad to hear that! 😃 Your positive feedback keeps me motivated to deliver the best results every time.";
  }
-  return "I’m not sure I got that, but I can help with websites, apps, graphics, or video editing. Which one are you interested in? Check <a href='https://cosname.web.app/projects' target='_blank'>projects</a>.";
+  return "I’m not sure I got that, but I can help with websites, apps, graphics, or video editing. Which one are you interested in? Check <a href='https://cosnametech.com/projects' target='_blank'>projects</a>.";
 }
 
