@@ -1,17 +1,66 @@
-
-<button class="chat-toggle" id="chatToggle" aria-label="Chat with us">💬</button>
+<button class="chat-toggle" id="chatToggle" aria-label="Chat with us">
+  <span>💬</span>
+  <span>Chat</span>
+</button>
 
 <div class="chat-window" id="chatWindow">
   <div class="chat-header">
-    Cosname Assistant
-    <button id="chatClose" style="background:none;border:none;color:#fff;cursor:pointer;">✕</button>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <img src="Assets/trusted.png" alt="Cosname Logo"
+        style="width: 24px; height: 24px; border-radius: 50%; background: white; padding: 2px;">
+      <div style="display: flex; flex-direction: column;">
+        <span style="font-weight: bold;">Cosname Assistant</span>
+        <span style="font-size: 11px; color: rgba(255,255,255,0.8);">Innovative solutions for modern business</span>
+      </div>
+    </div>
+    <button id="chatClose"
+      style="background:none; border:none; color:#fff; cursor:pointer; width:30px; height:30px; display:flex; align-items:center; justify-content:center; border-radius:50%;">✕</button>
   </div>
+
   <div class="chat-body" id="chatBody">
-    <div><strong>Hi!</strong> I'm your Cosname assistant. Ask me about Cosname Technologies.</div>
+    <div
+      style="background: #1e293b; padding: 10px 12px; border-radius: 12px; font-size: 13px; color: #94a3b8; text-align: center; border: 1px dashed #334155; margin-bottom: 5px;">
+        <strong>👋 Hi there!</strong><br>
+        Welcome to <strong>Cosname Technologies,</strong> your trusted partner in
+        <strong>software development, IT solutions, digital transformation, and business automation</strong>.
+        <br>
+        Feel free to ask any question about our services, projects, or how we can help your business thrive in the digital age.
+         Our team is here to provide you with the best solutions tailored to your needs.
+    </div>
+
+        <!-- Prompt text -->
+    <div style="text-align: center; font-size: 12px; color: #94a3b8; margin: 5px 0 5px 0;">
+      ⚡ Click any suggestion below to start
+    </div>
+    
+    <!-- Suggestion chips -->
+    <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;">
+      <div onclick="document.getElementById('chatInput').value = 'I need a website for my business'; document.getElementById('chatSend').click();" 
+           style="background: #2d3a4f; color: white; padding: 4px 8px; border-radius: 30px; font-size: 10px; cursor: pointer; border: 1px solid #4cc9f0; transition: all 0.2s; display: flex; align-items: center; gap: 5px;"
+           onmouseover="this.style.background='#4cc9f0'; this.style.color='#0f172a';" 
+           onmouseout="this.style.background='#2d3a4f'; this.style.color='white';">
+        Am in need of a website
+      </div>
+      <div onclick="document.getElementById('chatInput').value = 'I want to build a mobile app'; document.getElementById('chatSend').click();" 
+           style="background: #2d3a4f; color: white; padding: 4px 8px; border-radius: 30px; font-size: 10px; cursor: pointer; border: 1px solid #4cc9f0; transition: all 0.2s; display: flex; align-items: center; gap: 5px;"
+           onmouseover="this.style.background='#4cc9f0'; this.style.color='#0f172a';" 
+           onmouseout="this.style.background='#2d3a4f'; this.style.color='white';">
+        Build me a mobile app
+      </div>
+      <div onclick="document.getElementById('chatInput').value = 'I need a logo and branding'; document.getElementById('chatSend').click();" 
+           style="background: #2d3a4f; color: white; padding: 4px 8px; border-radius: 30px; font-size: 10px; cursor: pointer; border: 1px solid #4cc9f0; transition: all 0.2s; display: flex; align-items: center; gap: 5px;"
+           onmouseover="this.style.background='#4cc9f0'; this.style.color='#0f172a';" 
+           onmouseout="this.style.background='#2d3a4f'; this.style.color='white';">
+        I need a logo & branding assets
+      </div>
+    </div>
+    
+    
+
   </div>
+
   <div class="chat-footer">
     <textarea id="chatInput" rows="1" placeholder="Type your message..."></textarea>
     <button id="chatSend">Send</button>
   </div>
 </div>
-

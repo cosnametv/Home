@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosname Technologies | Blog</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Insights and articles on web development, app development, graphic design, video editing, tech consulting, and laptop repairs from Cosname Technologies. Stay updated with the latest tech trends.">
+    <meta name="keywords" content="tech blog, web development, app development, graphic design, video editing, tech consulting, laptop repairs, Kenya, Nairobi, software development, digital marketing">
+    <meta name="author" content="Cosname Technologies">
+
+    <link rel="icon" href="Assets/Status.jpg" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="Style/style.css">
+    <style>
+        /* ----- general & hero (same style as about) ----- */
+        .contact-hero {
+            position: relative;
+            background: url('Assets/banner3.jpg') center/cover no-repeat;
+            height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .contact-hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .neon-button {
+            background-color: #0d6efd;
+            color: white;
+            transition: 0.3s ease-in-out;
+            border-radius: 5px;
+        }
+        .neon-button:hover {
+            box-shadow: 0 0 20px rgba(13, 110, 253, 0.9);
+            transform: scale(1.05);
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #0d6efd;
+            margin: 0 10px;
+            transition: 0.3s ease-in-out;
+        }
+        .social-icons a:hover {
+            color: white;
+            text-shadow: 0 0 15px rgba(13, 110, 253, 0.9);
+        }
+
+        /* ----- blog card styling (fresh & modern) ----- */
+        .blog-card {
+            background: rgba(20, 30, 45, 0.9);
+            backdrop-filter: blur(2px);
+            border: 1px solid #2c3e50;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 30px rgba(13, 110, 253, 0.3);
+            border-color: #0d6efd;
+        }
+        .blog-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-bottom: 2px solid #0d6efd;
+        }
+        .blog-card .card-body {
+            padding: 1.5rem;
+            color: #e0e0e0;
+        }
+        .blog-card .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: #fff;
+        }
+        .blog-card .card-text {
+            font-size: 1rem;
+            color: #b0c4de;
+            margin-bottom: 1rem;
+        }
+        .blog-card .meta {
+            font-size: 0.9rem;
+            color: #a0b8cc;
+            margin-bottom: 1rem;
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+        .blog-card .meta i {
+            color: #0d6efd;
+            margin-right: 0.25rem;
+        }
+        .blog-card .btn-outline-primary {
+            border-color: #0d6efd;
+            color: #0d6efd;
+            border-radius: 40px;
+            padding: 0.5rem 1.5rem;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .blog-card .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: white;
+            box-shadow: 0 0 15px #0d6efd;
+        }
+
+        /* ----- bg-darkblue text-light override (same as about) ----- */
+        .bg-darkblue {
+            background-color: #0a1929 !important; 
+        }
+        .text-primary {
+            color: #0d6efd !important;
+        }
+        .btn-primary {
+            background-color: #0d6efd;
+            border: none;
+        }
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+            box-shadow: 0 0 15px #0d6efd;
+        }
+
+        /* responsive tweaks */
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.2rem; }
+        }
+        /* consistent spacing */
+        .py-5 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+        
+        /* author badge style */
+        .author-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(13, 110, 253, 0.15);
+            border-radius: 30px;
+            font-size: 0.85rem;
+            border-left: 2px solid #0d6efd;
+        }
+        
+        /* loading spinner */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: #0d6efd;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin: 2rem auto;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* blog post modal styling */
+        .blog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 25, 41, 0.95);
+            z-index: 9999;
+            overflow-y: auto;
+            padding: 2rem 1rem;
+        }
+        
+        .blog-modal.active {
+            display: block;
+        }
+        
+        .blog-modal-content {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #0a1929;
+            border: 1px solid #2c3e50;
+            border-radius: 20px;
+            padding: 2rem;
+            color: #e0e0e0;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            color: #0d6efd;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .close-modal:hover {
+            color: white;
+            transform: scale(1.2);
+        }
+        
+        .blog-modal .blog-meta {
+            background: rgba(13,110,253,0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-modal .blog-meta i {
+            color: #0d6efd;
+            margin-right: 0.5rem;
+        }
+        
+        .blog-modal .blog-content h2 {
+            color: #0d6efd;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        .blog-modal .blog-content p {
+            line-height: 1.8;
+            color: #e0e0e0;
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-modal .author-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <!-- header placeholder (loaded from header.html) -->
+    <div id="header"></div>
+
+    <!-- Hero Section (blog version) -->
+    <section class="contact-hero bg-darkblue text-light">
+        <div class="hero-content">
+            <h1>Insights & Tech Trends</h1>
+            <p class="lead">Exploring the future of web, apps, and digital innovation.</p>
+        </div>
+    </section>
+
+    <!-- Blog main section: cards grid -->
+    <section class="py-5 bg-darkblue text-light">
+        <div class="container">
+            <!-- optional section heading -->
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="text-primary">Our Latest Articles</h2>
+                <p class="lead" style="color: #cfddee;">Stay updated with the latest news in technology and design.</p>
+            </div>
+
+            <!-- blog card grid row - will be populated by JavaScript -->
+            <div class="row g-4" id="blog-list-container">
+                <div class="col-12 text-center">
+                    <div class="spinner"></div>
+                    <p class="mt-3">Loading amazing content...</p>
+                </div>
+            </div>
+
+            <!-- optional pagination / load more -->
+            <div class="text-center mt-5" data-aos="fade-up">
+                <button class="btn btn-primary neon-button px-5 py-2" id="load-more-btn" style="display: none;">Load more articles</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Modal (for displaying individual posts) -->
+    <div class="blog-modal" id="blogModal">
+        <div class="blog-modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            
+            <!-- Blog meta info -->
+            <div class="blog-meta" id="modal-meta"></div>
+            
+            <!-- Featured image -->
+            <img id="modal-image" src="" alt="Blog featured image" class="img-fluid rounded mb-4" style="max-height: 400px; width: 100%; object-fit: cover;">
+            
+            <!-- Blog title -->
+            <h1 class="text-primary mb-4" id="modal-title"></h1>
+            
+            <!-- Blog content -->
+            <div class="blog-content" id="modal-content"></div>
+            
+            <!-- Author box -->
+            <div class="author-box" id="modal-author"></div>
+        </div>
+    </div>
+
+    <!-- assistance placeholder (loaded from Assistance.html) -->
+    <div id="assistance"></div>
+
+    <!-- footer placeholder -->
+    <div id="footer"></div>
+
+    <!-- AOS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- include HTML partials + firebase + blog functionality -->
+    <script type="module">
+        // ----- functions from original about page (includeHTML, firebase init) -----
+        function includeHTML(id, file, callback) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Cannot load ${file}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                })
+                .catch(err => console.error(err));
+        }
+
+        // Firebase config (exactly as provided)
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+            authDomain: "home-1e420.firebaseapp.com",
+            databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+            projectId: "home-1e420",
+            storageBucket: "home-1e420.firebasestorage.app",
+            messagingSenderId: "237502846110",
+            appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Store all blogs data
+        let allBlogs = [];
+        let currentDisplayCount = 6;
+        const blogsPerLoad = 3;
+
+        // Load blogs from JSON
+        async function loadBlogs() {
+            try {
+                const response = await fetch('blog-data.json');
+                const data = await response.json();
+                allBlogs = data.blogs;
+                displayBlogs(allBlogs.slice(0, currentDisplayCount));
+                
+                // Show load more button if there are more blogs
+                if (allBlogs.length > currentDisplayCount) {
+                    document.getElementById('load-more-btn').style.display = 'inline-block';
+                }
+            } catch (error) {
+                console.error('Error loading blogs:', error);
+                document.getElementById('blog-list-container').innerHTML = '<div class="col-12 text-center"><p class="text-danger">Error loading blog posts. Please refresh the page.</p></div>';
+            }
+        }
+
+        // Display blogs in grid
+        function displayBlogs(blogs) {
+            const container = document.getElementById('blog-list-container');
+            
+            if (blogs.length === 0) {
+                container.innerHTML = '<div class="col-12 text-center"><p>No more articles to display.</p></div>';
+                return;
+            }
+            
+            let html = '';
+            
+            blogs.forEach((blog, index) => {
+                const delay = 100 + (index % 3) * 100;
+                html += `
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="${delay}">
+                        <div class="blog-card" data-blog-id="${blog.id}">
+                            <img src="${blog.image}" alt="${blog.title}" onerror="this.src='https://via.placeholder.com/400x220?text=${blog.category.replace(' ', '+')}'">
+                            <div class="card-body">
+                                <div class="meta d-flex justify-content-between align-items-center mb-3">
+                                    <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
+                                    <span class="author-badge"><i class="far fa-user"></i> ${blog.author}</span>
+                                </div>
+                                <h3 class="card-title">${blog.title}</h3>
+                                <p class="card-text">${blog.excerpt}</p>
+                                <button class="btn btn-outline-primary read-more-btn" data-blog-id="${blog.id}">Read more →</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            
+            // Add click event listeners to all read more buttons
+            document.querySelectorAll('.read-more-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const blogId = btn.getAttribute('data-blog-id');
+                    openBlogModal(blogId);
+                    
+                    // Update URL hash without scrolling
+                    history.pushState(null, null, `#${blogId}`);
+                });
+            });
+            
+            // Also make entire card clickable
+            document.querySelectorAll('.blog-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Don't trigger if clicking on the button itself (prevents double event)
+                    if (e.target.classList.contains('read-more-btn') || e.target.closest('.read-more-btn')) {
+                        return;
+                    }
+                    const blogId = card.getAttribute('data-blog-id');
+                    openBlogModal(blogId);
+                    history.pushState(null, null, `#${blogId}`);
+                });
+                card.style.cursor = 'pointer';
+            });
+        }
+
+        // Load more blogs
+        document.getElementById('load-more-btn')?.addEventListener('click', () => {
+            currentDisplayCount += blogsPerLoad;
+            displayBlogs(allBlogs.slice(0, currentDisplayCount));
+            
+            if (currentDisplayCount >= allBlogs.length) {
+                document.getElementById('load-more-btn').style.display = 'none';
+            }
+        });
+
+        // Modal functionality
+        const modal = document.getElementById('blogModal');
+        const closeBtn = document.getElementById('closeModal');
+
+        function openBlogModal(blogId) {
+            const blog = allBlogs.find(b => b.id === blogId);
+            
+            if (!blog) {
+                console.error('Blog not found:', blogId);
+                return;
+            }
+            
+            // Populate modal with blog content
+            document.getElementById('modal-meta').innerHTML = `
+                <div class="d-flex flex-wrap gap-4">
+                    <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
+                    <span><i class="far fa-user"></i> ${blog.author}</span>
+                    <span><i class="far fa-folder"></i> ${blog.category}</span>
+                </div>
+            `;
+            
+            document.getElementById('modal-image').src = blog.image;
+            document.getElementById('modal-image').alt = blog.title;
+            document.getElementById('modal-title').textContent = blog.title;
+            document.getElementById('modal-content').innerHTML = blog.content;
+            
+            document.getElementById('modal-author').innerHTML = `
+                <h4 class="text-primary mb-3">About ${blog.author}</h4>
+                <p class="mb-0">${blog.author} is a seasoned ${blog.category.toLowerCase()} expert at Cosname Technologies with over 8 years of industry experience. They specialize in creating innovative solutions that drive business growth.</p>
+            `;
+            
+            // Show modal
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scrolling
+            
+            // Remove hash from URL but don't trigger page jump
+            history.pushState(null, null, window.location.pathname);
+        }
+
+        // Close modal when clicking close button
+        closeBtn.addEventListener('click', closeModal);
+
+        // Close modal when clicking outside the content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        // Check URL hash on load
+        function checkHashForBlog() {
+            const hash = window.location.hash.substring(1); // Remove the #
+            if (hash && allBlogs.length > 0) {
+                const blog = allBlogs.find(b => b.id === hash);
+                if (blog) {
+                    // Small delay to ensure DOM is ready
+                    setTimeout(() => {
+                        openBlogModal(hash);
+                    }, 500);
+                }
+            }
+        }
+
+        // header scroll effect (from original)
+        function initHeader() {
+            window.addEventListener("scroll", () => {
+                const nav = document.querySelector(".nav");
+                if (!nav) return;
+                if (window.scrollY > 50) {
+                    nav.classList.add("scrolled");
+                } else {
+                    nav.classList.remove("scrolled");
+                }
+            });
+            const burger = document.getElementById("hamburger");
+            const menu = document.getElementById("menu");
+            if (burger && menu) {
+                burger.addEventListener("click", () => menu.classList.toggle("active"));
+            }
+            const links = document.querySelectorAll(".menu a");
+            links.forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+
+        // newsletter attach (from original)
+        function attachNewsletterHandler() {
+            const form = document.getElementById("newsletterForm");
+            if (!form) return;
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const emailField = document.getElementById("newsletterEmail");
+                if (!emailField) return;
+                const email = emailField.value;
+                try {
+                    const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        alert("You are already subscribed with this email.");
+                        return;
+                    }
+                    await addDoc(collection(db, "newsletter_subscribers"), {
+                        email: email,
+                        subscribedAt: serverTimestamp()
+                    });
+                    alert("Thanks for subscribing!");
+                    form.reset();
+                } catch (error) {
+                    alert("Subscription failed: " + error.message);
+                }
+            });
+        }
+
+        // load assistance (as original)
+        fetch('Assistance.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('assistance').innerHTML = html;
+                const script = document.createElement('script');
+                script.src = 'Script/assistance.js';
+                script.defer = true;
+                document.body.appendChild(script);
+            })
+            .catch(err => console.error('Error loading assistance:', err));
+
+        // finally include header and footer (with callbacks)
+        document.addEventListener("DOMContentLoaded", () => {
+            includeHTML("header", "header.html", initHeader);
+            includeHTML("footer", "footer.html", attachNewsletterHandler);
+            
+            // Load blogs
+            loadBlogs().then(() => {
+                // Check if there's a hash in the URL
+                checkHashForBlog();
+            });
+            
+            AOS.init({ duration: 1000, once: true, easing: 'ease-in-out' });
+        });
+
+        // Handle browser back/forward buttons
+        window.addEventListener('popstate', () => {
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const blog = allBlogs.find(b => b.id === hash);
+                if (blog) {
+                    openBlogModal(hash);
+                }
+            } else {
+                closeModal();
+            }
+        });
+    </script>
+
+    <!-- extra small script for navbar class (from about) -->
+    <script>
+        document.addEventListener("scroll", function() {
+            let navbar = document.querySelector(".navbar");
+            if (navbar) {
+                if (window.scrollY > 50) {
+                    navbar.classList.add("scrolled");
+                } else {
+                    navbar.classList.remove("scrolled");
+                }
+            }
+        });
+    </script>
+
+    <!-- Swiper JS (optional, kept for consistency) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script src="Script/script.js"></script>
+</body>
+</html>
