@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2019",
+    "module": "ES2020",
+    "lib": ["DOM", "ES2020"],
+    "moduleResolution": "Bundler",
+    "rootDir": "src-ts/Public",
+    "outDir": "Public",
+    "strict": false,
+    "skipLibCheck": true
+  },
+  "include": ["src-ts/Public/**/*.ts"]
+}

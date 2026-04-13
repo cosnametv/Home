@@ -2,10 +2,31 @@
   /* Color System */
   --bg-dark: #010622;
   --bg-darker: #000318;
+  --bg-mid: #07102e;
+  --bg-deep: #020617;
   --primary: #4cc9f0;
   --primary-hover: #3aa8d8;
   --text-light: #ffffff;
   --text-muted: rgba(255, 255, 255, 0.85);
+
+  /* Page + section backgrounds (smooth, no hard vertical splits) */
+  --surface-gradient: linear-gradient(
+    165deg,
+    #0a1435 0%,
+    var(--bg-dark) 32%,
+    var(--bg-mid) 58%,
+    var(--bg-darker) 100%
+  );
+  --glow-top: radial-gradient(
+    ellipse 130% 85% at 50% -25%,
+    rgba(76, 201, 240, 0.14) 0%,
+    transparent 58%
+  );
+  --glow-side: radial-gradient(
+    ellipse 70% 90% at 100% 45%,
+    rgba(30, 64, 120, 0.2) 0%,
+    transparent 52%
+  );
 
     --section-padding: 5rem 0;
   --card-radius: 1rem;
@@ -30,10 +51,57 @@
 /* Base Styles */
 body {
   font-family: var(--font-base);
-  background-color: var(--bg-dark);
   color: var(--text-light);
-    font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   line-height: 1.6;
+  min-height: 100vh;
+  background-color: var(--bg-deep);
+  background-image: var(--glow-top), var(--glow-side), var(--surface-gradient);
+  background-attachment: scroll;
+}
+
+/*
+  Unified surface for every section using .bg-darkblue (home, inner pages, projects strip).
+  Solid base + soft glows = no “restart” seam when one section sits under another.
+*/
+.bg-darkblue,
+section#projects.projects,
+section.testimonials {
+  background-color: var(--bg-dark) !important;
+  background-image:
+    radial-gradient(ellipse 115% 78% at 50% -12%, rgba(76, 201, 240, 0.1), transparent 56%),
+    radial-gradient(ellipse 75% 100% at 0% 45%, rgba(25, 55, 110, 0.08), transparent 52%),
+    radial-gradient(ellipse 75% 100% at 100% 55%, rgba(25, 55, 110, 0.08), transparent 52%),
+    linear-gradient(180deg, rgba(12, 26, 58, 0.28) 0%, transparent 32%) !important;
+}
+
+/* Soft blend at the top of any section that follows another (removes hard horizontal lines) */
+section + section {
+  position: relative;
+  isolation: isolate;
+}
+
+section + section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: min(120px, 16vh);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 2, 20, 0.45) 0%,
+    rgba(1, 6, 34, 0.14) 48%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+section + section > .container,
+section + section > .container-fluid {
+  position: relative;
+  z-index: 1;
 }
 
 .nav {
@@ -283,12 +351,9 @@ body {
   position: relative;
 }
 
-#services::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 70% 30%, rgba(76, 201, 240, 0.1) 0%, transparent 50%);
-  z-index: -1;
+#services .container {
+  position: relative;
+  z-index: 1;
 }
 
 #services h2 {
@@ -444,17 +509,6 @@ body {
   overflow: hidden;
 }
 
-#about::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 100%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(76, 201, 240, 0.1) 0%, transparent 70%);
-  z-index: 0;
-}
-
 #about .container {
   position: relative;
   z-index: 1;
@@ -600,21 +654,7 @@ body {
 #projects {
   position: relative;
   padding: 6rem 0;
-  background: linear-gradient(to bottom, #010622, #000318);
   overflow: hidden;
-}
-
-#projects::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(76, 201, 240, 0.1) 0%, transparent 30%),
-    radial-gradient(circle at 80% 70%, rgba(76, 201, 240, 0.1) 0%, transparent 30%);
-  z-index: 0;
 }
 
 #projects .container {
@@ -803,15 +843,9 @@ body {
     overflow: hidden;
 }
 
-#profile::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 70% 30%, rgba(76, 201, 240, 0.1) 0%, transparent 50%);
-    z-index: 0;
+#profile .container {
+    position: relative;
+    z-index: 1;
 }
 
 .profile-image-container {
@@ -1007,30 +1041,55 @@ body {
 }
 
 
-/* ===== Section Background with Gradient ===== */
+/* ===== Testimonials section (uses same .bg-darkblue surface as other sections) ===== */
 .testimonials {
-  background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
   padding: var(--section-padding);
   color: var(--text-light);
   font-family: var(--font-base);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonials .container {
+  position: relative;
+  z-index: 1;
+}
+
+.testimonials-intro {
+  max-width: 640px;
+}
+
+.testimonials-kicker {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin: 0;
 }
 
 .testimonials h2 {
   font-family: var(--font-heading);
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--primary);
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 800;
+  color: var(--text-light);
   margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, var(--text-light) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
+.testimonials-lead,
 .testimonials p.section-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
+  line-height: 1.65;
   color: var(--text-muted);
-  margin-bottom: 3rem;
+  margin-bottom: 0;
 }
 
-/* ===== Testimonial Card Styling ===== */
+/* ----- Testimonial cards (glass + accent) ----- */
 .testimonial-row {
   display: flex;
   flex-wrap: wrap;
@@ -1045,57 +1104,140 @@ body {
   max-width: 350px;
 }
 
+.testimonials .row > [class*="col"] {
+  display: flex;
+}
+
 .testimonial-card {
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: var(--card-radius);
-  padding: 2rem 1.5rem;
-  box-shadow: var(--shadow-md);
-  transition: var(--transition);
+  flex: 1;
+  width: 100%;
+  margin: 0;
+  border: none;
+  background: transparent;
+  padding: 0;
+}
+
+.testimonial-card__inner {
+  position: relative;
   height: 100%;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.5rem 1.5rem;
+  border-radius: 1.25rem;
+  text-align: left;
+  background: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.09) 0%,
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(1, 6, 34, 0.5) 100%
+  );
+  border: 1px solid rgba(76, 201, 240, 0.22);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  overflow: hidden;
 }
 
-.testimonial-card:hover {
-  transform: translateY(-10px);
-  box-shadow: var(--shadow-lg);
+.testimonial-card__inner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
+  opacity: 0.85;
 }
 
-/* ===== Client Image ===== */
+.testimonial-card:hover .testimonial-card__inner {
+  transform: translateY(-6px);
+  border-color: rgba(76, 201, 240, 0.45);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(76, 201, 240, 0.12);
+}
+
+.testimonial-card__quote {
+  font-size: 1.65rem;
+  color: rgba(76, 201, 240, 0.35);
+  margin-bottom: 0.75rem;
+  line-height: 1;
+}
+
+.testimonial-card__text {
+  flex: 1;
+  font-size: 0.98rem;
+  line-height: 1.65;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.88);
+  margin: 0 0 1.25rem;
+}
+
+.testimonial-card__stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.25rem;
+  color: #e8c547;
+  font-size: 0.85rem;
+  filter: drop-shadow(0 0 6px rgba(232, 197, 71, 0.35));
+}
+
+.testimonial-card__stars .fa-star {
+  opacity: 0.95;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding-top: 1rem;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.testimonial-card__avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(76, 201, 240, 0.55);
+  box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.12);
+  flex-shrink: 0;
+}
+
+.testimonial-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.testimonial-card__name {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--text-light);
+  line-height: 1.2;
+}
+
+.testimonial-card__role {
+  font-size: 0.85rem;
+  color: var(--primary);
+  font-weight: 500;
+}
+
+/* Legacy helpers */
 .client-img {
   width: 90px;
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--primary);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 0 12px rgba(76, 201, 240, 0.6);
+  box-shadow: 0 0 12px rgba(76, 201, 240, 0.35);
 }
 
-/* ===== Testimonial Text ===== */
-.testimonial-card p {
-  font-size: 1rem;
-  font-style: italic;
-  color: var(--text-muted);
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-}
-
-/* ===== Stars ===== */
 .stars {
-  color: gold;
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-/* ===== Client Name ===== */
-.testimonial-card h6 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--primary);
-}
-
-.testimonial-card h6 span {
-  font-weight: 700;
+  color: #e8c547;
+  font-size: 1.1rem;
+  letter-spacing: 0.15em;
 }
 
 /* ===== Scroll Animation ===== */
@@ -1109,9 +1251,15 @@ body {
   opacity: 0;
 }
 
+@media (max-width: 575px) {
+  .testimonial-card__inner {
+    padding: 1.5rem 1.25rem 1.25rem;
+  }
+}
+
 /* Footer Styles */
 footer {
-  background: linear-gradient(135deg, #010622, #000318);
+  background: var(--surface-gradient);
   position: relative;
   overflow: hidden;
   font-family: 'Inter', sans-serif;
@@ -1124,9 +1272,11 @@ footer::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: 
-    radial-gradient(circle at 80% 20%, rgba(76, 201, 240, 0.1) 0%, transparent 30%);
+  background:
+    radial-gradient(ellipse 90% 70% at 85% 15%, rgba(76, 201, 240, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 10% 90%, rgba(76, 201, 240, 0.05) 0%, transparent 50%);
   z-index: 0;
+  pointer-events: none;
 }
 
 footer .container {
@@ -1149,7 +1299,8 @@ footer p.text-muted {
   line-height: 1.7;
   max-width: 300px;
 }
-.col-md-6 small, li {
+footer .col-md-6 small,
+footer li {
   color: rgba(139, 139, 139, 0.7) !important;
 }
 
@@ -1175,6 +1326,14 @@ footer p.text-muted {
   transform: translateY(-3px);
 }
 
+.social-icons a i {
+  transition: transform 0.25s ease;
+}
+
+.social-icons a:hover i {
+  transform: scale(1.15);
+}
+
 footer h5 {
   font-size: 1.2rem;
   font-weight: 600;
@@ -1184,6 +1343,30 @@ footer h5 {
 
 footer ul.list-unstyled li {
   margin-bottom: 0.75rem;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+footer ul.list-unstyled li:hover {
+  transform: translateX(3px);
+}
+
+footer .row.g-4 > div {
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+footer .row.g-4 > div:hover {
+  transform: translateY(-4px);
+}
+
+footer .contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(76, 201, 240, 0.12);
+  border: 1px solid rgba(76, 201, 240, 0.35);
+  color: #bcefff !important;
 }
 
 footer ul.list-unstyled a {
@@ -1222,6 +1405,10 @@ footer ul.list-unstyled li i {
 .btn-outline-primary:hover {
   background: #4cc9f0;
   color: #010622;
+}
+
+footer #newsletterForm .btn-outline-primary {
+  width: 100%;
 }
 
 hr.border-secondary {
@@ -1267,6 +1454,14 @@ hr.border-secondary {
 
 footer > * {
   animation: fadeIn 0.6s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-icons a,
+  footer ul.list-unstyled li,
+  footer .row.g-4 > div {
+    transition: none;
+  }
 }
 
 :root {

@@ -1,0 +1,16 @@
+{
+  "name": "my-website",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "concurrently \"npm:watch\" \"npm:serve\"",
+    "watch": "tsc -p tsconfig.json --watch",
+    "serve": "live-server Public --port=3000"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "live-server": "^1.2.2",
+    "typescript": "^5.9.3"
+  }
+}
