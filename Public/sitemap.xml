@@ -26,7 +26,7 @@
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://cosnametech.com/Contact.html</loc>
+    <loc>https://cosnametech.com/Contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -39,60 +39,6 @@
     <loc>https://cosnametech.com/waweru.html</loc>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-  </url>
-  
-  <!-- New Blog Pages -->
-  <url>
-    <loc>https://cosnametech.com/blog.html</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <!-- Blog Post URLs (with hash fragments - still crawlable by search engines) -->
-  <url>
-    <loc>https://cosnametech.com/blog.html#modern-web-development-trends</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#cross-platform-app-development-guide</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#visual-branding-strategy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#video-content-strategy</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#ai-adoption-for-small-business</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#laptop-maintenance-tips</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#cloud-computing-strategies</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#cybersecurity-best-practices</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://cosnametech.com/blog.html#ux-design-principles</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
   </url>
   
   <!-- Template/Component Pages (lower priority) -->
