@@ -1,421 +1,600 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cosname Technologies | About</title>
 
     <link rel="icon" href="Assets/Status.jpg" type="image/png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- AOS Animation CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
-    <!-- Swiper CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
     <link rel="stylesheet" href="Style/style.css">
-    <style>
 
-        /* Hero Section */
-        .contact-hero {
+    <style>
+        /* About page — scoped to .about-page only */
+        .about-page .about-hero {
             position: relative;
-            background: url('Assets/banner3.jpg') center/cover no-repeat;
-            height: 350px;
+            min-height: clamp(300px, 46vh, 440px);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            text-align: center;
+            padding: clamp(5.25rem, 14vw, 7rem) 1.25rem clamp(3rem, 8vw, 4.5rem);
+            overflow: hidden;
         }
-        .contact-hero::before {
+
+        .about-page .about-hero__bg {
+            position: absolute;
+            inset: 0;
+            background: url('Assets/banner3.jpg') center/cover no-repeat;
+            transform: scale(1.02);
+        }
+
+        .about-page .about-hero__overlay {
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(165deg, rgba(6, 8, 7, 0.88) 0%, rgba(6, 8, 7, 0.55) 42%, rgba(3, 4, 3, 0.92) 100%),
+                radial-gradient(ellipse 90% 70% at 85% 15%, rgba(0, 245, 147, 0.14), transparent 52%);
+        }
+
+        .about-page .about-hero__inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .about-page .about-hero__eyebrow {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.85rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 999px;
+            background: rgba(0, 245, 147, 0.1);
+            border: 1px solid rgba(0, 245, 147, 0.22);
+        }
+
+        .about-page .about-hero__title {
+            font-family: var(--font-heading);
+            font-size: clamp(2rem, 5.5vw, 3.15rem);
+            font-weight: 800;
+            line-height: 1.12;
+            margin-bottom: 1rem;
+            color: var(--text-light);
+        }
+
+        .about-page .about-hero__title span {
+            color: var(--primary);
+        }
+
+        .about-page .about-hero__lead {
+            font-size: clamp(1rem, 2.4vw, 1.2rem);
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        .about-page .about-section-head {
+            max-width: 640px;
+            margin-inline: auto;
+            margin-bottom: 3rem;
+        }
+
+        .about-page .about-section-head__eyebrow {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.65rem;
+        }
+
+        .about-page .about-section-head__title {
+            font-family: var(--font-heading);
+            font-size: clamp(1.65rem, 4vw, 2.25rem);
+            font-weight: 800;
+            margin-bottom: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .about-page .about-section-head__desc {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            margin: 0;
+            line-height: 1.65;
+        }
+
+        .about-page .about-intro__figure {
+            position: relative;
+            border-radius: 1.25rem;
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(0, 245, 147, 0.45), rgba(0, 245, 147, 0.08) 50%, rgba(0, 245, 147, 0.2));
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+        }
+
+        .about-page .about-intro__figure::after {
             content: "";
             position: absolute;
-            top: 0;
-            left: 0;
+            inset: -2px;
+            border-radius: 1.3rem;
+            padding: 2px;
+            background: linear-gradient(145deg, rgba(0, 245, 147, 0.35), transparent 40%);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .about-page .about-intro__img {
+            display: block;
+            border-radius: 1.15rem;
             width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5); 
-        }
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        .hero-content h1 {
-            font-size: 3rem;
-            font-weight: bold;
-            text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.5);
+            height: auto;
         }
 
-        /* Button */
-        .neon-button {
-            background-color: #0d6efd;
-            color: white;
-            transition: 0.3s ease-in-out;
-            border-radius: 5px;
-        }
-        .neon-button:hover {
-            box-shadow: 0 0 20px rgba(13, 110, 253, 0.9);
-            transform: scale(1.05);
+        .about-page .about-intro__copy p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 1rem;
         }
 
-        /* Social Icons */
-        .social-icons a {
-            font-size: 1.5rem;
-            color: #0d6efd;
-            margin: 0 10px;
-            transition: 0.3s ease-in-out;
-        }
-        .social-icons a:hover {
-            color: white;
-            text-shadow: 0 0 15px rgba(13, 110, 253, 0.9);
+        .about-page .about-intro__copy p:last-of-type {
+            margin-bottom: 1.5rem;
         }
 
-        /* Default Styles (For larger screens) */
-#about-us, #our-services {
-    padding-top: 50px;
-    padding-bottom: 50px;
-}
+        .about-page .about-values {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            gap: 0.65rem;
+        }
 
-/* Mobile Devices (Portrait) */
-@media (max-width: 768px) {
-    #about-us, #our-services {
-        padding-top: 30px;
-        padding-bottom: 30px;
-    }
+        .about-page .about-values li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.65rem;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
 
-    #about-us .container, #our-services .container {
-        padding-left: 15px;
-        padding-right: 15px;
-    }
+        .about-page .about-values li i {
+            color: var(--primary);
+            margin-top: 0.2rem;
+            flex-shrink: 0;
+        }
 
-    .row {
-        flex-direction: column;
-        align-items: center;
-    }
+        .about-page .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-top: 2.5rem;
+        }
 
-    .col-md-6 {
-        margin-bottom: 20px;
-    }
+        .about-page .about-stat {
+            background: rgba(0, 245, 147, 0.06);
+            border: 1px solid rgba(0, 245, 147, 0.14);
+            border-radius: 1rem;
+            padding: 1.25rem 1rem;
+            text-align: center;
+            transition: var(--transition);
+        }
 
-    .col-md-6 img {
-        max-width: 100%;
-        height: auto;
-    }
+        .about-page .about-stat:hover {
+            border-color: rgba(0, 245, 147, 0.35);
+            transform: translateY(-3px);
+        }
 
-    .btn {
-        width: 100%;
-        text-align: center;
-    }
+        .about-page .about-stat__num {
+            font-family: var(--font-heading);
+            font-size: clamp(1.75rem, 4vw, 2.25rem);
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 0.35rem;
+        }
 
-    h2 {
-        font-size: 28px;
-    }
+        .about-page .about-stat__label {
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
 
-    p.lead {
-        font-size: 16px;
-    }
-}
+        .about-page .about-service {
+            margin-bottom: 2.5rem;
+        }
 
-/* Larger Tablets and Small Screens */
-@media (max-width: 992px) {
-    .col-md-6 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
+        .about-page .about-service:last-child {
+            margin-bottom: 0;
+        }
 
-    .col-md-6 img {
-        max-width: 100%;
-        height: auto;
-    }
+        .about-page .about-service__panel {
+            background: rgba(0, 245, 147, 0.04);
+            border: 1px solid rgba(0, 245, 147, 0.1);
+            border-radius: 1.25rem;
+            padding: clamp(1.25rem, 4vw, 2rem);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .text-center {
-        padding: 0 15px;
-    }
+        .about-page .about-service__panel:hover {
+            border-color: rgba(0, 245, 147, 0.22);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+        }
 
-    h2 {
-        font-size: 30px;
-    }
+        .about-page .about-service__frame {
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+        }
 
-    p.lead {
-        font-size: 18px;
-    }
-}
+        .about-page .about-service__frame img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
 
-/* Large Desktops */
-@media (min-width: 1200px) {
-    .row.mb-4 {
-        margin-bottom: 50px;
-    }
+        .about-page .about-service__panel:hover .about-service__frame img {
+            transform: scale(1.03);
+        }
 
-    .text-center h2 {
-        font-size: 36px;
-    }
+        .about-page .about-service__label {
+            display: inline-block;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
 
-    .text-center p.lead {
-        font-size: 20px;
-    }
+        .about-page .about-service__body h3 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.35rem, 3vw, 1.65rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
 
-    .col-md-6 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
+        .about-page .about-service__body p {
+            color: var(--text-muted);
+            line-height: 1.75;
+            margin-bottom: 0.85rem;
+            font-size: 0.98rem;
+        }
 
+        .about-page .about-service__body .btn-primary {
+            margin-top: 0.5rem;
+        }
 
+        @media (max-width: 991px) {
+            .about-page .about-stats {
+                grid-template-columns: 1fr;
+                max-width: 280px;
+                margin-inline: auto;
+            }
+
+            .about-page .about-service__panel {
+                padding: 1.35rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .about-page .about-service .about-service__media {
+                margin-bottom: 1rem;
+            }
+        }
     </style>
 </head>
-<body>
-<div id="header"></div>
 
-    <!-- Hero Section with Image & Overlay -->
-    <section class="contact-hero bg-darkblue text-light">
-        <div class="hero-content">
-            <h1>About Us</h1>
-            <p class="lead">We're here to assist you. Get in touch with our team today.</p>
+<body class="about-page">
+    <div id="header"></div>
+
+    <section class="about-hero text-light" aria-labelledby="about-hero-heading">
+        <div class="about-hero__bg" aria-hidden="true"></div>
+        <div class="about-hero__overlay" aria-hidden="true"></div>
+        <div class="container about-hero__inner">
+            <p class="about-hero__eyebrow">Who we are</p>
+            <h1 id="about-hero-heading" class="about-hero__title">Building the <span>digital future</span>, together</h1>
+            <p class="about-hero__lead">Cosname Technologies helps ambitious teams ship faster websites, apps, and brands with clarity, craft, and technology that lasts.</p>
         </div>
     </section>
 
-<!-- About Us Section -->
-<section id="about-us" class="py-5 bg-darkblue text-light" >
-    <div class="container"  data-aos="fade-up">
-        <div class="text-center mb-5">
-            <h2 class="text-primary">About Us</h2>
-            <p class="lead">Empowering Brands with Technology</p>
-        </div>
-        <div class="row align-items-center">
-            <div class="col-md-6" data-aos="fade-right">
-                <img src="Assets/about.png" class="img-fluid rounded" alt="About Us">
-            </div>
-            <div class="col-md-6" data-aos="fade-left">
-                <p>At Cosname Technologies, we are dedicated to delivering innovative tech solutions that drive businesses forward. With expertise in web & app development, digital marketing, and IT consulting, we empower brands with cutting-edge technology.</p>
-                <p>Our team consists of experienced developers, designers, and strategists committed to crafting tailored solutions that enhance efficiency, engagement, and business growth. We believe in building long-term partnerships with our clients, ensuring that our solutions align with their evolving business needs. Our approach focuses on creativity, innovation, and technical excellence.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    <section id="about-us" class="py-5 bg-darkblue text-light">
+        <div class="container">
 
-<!-- Our Services Section -->
-<section id="our-services " class="py-5 bg-darkblue text-light">
-    <div class="container"  data-aos="fade-up">
-        <div class="text-center mb-5">
-            <h2 class="text-primary">Our Services</h2>
-            <p class="lead">Providing top-notch digital solutions tailored to your business needs.</p>
-        </div>
-        
-        <div class="row mb-4 align-items-center" data-aos="fade-right">
-            <div class="col-md-6" data-aos="fade-left">
-                <img src="Assets/web-development.JPG" class="img-fluid rounded" alt="Web Development">
+            <div class="row align-items-center g-4 g-lg-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="about-intro__figure">
+                        <img src="Assets/about.png" class="about-intro__img" width="600" height="400" loading="lazy"
+                            alt="Cosname Technologies team and workspace">
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="about-intro__copy">
+                        <p>At Cosname Technologies, we deliver innovative tech solutions that move businesses forward. From web and app development to digital marketing and IT consulting, we help brands communicate clearly and operate efficiently.</p>
+                        <p>Our team of developers, designers, and strategists builds tailored solutions that improve engagement and measurable outcomes. We focus on long-term partnerships—so what we ship today can evolve with your roadmap tomorrow.</p>
+                        <ul class="about-values">
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Transparent communication and milestone-based delivery</li>
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Modern stacks, secure practices, and performance-first builds</li>
+                            <li><i class="fas fa-circle-check" aria-hidden="true"></i> Design and engineering aligned with your brand and users</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <h3 class="text-primary">Web Development</h3>
-                <p>We build high-performance websites, web apps, and e-commerce platforms using modern technologies. Our solutions are designed to be responsive, mobile-friendly, and optimized for search engines.</p>
-                <p>Our expertise spans across various technologies, including HTML, CSS, JavaScript, and modern frameworks like React, Angular, and Vue.js. We ensure seamless user experiences with cutting-edge UI/UX design, intuitive navigation, and fast-loading pages.</p>
-                <p>We also provide custom CMS solutions, API integrations, and scalable backend development using Node.js, Django, and Laravel. Whether you're a startup or an enterprise, we tailor our solutions to meet your business goals.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
-            </div>
-        </div>
-        
-        <div class="row mb-4 align-items-center" >
-            <div class="col-md-6 order-md-2" data-aos="fade-left">
-                <img src="Assets/App Development.jpg" class="img-fluid rounded" alt="App Development">
-            </div>
-            <div class="col-md-6 order-md-1" data-aos="fade-right">
-                <h3 class="text-primary">App Development</h3>
-                <p>We create high-quality mobile applications with seamless performance and engaging UI/UX. Our expertise covers Android & iOS development, cross-platform apps, backend integration, and app store optimization.</p>
-                <p>We specialize in native and hybrid app development, utilizing powerful frameworks like Flutter, React Native, and Swift for smooth and scalable applications. Our apps are designed for optimal performance, security, and user engagement.</p>
-                <p>From ideation to deployment, we handle UI/UX design, database architecture, API development, and cloud-based hosting. We also optimize apps for the Google Play Store and Apple App Store, ensuring better discoverability and user retention.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
+
+            <div class="about-stats" data-aos="fade-up" data-aos-delay="100">
+                <div class="about-stat">
+                    <div class="about-stat__num">12+</div>
+                    <div class="about-stat__label">Team members</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat__num">50+</div>
+                    <div class="about-stat__label">Projects shipped</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat__num">5+</div>
+                    <div class="about-stat__label">Years experience</div>
+                </div>
             </div>
         </div>
-        
-        <div class="row mb-4 align-items-center" >
-            <div class="col-md-6" data-aos="fade-left">
-                <img src="Assets/graphic-design.png" class="img-fluid rounded" alt="Graphic Design">
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <h3 class="text-primary">Graphic Design</h3>
-                <p>We deliver stunning graphic designs that enhance brand identity and marketing efforts. From logo and brand identity design to social media graphics, we help businesses establish a strong visual presence.</p>
-                <p>Our team specializes in creating visually appealing content, including business cards, brochures, posters, and digital ads. We ensure that every design aligns with your brand's personality and marketing strategy.</p>
-                <p>We use industry-standard tools such as Adobe Photoshop, Illustrator, and InDesign to craft high-quality, print-ready, and digital graphics. Whether you need custom illustrations, branding materials, or engaging infographics, we've got you covered.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
-            </div>
+    </section>
+
+    <section id="our-services" class="py-5 bg-darkblue text-light border-top border-secondary border-opacity-10">
+        <div class="container">
+            <header class="about-section-head text-center" data-aos="fade-up">
+                <p class="about-section-head__eyebrow">Capabilities</p>
+                <h2 class="about-section-head__title">What we do best</h2>
+                <p class="about-section-head__desc">End-to-end digital services—from first sketch to launch and beyond.</p>
+            </header>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/web-development.JPG" alt="Web development at Cosname" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 about-service__body">
+                            <span class="about-service__label">01 · Build</span>
+                            <h3 class="text-primary">Web Development</h3>
+                            <p>We build high-performance websites, web apps, and e-commerce platforms using modern technologies. Our solutions are responsive, mobile-friendly, and optimized for search engines.</p>
+                            <p>Our expertise spans HTML, CSS, JavaScript, and frameworks like React, Angular, and Vue.js—with seamless UI/UX, intuitive navigation, and fast-loading pages.</p>
+                            <p>We also deliver custom CMS setups, API integrations, and scalable backends with Node.js, Django, and Laravel—whether you're a startup or an enterprise.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 order-lg-2 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/App Development.jpg" alt="Mobile app development" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1 about-service__body">
+                            <span class="about-service__label">02 · Mobile</span>
+                            <h3 class="text-primary">App Development</h3>
+                            <p>We create high-quality mobile applications with seamless performance and engaging UI/UX—including Android &amp; iOS, cross-platform apps, backend integration, and store optimization.</p>
+                            <p>We build native and hybrid apps with Flutter, React Native, and Swift for scalable, secure experiences.</p>
+                            <p>From ideation to deployment: UI/UX, databases, APIs, cloud hosting, and Play Store / App Store readiness.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/graphic-design.png" alt="Graphic design work" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 about-service__body">
+                            <span class="about-service__label">03 · Brand</span>
+                            <h3 class="text-primary">Graphic Design</h3>
+                            <p>We deliver graphic design that strengthens brand identity—from logos and brand kits to social graphics and campaigns.</p>
+                            <p>Our team produces print and digital assets with Adobe Photoshop, Illustrator, and InDesign—aligned with your strategy.</p>
+                            <p>Illustrations, branding materials, infographics, and marketing collateral—crafted for clarity and impact.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 order-lg-2 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/video-editing.jpg" alt="Video editing and production" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1 about-service__body">
+                            <span class="about-service__label">04 · Motion</span>
+                            <h3 class="text-primary">Video Editing</h3>
+                            <p>We produce professional video—from promos and motion graphics to corporate and social content.</p>
+                            <p>Scripting, editing, color grading, transitions, typography animation, and sound design—built for engagement.</p>
+                            <p>Adobe Premiere Pro, After Effects, and DaVinci Resolve—tailored to your brand and channels.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/tech-consulting.jpg" alt="Technology consulting" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 about-service__body">
+                            <span class="about-service__label">05 · Strategy</span>
+                            <h3 class="text-primary">Tech Consulting</h3>
+                            <p>We help organizations optimize their stack and adopt the right solutions—IT strategy, digital transformation, cloud, security, and AI.</p>
+                            <p>Analysis, recommendations, and roadmaps to streamline operations and strengthen resilience.</p>
+                            <p>Cloud migration, security hardening, automation, and data practices—aligned with your goals.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+
+            <article class="about-service" data-aos="fade-up">
+                <div class="about-service__panel">
+                    <div class="row g-4 align-items-center">
+                        <div class="col-lg-6 order-lg-2 about-service__media">
+                            <div class="about-service__frame">
+                                <img src="Assets/laptop-repair.jpg" alt="Laptop and PC repair services" loading="lazy">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 order-lg-1 about-service__body">
+                            <span class="about-service__label">06 · Support</span>
+                            <h3 class="text-primary">Laptop &amp; PC Repairs</h3>
+                            <p>Reliable hardware and software repair—diagnostics, upgrades, data recovery, and performance tuning.</p>
+                            <p>Screen and battery replacement, boards, cooling, virus removal, OS installs—we keep devices dependable.</p>
+                            <p>Same-day options where possible, for personal and business machines.</p>
+                            <a href="Contact.html" class="btn btn-primary">Discuss a project</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
-        
-        <div class="row mb-4 align-items-center">
-            <div class="col-md-6 order-md-2" data-aos="fade-left">
-                <img src="Assets/video-editing.jpg" class="img-fluid rounded" alt="Video Editing">
-            </div>
-            <div class="col-md-6 order-md-1" data-aos="fade-right">
-                <h3 class="text-primary">Video Editing</h3>
-                <p>We create professional videos, from promotional content to motion graphics and animations. Our expertise includes corporate videos, social media content, and advanced video effects.</p>
-                <p>Our video production process covers scripting, editing, color grading, and special effects to ensure your content stands out. We enhance videos with smooth transitions, typography animations, and sound design for maximum impact.</p>
-                <p>We work with Adobe Premiere Pro, After Effects, and DaVinci Resolve to produce high-quality videos tailored to your brand's needs. Whether you need product showcases, explainer videos, or engaging reels for social media, we bring your vision to life.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
-            </div>
-        </div>
-        
-        <div class="row mb-4 align-items-center" >
-            <div class="col-md-6" data-aos="fade-left">
-                <img src="Assets/tech-consulting.jpg" class="img-fluid rounded" alt="Tech Consulting">
-            </div>
-            <div class="col-md-6" data-aos="fade-right">
-                <h3 class="text-primary">Tech Consulting</h3>
-                <p>We help businesses optimize their technology stack and implement innovative solutions. Our consulting services cover IT strategy, digital transformation, cloud computing, cybersecurity, and AI solutions.</p>
-                <p>Our experts provide in-depth analysis and recommendations to streamline business operations, improve efficiency, and enhance security. We assist in software selection, infrastructure upgrades, and data management strategies.</p>
-                <p>We specialize in cloud migration, network security, and AI-driven automation, helping businesses stay ahead in a rapidly evolving digital landscape. Whether you're a startup or an enterprise, we offer customized solutions that align with your goals.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
-            </div>
-        </div>
-        
-        
-        <div class="row mb-4 align-items-center" >
-            <div class="col-md-6 order-md-2" data-aos="fade-left">
-                <img src="Assets/laptop-repair.jpg" class="img-fluid rounded" alt="Laptop and PC Repairs">
-            </div>
-            <div class="col-md-6 order-md-1" data-aos="fade-right">
-                <h3 class="text-primary">Laptop & PC Repairs</h3>
-                <p>We provide reliable hardware and software repair services for various devices. From computer and laptop repairs to data recovery and software upgrades, we ensure your devices run smoothly.</p>
-                <p>Our services include screen replacements, battery and keyboard repairs, motherboard troubleshooting, and cooling system maintenance. Whether your device is experiencing hardware failure or software malfunctions, our skilled technicians diagnose and resolve issues efficiently.</p>
-                <p>We also specialize in virus removal, system optimization, and operating system installations to enhance your computer's performance. Our goal is to extend the lifespan of your devices and keep them running at peak efficiency for both personal and business use.</p>
-                <a href="/Contact" class="btn btn-primary mt-2">Contact Us</a>
-            </div>
-        </div>
-        
-        
-    </div>
-</section>
+    </section>
 
-<div id="assistance"></div>
+    <div id="assistance"></div>
 
-<script>
-  fetch('Assistance.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('assistance').innerHTML = html;
-
-      const script = document.createElement('script');
-      script.src = 'Script/assistance.js';
-      script.defer = true; 
-      document.body.appendChild(script);
-    })
-    .catch(err => console.error('Error loading assistance:', err));
-</script>
-
-  <div id="footer"></div>
-
-<!-- Include AOS Script Before Closing Body Tag -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-<script>
-    AOS.init({
-        duration: 1000, 
-        once: true, 
-        easing: 'ease-in-out' 
-    });
-</script>
-
-<!-- Add footer and header -->
-<script type="module">
-function includeHTML(id, file, callback) {
-  fetch(file)
-    .then(response => {
-      if (!response.ok) throw new Error(`Cannot load ${file}`);
-      return response.text();
-    })
-    .then(html => {
-      document.getElementById(id).innerHTML = html;
-      if (callback) callback();
-    })
-    .catch(err => console.error(err));
-}
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-const firebaseConfig = {
-  apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
-  authDomain: "home-1e420.firebaseapp.com",
-  databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
-  projectId: "home-1e420",
-  storageBucket: "home-1e420.firebasestorage.app",
-  messagingSenderId: "237502846110",
-  appId: "1:237502846110:web:68729122ed80d0af7bd78f"
-};
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-function initHeader() {
-  window.addEventListener("scroll", () => {
-    const nav = document.querySelector(".nav");
-    if (!nav) return;
-    if (window.scrollY > 50) {
-      nav.classList.add("scrolled");
-    } else {
-      nav.classList.remove("scrolled");
-    }
-  });
-  const burger = document.getElementById("hamburger");
-  const menu = document.getElementById("menu");
-  if (burger && menu) {
-    burger.addEventListener("click", () => menu.classList.toggle("active"));
-  }
-  const links = document.querySelectorAll(".menu a");
-  links.forEach(link => {
-    if (link.href === window.location.href) {
-      link.classList.add("active");
-    } else {
-      link.classList.remove("active");
-    }
-  });
-}
-function attachNewsletterHandler() {
-  const form = document.getElementById("newsletterForm");
-  if (!form) return;
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const emailField = document.getElementById("newsletterEmail");
-    if (!emailField) return;
-    const email = emailField.value;
-    try {
-      const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
-      const querySnapshot = await getDocs(q);
-      if (!querySnapshot.empty) {
-        alert("You are already subscribed with this email.");
-        return;
-      }
-      await addDoc(collection(db, "newsletter_subscribers"), {
-        email: email,
-        subscribedAt: serverTimestamp()
-      });
-      alert("Thanks for subscribing!");
-      form.reset();
-    } catch (error) {
-      alert("Subscription failed: " + error.message);
-    }
-  });
-}
-document.addEventListener("DOMContentLoaded", () => {
-  includeHTML("header", "header.html", initHeader);
-  includeHTML("footer", "footer.html", attachNewsletterHandler);
-});
-</script>
-
-
-
-    
     <script>
-        document.addEventListener("scroll", function() {
-            let navbar = document.querySelector(".navbar");
-            if (window.scrollY > 50) {
-                navbar.classList.add("scrolled");
-            } else {
-                navbar.classList.remove("scrolled");
-            }
+        fetch('Assistance.html')
+            .then(res => res.text())
+            .then(html => {
+                document.getElementById('assistance').innerHTML = html;
+                const script = document.createElement('script');
+                script.src = 'Script/assistance.js';
+                script.defer = true;
+                document.body.appendChild(script);
+            })
+            .catch(err => console.error('Error loading assistance:', err));
+    </script>
+
+    <div id="footer"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 900,
+            once: true,
+            easing: 'ease-out-cubic'
         });
     </script>
-    
-    <!-- Swiper JS -->
+
+    <script type="module">
+        function includeHTML(id, file, callback) {
+            fetch(file)
+                .then(response => {
+                    if (!response.ok) throw new Error(`Cannot load ${file}`);
+                    return response.text();
+                })
+                .then(html => {
+                    document.getElementById(id).innerHTML = html;
+                    if (callback) callback();
+                })
+                .catch(err => console.error(err));
+        }
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        const firebaseConfig = {
+            apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
+            authDomain: "home-1e420.firebaseapp.com",
+            databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
+            projectId: "home-1e420",
+            storageBucket: "home-1e420.firebasestorage.app",
+            messagingSenderId: "237502846110",
+            appId: "1:237502846110:web:68729122ed80d0af7bd78f"
+        };
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        function initHeader() {
+            window.addEventListener("scroll", () => {
+                const nav = document.querySelector(".nav");
+                if (!nav) return;
+                if (window.scrollY > 50) {
+                    nav.classList.add("scrolled");
+                } else {
+                    nav.classList.remove("scrolled");
+                }
+            });
+            const burger = document.getElementById("hamburger");
+            const menu = document.getElementById("menu");
+            if (burger && menu) {
+                burger.addEventListener("click", () => menu.classList.toggle("active"));
+            }
+            const links = document.querySelectorAll(".menu a");
+            links.forEach(link => {
+                if (link.href === window.location.href) {
+                    link.classList.add("active");
+                } else {
+                    link.classList.remove("active");
+                }
+            });
+        }
+        function attachNewsletterHandler() {
+            const form = document.getElementById("newsletterForm");
+            if (!form) return;
+            form.addEventListener("submit", async (e) => {
+                e.preventDefault();
+                const emailField = document.getElementById("newsletterEmail");
+                if (!emailField) return;
+                const email = emailField.value;
+                try {
+                    const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
+                    const querySnapshot = await getDocs(q);
+                    if (!querySnapshot.empty) {
+                        alert("You are already subscribed with this email.");
+                        return;
+                    }
+                    await addDoc(collection(db, "newsletter_subscribers"), {
+                        email: email,
+                        subscribedAt: serverTimestamp()
+                    });
+                    alert("Thanks for subscribing!");
+                    form.reset();
+                } catch (error) {
+                    alert("Subscription failed: " + error.message);
+                }
+            });
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            includeHTML("header", "header.html", initHeader);
+            includeHTML("footer", "footer.html", attachNewsletterHandler);
+        });
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="Script/script.js"></script>
-
 </body>
+
 </html>
