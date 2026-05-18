@@ -641,6 +641,7 @@
             db, CONTACT_COLLECTION, RATE_LIMIT_COLLECTION, DAILY_MESSAGE_LIMIT,
             emailToRateLimitKey, localDayKey, firestoreWithTimeout
         } from "/Script/firebase-client.js";
+        import { attachNewsletterForm } from "/Script/newsletter.js";
 
         function includeHTML(id, file, callback) {
             fetch(file)
@@ -674,36 +675,6 @@
                     link.classList.add("active");
                 } else {
                     link.classList.remove("active");
-                }
-            });
-        }
-
-        function attachNewsletterHandler() {
-            const form = document.getElementById("newsletterForm");
-            if (!form) return;
-
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const emailField = document.getElementById("newsletterEmail");
-                if (!emailField) return;
-                const email = emailField.value.trim();
-
-                try {
-                    const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
-                    const querySnapshot = await getDocs(q);
-                    if (!querySnapshot.empty) {
-                        alert("You are already subscribed with this email.");
-                        return;
-                    }
-                    await addDoc(collection(db, "newsletter_subscribers"), {
-                        email: email,
-                        subscribedAt: serverTimestamp()
-                    });
-
-                    alert("Thanks for subscribing!");
-                    form.reset();
-                } catch (error) {
-                    alert("Subscription failed: " + error.message);
                 }
             });
         }
@@ -861,7 +832,7 @@
 
         document.addEventListener("DOMContentLoaded", () => {
             includeHTML("header", "header.html", initHeader);
-            includeHTML("footer", "footer.html", attachNewsletterHandler);
+            includeHTML("footer", "footer.html", attachNewsletterForm);
             attachContactHandler();
         });
     </script>

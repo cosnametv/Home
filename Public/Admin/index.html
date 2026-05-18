@@ -583,6 +583,7 @@
             text-decoration: none;
             transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
         }
+
         a.admin-chip:hover {
             background: rgba(0, 245, 147, 0.1);
             border-color: rgba(0, 245, 147, 0.28);
@@ -748,6 +749,37 @@
             padding: 0.25rem 0.65rem;
         }
 
+        .admin-view-tabs {
+            display: inline-flex;
+            gap: 0.35rem;
+            padding: 0.3rem;
+            margin-bottom: 1.25rem;
+            background: rgba(0, 0, 0, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+        }
+
+        .admin-view-tab {
+            border: none;
+            background: transparent;
+            color: rgba(255, 255, 255, 0.55);
+            font-size: 0.88rem;
+            font-weight: 600;
+            padding: 0.5rem 1.1rem;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .admin-view-tab:hover {
+            color: var(--text-light);
+        }
+
+        .admin-view-tab.is-active {
+            background: var(--primary);
+            color: var(--bg-dark);
+        }
+
         @media (max-width: 575px) {
             .admin-panel__head {
                 flex-direction: column;
@@ -805,7 +837,15 @@
                 <span class="admin-user-chip__avatar"><i class="fas fa-user"></i></span>
                 <span id="signedInEmail">—</span>
             </div>
-            <div class="admin-stats">
+
+            <div class="admin-view-tabs" role="tablist" aria-label="Inbox views">
+                <button type="button" class="admin-view-tab is-active" id="tabMessages" data-view="messages" role="tab"
+                    aria-selected="true">Messages</button>
+                <button type="button" class="admin-view-tab" id="tabNewsletter" data-view="newsletter" role="tab"
+                    aria-selected="false">Newsletter</button>
+            </div>
+
+            <div class="admin-stats" id="messagesStats">
                 <div class="admin-stat">
                     <div class="admin-stat__icon"><i class="fas fa-inbox"></i></div>
                     <div>
@@ -829,6 +869,24 @@
                 </div>
             </div>
 
+            <div class="admin-stats d-none" id="newsletterStats">
+                <div class="admin-stat">
+                    <div class="admin-stat__icon"><i class="fas fa-users"></i></div>
+                    <div>
+                        <div class="admin-stat__label">Subscribers</div>
+                        <div class="admin-stat__value" id="statSubscribers">—</div>
+                    </div>
+                </div>
+                <div class="admin-stat">
+                    <div class="admin-stat__icon"><i class="fas fa-clock"></i></div>
+                    <div>
+                        <div class="admin-stat__label">Latest signup</div>
+                        <div class="admin-stat__value" id="statSubLatest">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="messagesView">
             <div class="admin-card admin-panel">
                 <div class="admin-panel__head">
                     <div class="admin-search">
@@ -872,10 +930,17 @@
                     <span id="footUpdated"></span>
                 </div>
             </div>
+            </div>
 
-            <div class="admin-card admin-panel admin-section-gap">
+            <div id="newsletterView" class="d-none">
+            <div class="admin-card admin-panel">
                 <div class="admin-panel__head">
                     <h2 class="admin-panel__title">Newsletter subscribers</h2>
+                    <div class="admin-search">
+                        <i class="fas fa-search"></i>
+                        <input type="search" id="newsletterSearchInput" placeholder="Search subscriber email…"
+                            autocomplete="off" aria-label="Search subscribers">
+                    </div>
                     <span class="admin-panel__count" id="newsletterCount">—</span>
                 </div>
                 <div class="admin-panel__body">
@@ -889,8 +954,10 @@
                         <p class="admin-empty__title">No subscribers yet</p>
                         <p class="small mb-0">Newsletter sign-ups from your site will appear here.</p>
                     </div>
+                    <div id="newsletterNoResults" class="admin-empty d-none"><div class="admin-empty__icon"><i class="fas fa-magnifying-glass"></i></div><p class="admin-empty__title">No matches</p></div>
                     <div id="newsletterError" class="admin-alert admin-alert--warn d-none py-2 px-3" role="alert"></div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -962,6 +1029,16 @@
         const newsletterEmpty = document.getElementById("newsletterEmpty");
         const newsletterError = document.getElementById("newsletterError");
         const newsletterCount = document.getElementById("newsletterCount");
+        const newsletterSearchInput = document.getElementById("newsletterSearchInput");
+        const newsletterNoResults = document.getElementById("newsletterNoResults");
+        const messagesView = document.getElementById("messagesView");
+        const newsletterView = document.getElementById("newsletterView");
+        const messagesStats = document.getElementById("messagesStats");
+        const newsletterStats = document.getElementById("newsletterStats");
+        const tabMessages = document.getElementById("tabMessages");
+        const tabNewsletter = document.getElementById("tabNewsletter");
+        const statSubscribers = document.getElementById("statSubscribers");
+        const statSubLatest = document.getElementById("statSubLatest");
         const deleteOverlay = document.getElementById("deleteOverlay");
         const deleteOverlayText = document.getElementById("deleteOverlayText");
         const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
@@ -972,6 +1049,24 @@
         let allSubscribers = [];
         let pendingDeleteId = null;
         let pendingDeleteName = "";
+        let activeAdminView = "messages";
+
+        function setAdminView(view) {
+            activeAdminView = view;
+            const isMessages = view === "messages";
+            tabMessages.classList.toggle("is-active", isMessages);
+            tabNewsletter.classList.toggle("is-active", !isMessages);
+            tabMessages.setAttribute("aria-selected", String(isMessages));
+            tabNewsletter.setAttribute("aria-selected", String(!isMessages));
+            messagesView.classList.toggle("d-none", !isMessages);
+            newsletterView.classList.toggle("d-none", isMessages);
+            messagesStats.classList.toggle("d-none", !isMessages);
+            newsletterStats.classList.toggle("d-none", isMessages);
+        }
+
+        document.querySelectorAll(".admin-view-tab").forEach((btn) => {
+            btn.addEventListener("click", () => setAdminView(btn.dataset.view));
+        });
 
         function showLoginError(msg) {
             loginError.textContent = msg;
@@ -1067,23 +1162,40 @@
             });
         }
 
-        function renderNewsletter() {
+        function updateNewsletterStats() {
+            if (statSubscribers) statSubscribers.textContent = String(allSubscribers.length);
+            const newest = allSubscribers[0];
+            if (statSubLatest) {
+                statSubLatest.textContent = newest && newest.subscribedAt
+                    ? formatRelative(newest.subscribedAt)
+                    : "—";
+            }
+            if (newsletterCount) newsletterCount.textContent = String(allSubscribers.length);
+        }
+
+        function renderNewsletterList(subscribers) {
             newsletterLoading.classList.add("d-none");
             newsletterList.innerHTML = "";
             newsletterError.classList.add("d-none");
+            newsletterNoResults.classList.add("d-none");
 
             if (!allSubscribers.length) {
                 newsletterList.classList.add("d-none");
                 newsletterEmpty.classList.remove("d-none");
-                newsletterCount.textContent = "0";
                 return;
             }
 
             newsletterEmpty.classList.add("d-none");
-            newsletterList.classList.remove("d-none");
-            newsletterCount.textContent = String(allSubscribers.length);
 
-            for (const sub of allSubscribers) {
+            if (!subscribers.length) {
+                newsletterList.classList.add("d-none");
+                newsletterNoResults.classList.remove("d-none");
+                return;
+            }
+
+            newsletterList.classList.remove("d-none");
+
+            for (const sub of subscribers) {
                 const email = sub.email != null ? String(sub.email) : "—";
                 const when = sub.subscribedAt ? formatTime(sub.subscribedAt) : "—";
                 const li = document.createElement("li");
@@ -1096,6 +1208,18 @@
                 `;
                 newsletterList.appendChild(li);
             }
+        }
+
+        function applyNewsletterSearch() {
+            const q = (newsletterSearchInput.value || "").trim().toLowerCase();
+            if (!q) {
+                renderNewsletterList(allSubscribers);
+                return;
+            }
+            const filtered = allSubscribers.filter((sub) =>
+                String(sub.email || "").toLowerCase().includes(q)
+            );
+            renderNewsletterList(filtered);
         }
 
         async function loadNewsletter() {
@@ -1115,7 +1239,8 @@
                 allSubscribers = sortSubscribersNewestFirst(
                     snap.docs.map((d) => ({ id: d.id, ...d.data() }))
                 );
-                renderNewsletter();
+                updateNewsletterStats();
+                applyNewsletterSearch();
             } catch (err) {
                 newsletterLoading.classList.add("d-none");
                 newsletterList.classList.add("d-none");
@@ -1366,6 +1491,7 @@
         }
 
         searchInput.addEventListener("input", applySearch);
+        newsletterSearchInput.addEventListener("input", applyNewsletterSearch);
         refreshBtn.addEventListener("click", () => loadDashboard());
 
         loginForm.addEventListener("submit", async (e) => {
@@ -1402,6 +1528,7 @@
 
                 if (user.uid !== activeAuthUid) {
                     activeAuthUid = user.uid;
+                    setAdminView("messages");
                     loadDashboard();
                 }
             } else {
@@ -1413,7 +1540,9 @@
                 heroDesc && (heroDesc.textContent = "Sign in to view submissions from your website contact form.");
                 allMessages = [];
                 allSubscribers = [];
+                setAdminView("messages");
                 searchInput.value = "";
+                newsletterSearchInput.value = "";
                 listLoading.classList.remove("d-none");
                 msgList.classList.add("d-none");
                 msgEmpty.classList.add("d-none");
@@ -1430,3 +1559,4 @@
 </body>
 
 </html>
+

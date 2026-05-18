@@ -824,6 +824,7 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         import { firebaseConfig } from "/Script/firebase-config.js";
+        import { attachNewsletterForm } from "/Script/newsletter.js";
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         function initHeader() {
@@ -850,35 +851,9 @@
                 }
             });
         }
-        function attachNewsletterHandler() {
-            const form = document.getElementById("newsletterForm");
-            if (!form) return;
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const emailField = document.getElementById("newsletterEmail");
-                if (!emailField) return;
-                const email = emailField.value;
-                try {
-                    const q = query(collection(db, "newsletter_subscribers"), where("email", "==", email));
-                    const querySnapshot = await getDocs(q);
-                    if (!querySnapshot.empty) {
-                        alert("You are already subscribed with this email.");
-                        return;
-                    }
-                    await addDoc(collection(db, "newsletter_subscribers"), {
-                        email: email,
-                        subscribedAt: serverTimestamp()
-                    });
-                    alert("Thanks for subscribing!");
-                    form.reset();
-                } catch (error) {
-                    alert("Subscription failed: " + error.message);
-                }
-            });
-        }
         document.addEventListener("DOMContentLoaded", () => {
             includeHTML("header", "header.html", initHeader);
-            includeHTML("footer", "footer.html", attachNewsletterHandler);
+            includeHTML("footer", "footer.html", attachNewsletterForm);
         });
     </script>
 

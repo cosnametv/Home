@@ -32,7 +32,7 @@
             </div>
 
             <!-- Contact Info -->
-            <div class="col-lg-4 col-md-6">
+            <div class="col-lg-3 col-md-6">
                 <h5 class="text-primary mb-3">Contact Us</h5>
                 <ul class="list-unstyled text-muted">
                     <li class="mb-2 contact-email"><i class="fas fa-envelope me-2 text-primary"></i> cosnametech@gmail.com</li>
@@ -41,16 +41,15 @@
                 </ul>
             </div>
 
-        <!-- Newsletter -->
-        <div class="col-lg-2 col-md-6">
-        <h5 class="text-primary mb-3">Newsletter</h5>
-        <form id="newsletterForm">
-            <div class="mb-3">
-            <input type="email" id="newsletterEmail" class="form-control bg-dark border-secondary" placeholder="Your Email" required>
+            <!-- Newsletter -->
+            <div class="col-lg-3 col-md-6 footer-newsletter">
+                <h5 class="text-primary mb-3">Newsletter</h5>
+                <form id="newsletterForm" class="footer-newsletter__form">
+                    <input type="email" id="newsletterEmail" class="form-control bg-dark border-secondary footer-newsletter__input"
+                        placeholder="Your email address" autocomplete="email" required>
+                    <button type="submit" class="btn btn-outline-primary footer-newsletter__btn">Subscribe</button>
+                </form>
             </div>
-            <button type="submit" class="btn btn-outline-primary mt-3">Subscribe</button>
-        </form>
-        </div>
 
         </div>
 
@@ -67,52 +66,3 @@
         </div>
     </div>
 </footer>
- <!-- Firebase -->
-<script type="module">
-  // Firebase imports
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import {
-    getFirestore,
-    collection,
-    query,
-    where,
-    getDocs,
-    addDoc,
-    serverTimestamp
-  } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-  import { firebaseConfig } from "/Script/firebase-config.js";
-
-  // Initialize Firebase and Firestore
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-
-  // Newsletter form handler
-  document.getElementById("newsletterForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const email = document.getElementById("newsletterEmail").value;
-
-    try {
-      const q = query(
-        collection(db, "newsletter_subscribers"),
-        where("email", "==", email)
-      );
-      const querySnapshot = await getDocs(q);
-
-      if (!querySnapshot.empty) {
-        alert("You are already subscribed with this email.");
-        return;
-      }
-
-      await addDoc(collection(db, "newsletter_subscribers"), {
-        email: email,
-        subscribedAt: serverTimestamp()
-      });
-
-      alert("Thanks for subscribing!");
-      document.getElementById("newsletterForm").reset();
-    } catch (error) {
-      alert("Subscription failed: " + error.message);
-    }
-  });
-</script>
