@@ -1,0 +1,53 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSiteAdmin() {
+      return request.auth != null
+        && request.auth.token.email != null
+        && request.auth.token.email.lower() == "cosnametech@gmail.com";
+    }
+
+    match /contact_messages/{docId} {
+      allow create: if request.resource.data.keys().hasAll([
+          "firstName", "lastName", "phone", "email", "message"
+        ])
+        && request.resource.data.firstName is string
+        && request.resource.data.firstName.size() > 0
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() > 0
+        && request.resource.data.email is string
+        && request.resource.data.email.size() > 3
+        && request.resource.data.message is string
+        && request.resource.data.message.size() > 0;
+
+      allow read: if isSiteAdmin();
+      allow update: if isSiteAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(["read"])
+        && request.resource.data.read is bool;
+      allow delete: if isSiteAdmin();
+    }
+
+    match /contact_rate_limits/{emailKey} {
+      allow get: if true;
+      allow create: if request.resource.data.keys().hasAll(["count", "dayKey"])
+        && request.resource.data.count == 1
+        && request.resource.data.dayKey is string
+        && request.resource.data.dayKey.size() == 10;
+      allow update: if request.resource.data.keys().hasAll(["count", "dayKey"])
+        && request.resource.data.dayKey is string
+        && request.resource.data.count is int
+        && request.resource.data.count >= 1
+        && request.resource.data.count <= 2;
+      allow delete: if false;
+    }
+
+    match /newsletter_subscribers/{docId} {
+      allow create: if request.resource.data.email is string
+        && request.resource.data.email.size() > 3
+        && request.resource.data.email.size() < 320;
+      allow read: if isSiteAdmin();
+    }
+  }
+}

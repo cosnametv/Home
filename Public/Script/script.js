@@ -1,19 +1,3 @@
-(function updateFooterYear() {
-    function apply() {
-        const el = document.getElementById("footer-year");
-        if (el && !el.dataset.yearSet) {
-            el.textContent = new Date().getFullYear();
-            el.dataset.yearSet = "1";
-        }
-    }
-    apply();
-    if (typeof MutationObserver !== "undefined") {
-        const obs = new MutationObserver(apply);
-        const target = document.body || document.documentElement;
-        obs.observe(target, { childList: true, subtree: true });
-    }
-})();
-
 document.addEventListener("DOMContentLoaded", () => {
     const fadeInElements = document.querySelectorAll(".fade-in, .slide-in");
     fadeInElements.forEach((element) => {

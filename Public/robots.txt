@@ -2,7 +2,7 @@
 # robots.txt for https://cosnametech.com
 
 User-agent: *
-Disallow:
+Disallow: /Admin/
 
 # Sitemap location
 Sitemap: https://cosnametech.com/sitemap.xml

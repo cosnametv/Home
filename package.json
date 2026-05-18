@@ -3,8 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "dev": "concurrently \"npm:watch\" \"npm:serve\"",
+    "firebase:config": "node scripts/generate-firebase-config.mjs",
+    "build": "npm run firebase:config && tsc -p tsconfig.json",
+    "dev": "npm run firebase:config && concurrently \"npm:watch\" \"npm:serve\"",
     "watch": "tsc -p tsconfig.json --watch",
     "serve": "live-server Public --port=3000"
   },

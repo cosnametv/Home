@@ -823,15 +823,7 @@
         }
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, query, where, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-        const firebaseConfig = {
-            apiKey: "AIzaSyAdQEzEB9PaSa8S_Jns7GELHrYAPVgJHf0",
-            authDomain: "home-1e420.firebaseapp.com",
-            databaseURL: "https://home-1e420-default-rtdb.firebaseio.com",
-            projectId: "home-1e420",
-            storageBucket: "home-1e420.firebasestorage.app",
-            messagingSenderId: "237502846110",
-            appId: "1:237502846110:web:68729122ed80d0af7bd78f"
-        };
+        import { firebaseConfig } from "/Script/firebase-config.js";
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         function initHeader() {
