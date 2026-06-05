@@ -2611,3 +2611,115 @@ footer > * {
     justify-content: center;
   }
 }
+
+/* About page — service cards match projects portfolio */
+.about-page #our-services {
+  --project-img-height: 150px;
+  padding: 3rem 0 4rem;
+}
+
+.about-page #our-services .container {
+  max-width: 1140px;
+}
+
+.about-page #our-services .about-section-head {
+  margin-bottom: 2rem;
+}
+
+.about-page #our-services .project-card {
+  max-width: none;
+  margin-bottom: 0;
+  border-radius: 12px;
+}
+
+.about-page #our-services .project-card:hover {
+  transform: translateY(-4px);
+}
+
+.about-page #our-services .card-body {
+  padding: 1.1rem 1.15rem 1.15rem;
+}
+
+.about-page #our-services .card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.about-page #our-services .btn-outline-primary {
+  padding: 0.4rem 1.1rem;
+  font-size: 0.88rem;
+}
+
+.about-page #our-services .project-card__media-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.about-page #our-services .project-card__badge {
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 2;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bg-dark);
+  background: var(--primary);
+  padding: 0.22rem 0.5rem;
+  border-radius: 999px;
+}
+
+.about-page #our-services .project-card__summary {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+  margin-bottom: 0.65rem;
+}
+
+.about-page #our-services .project-card__highlights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.65rem;
+  display: grid;
+  gap: 0.3rem;
+}
+
+.about-page #our-services .project-card__highlights li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.45;
+}
+
+.about-page #our-services .project-card__highlights i {
+  color: var(--primary);
+  margin-top: 0.15rem;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+}
+
+.about-page #our-services .project-card__tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.85rem;
+}
+
+.about-page #our-services .project-card__tech span {
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--primary);
+  background: rgba(0, 245, 147, 0.1);
+  border: 1px solid rgba(0, 245, 147, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+}
+
+@media (min-width: 992px) {
+  .about-page .about-services-grid > [class*="col-"] {
+    display: flex;
+  }
+}
