@@ -65,5 +65,12 @@ node_modules/
 # dotenv environment variables file
 .env
 
+# Build output (generated from src/ — not edited directly)
+dist/
+Public/
+
+# Auto-generated Firebase config (built from .env)
+src/Script/firebase-config.ts
+
 # dataconnect generated files
 .dataconnect

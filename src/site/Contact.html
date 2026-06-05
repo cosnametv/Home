@@ -4,6 +4,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Contact Cosname Technologies in Nairobi and Thika, Kenya. Call +254738387257, email cosnametech@gmail.com, or send a message about your web, mobile, or design project.">
+    <meta name="author" content="Cosname Technologies">
+    <meta name="application-name" content="Cosname Technologies">
+    <link rel="canonical" href="https://cosnametech.com/Contact">
+    <meta property="og:site_name" content="Cosname Technologies">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Cosname Technologies | Contact Us">
+    <meta property="og:url" content="https://cosnametech.com/Contact">
+    <meta property="og:description"
+        content="Get in touch with Cosname Technologies for web development, mobile apps, and digital solutions in Nairobi and Thika, Kenya.">
+    <meta property="og:image" content="https://cosnametech.com/Assets/trusted.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://cosnametech.com/#website",
+          "url": "https://cosnametech.com/",
+          "name": "Cosname Technologies"
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Cosname Technologies",
+              "item": "https://cosnametech.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Contact Us",
+              "item": "https://cosnametech.com/Contact"
+            }
+          ]
+        },
+        {
+          "@type": "WebPage",
+          "url": "https://cosnametech.com/Contact",
+          "name": "Cosname Technologies | Contact Us",
+          "isPartOf": { "@id": "https://cosnametech.com/#website" }
+        }
+      ]
+    }
+    </script>
     <title>Cosname Technologies | Contact Us</title>
     <link rel="icon" href="Assets/Status.jpg" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -445,13 +493,12 @@
         <div class="contact-hero__bg" aria-hidden="true"></div>
         <div class="contact-hero__overlay" aria-hidden="true"></div>
         <div class="container contact-hero__inner">
-            <p class="contact-hero__eyebrow">We reply within one business day</p>
             <h1 id="contact-hero-heading" class="contact-hero__title">Let’s start your <span>next project</span></h1>
             <p class="contact-hero__lead">Tell us what you’re building a quick note is enough. We’ll follow up with clear next steps.</p>
         </div>
     </section>
 
-    <section id="contact" class="py-5 bg-darkblue text-light border-top border-secondary border-opacity-10">
+    <section id="contact" class="py-5 bg-darkblue text-light">
         <div class="container">
 
             <div class="row g-4 align-items-stretch">
@@ -465,7 +512,7 @@
                             </div>
                             <div>
                                 <h5>Phone</h5>
-                                <p><a href="tel:+2547941227966">+254 794 122 7966</a></p>
+                                <p><a href="tel:+254738387257">+254738387257</a></p>
                             </div>
                         </div>
 
@@ -475,7 +522,7 @@
                             </div>
                             <div>
                                 <h5>WhatsApp</h5>
-                                <p><a href="https://wa.me/254794127966?text=Hi%20Cosname%20Technologies%2C%20I%E2%80%99d%20like%20to%20get%20in%20touch%20about%20a%20project." target="_blank" rel="noopener noreferrer">Chat on WhatsApp →</a></p>
+                                <p><a href="https://wa.me/254738387257?text=Hi%20Cosname%20Technologies%2C%20I%E2%80%99d%20like%20to%20get%20in%20touch%20about%20a%20project." target="_blank" rel="noopener noreferrer">+254738387257</a></p>
                             </div>
                         </div>
 
@@ -495,7 +542,7 @@
                             </div>
                             <div>
                                 <h5>Location</h5>
-                                <p>C8GH+9Q7, Kutus, Kenya</p>
+                                <p>Nairobi and Thika, Kenya</p>
                             </div>
                         </div>
 
@@ -582,7 +629,7 @@
 
                         <div class="map-wrap mt-4">
                             <iframe title="Cosname Technologies on Google Maps"
-                                src="https://maps.google.com/maps?q=Kutus,%20Kerugoya,%20Kenya&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                src="https://maps.google.com/maps?q=Nairobi,%20Kenya&t=&z=11&ie=UTF8&iwloc=&output=embed"
                                 loading="lazy" allowfullscreen></iframe>
                         </div>
                     </div>
@@ -632,210 +679,7 @@
         });
     </script>
 
-    <script type="module">
-        import {
-            collection, query, where, getDocs, addDoc, serverTimestamp,
-            doc, getDoc, setDoc, updateDoc
-        } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-        import {
-            db, CONTACT_COLLECTION, RATE_LIMIT_COLLECTION, DAILY_MESSAGE_LIMIT,
-            emailToRateLimitKey, localDayKey, firestoreWithTimeout
-        } from "/Script/firebase-client.js";
-        import { attachNewsletterForm } from "/Script/newsletter.js";
-
-        function includeHTML(id, file, callback) {
-            fetch(file)
-                .then(response => {
-                    if (!response.ok) throw new Error(`Cannot load ${file}`);
-                    return response.text();
-                })
-                .then(html => {
-                    document.getElementById(id).innerHTML = html;
-                    if (callback) callback();
-                })
-                .catch(err => console.error(err));
-        }
-
-        function initHeader() {
-            window.addEventListener("scroll", () => {
-                const nav = document.querySelector(".nav");
-                if (!nav) return;
-                nav.classList.toggle("scrolled", window.scrollY > 50);
-            });
-
-            const burger = document.getElementById("hamburger");
-            const menu = document.getElementById("menu");
-            if (burger && menu) {
-                burger.addEventListener("click", () => menu.classList.toggle("active"));
-            }
-
-            const links = document.querySelectorAll(".menu a");
-            links.forEach(link => {
-                if (link.href === window.location.href) {
-                    link.classList.add("active");
-                } else {
-                    link.classList.remove("active");
-                }
-            });
-        }
-
-        function initContactFeedbackOverlay() {
-            const overlay = document.getElementById("contactFeedbackOverlay");
-            if (!overlay) return null;
-
-            const titleEl = document.getElementById("contactFeedbackTitle");
-            const messageEl = document.getElementById("contactFeedbackMessage");
-            const dismissBtn = overlay.querySelector(".contact-feedback-overlay__dismiss");
-            const iconOk = overlay.querySelector(".contact-feedback-overlay__icon-success");
-            const iconErr = overlay.querySelector(".contact-feedback-overlay__icon-error");
-
-            let hideAfterMs = null;
-            let focusBeforeOpen = null;
-
-            function onEscapeKey(ev) {
-                if (ev.key === "Escape") hideContactFeedback();
-            }
-
-            function hideContactFeedback() {
-                document.removeEventListener("keydown", onEscapeKey);
-                overlay.classList.remove("is-visible");
-                if (hideAfterMs) clearTimeout(hideAfterMs);
-                hideAfterMs = setTimeout(() => {
-                    overlay.setAttribute("hidden", "");
-                    hideAfterMs = null;
-                    if (focusBeforeOpen && typeof focusBeforeOpen.focus === "function") {
-                        focusBeforeOpen.focus();
-                    }
-                    focusBeforeOpen = null;
-                }, 320);
-            }
-
-            function showContactFeedback(variant, title, message) {
-                overlay.dataset.variant = variant;
-                if (titleEl) titleEl.textContent = title;
-                if (messageEl) messageEl.textContent = message;
-                if (iconOk && iconErr) {
-                    if (variant === "success") {
-                        iconOk.classList.remove("d-none");
-                        iconErr.classList.add("d-none");
-                    } else {
-                        iconOk.classList.add("d-none");
-                        iconErr.classList.remove("d-none");
-                    }
-                }
-                focusBeforeOpen = document.activeElement;
-                overlay.removeAttribute("hidden");
-                document.addEventListener("keydown", onEscapeKey);
-                requestAnimationFrame(() => {
-                    overlay.classList.add("is-visible");
-                    if (dismissBtn && typeof dismissBtn.focus === "function") dismissBtn.focus();
-                });
-            }
-
-            overlay.querySelectorAll("[data-dismiss-overlay]").forEach((el) => {
-                el.addEventListener("click", hideContactFeedback);
-            });
-
-            return { showContactFeedback, hideContactFeedback };
-        }
-
-        async function assertDailyMessageLimit(email) {
-            const emailKey = emailToRateLimitKey(email);
-            const dayKey = localDayKey();
-            const ref = doc(db, RATE_LIMIT_COLLECTION, emailKey);
-            const snap = await getDoc(ref);
-            if (!snap.exists()) return;
-            const data = snap.data();
-            if (data.dayKey === dayKey && data.count >= DAILY_MESSAGE_LIMIT) {
-                throw new Error(`You can only send ${DAILY_MESSAGE_LIMIT} messages per day. Please try again tomorrow.`);
-            }
-        }
-
-        async function recordDailyMessageSend(email) {
-            const emailKey = emailToRateLimitKey(email);
-            const dayKey = localDayKey();
-            const ref = doc(db, RATE_LIMIT_COLLECTION, emailKey);
-            const snap = await getDoc(ref);
-            if (!snap.exists()) {
-                await setDoc(ref, { count: 1, dayKey });
-                return;
-            }
-            const data = snap.data();
-            if (data.dayKey === dayKey) {
-                await updateDoc(ref, { count: (data.count || 0) + 1 });
-            } else {
-                await setDoc(ref, { count: 1, dayKey });
-            }
-        }
-
-        function attachContactHandler() {
-            const form = document.getElementById("contactForm");
-            if (!form) return;
-
-            const submitBtn = document.getElementById("contactSubmitBtn");
-            const feedback = initContactFeedbackOverlay();
-
-            form.addEventListener("submit", async (e) => {
-                e.preventDefault();
-                if (!submitBtn || submitBtn.disabled) return;
-
-                const firstName = document.getElementById("firstName").value.trim();
-                const lastName = document.getElementById("lastName").value.trim();
-                const phone = document.getElementById("phone").value.trim();
-                const email = document.getElementById("email").value.trim();
-                const message = document.getElementById("message").value.trim();
-
-                submitBtn.disabled = true;
-                submitBtn.classList.add("is-sending");
-                submitBtn.setAttribute("aria-busy", "true");
-
-                try {
-                    await firestoreWithTimeout(assertDailyMessageLimit(email), 8000, "Could not verify send limit. Please try again.");
-
-                    await firestoreWithTimeout(addDoc(collection(db, CONTACT_COLLECTION), {
-                        firstName,
-                        lastName,
-                        phone,
-                        email,
-                        message,
-                        read: false,
-                        createdAt: serverTimestamp()
-                    }), 12000, "Message could not be sent in time. Check your connection or try again.");
-
-                    await recordDailyMessageSend(email);
-
-                    form.reset();
-                    if (feedback) {
-                        feedback.showContactFeedback(
-                            "success",
-                            "Message sent",
-                            "Thanks for reaching out. We will get back to you soon."
-                        );
-                    }
-                } catch (error) {
-                    if (feedback) {
-                        feedback.showContactFeedback(
-                            "error",
-                            "Could not send",
-                            error && error.message
-                                ? String(error.message)
-                                : "Something went wrong. Please try again in a moment."
-                        );
-                    }
-                } finally {
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove("is-sending");
-                    submitBtn.removeAttribute("aria-busy");
-                }
-            });
-        }
-
-        document.addEventListener("DOMContentLoaded", () => {
-            includeHTML("header", "header.html", initHeader);
-            includeHTML("footer", "footer.html", attachNewsletterForm);
-            attachContactHandler();
-        });
-    </script>
+    <script type="module" src="Script/contact-page.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

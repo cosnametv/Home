@@ -4,10 +4,16 @@
     "module": "ES2020",
     "lib": ["DOM", "ES2020"],
     "moduleResolution": "Bundler",
-    "rootDir": "src-ts/Public",
-    "outDir": "Public",
+    "rootDir": "src",
+    "outDir": "dist",
     "strict": false,
     "skipLibCheck": true
   },
-  "include": ["src-ts/Public/**/*.ts"]
+  "include": [
+    "src/Script/**/*.ts",
+    "src/Admin/**/*.ts",
+    "src/Test/**/*.ts",
+    "src/**/*.d.ts"
+  ],
+  "exclude": ["src/site/**"]
 }

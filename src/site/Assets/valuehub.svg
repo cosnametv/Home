@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Valuehub  Professional websites from KSH 5,000">
+  <rect width="1200" height="630" fill="#F4F6F4"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#0C6B3E"/>
+  <text x="80" y="200" font-family="system-ui,Segoe UI,sans-serif" font-size="72" font-weight="800" fill="#112519">Valuehub</text>
+  <text x="80" y="280" font-family="system-ui,Segoe UI,sans-serif" font-size="36" font-weight="600" fill="#0C6B3E">Professional websites from KSH 5,000</text>
+  <text x="80" y="360" font-family="system-ui,Segoe UI,sans-serif" font-size="28" fill="#506657">Web design &amp; hosting for Kenyan businesses</text>
+  <rect x="80" y="420" width="320" height="56" rx="12" fill="#0C6B3E"/>
+  <text x="240" y="458" text-anchor="middle" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#fff">valuehub.co.ke</text>
+</svg>

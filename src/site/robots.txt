@@ -1,0 +1,19 @@
+
+# robots.txt for https://cosnametech.com
+# Only public marketing pages are indexed; internal assets and tools are blocked.
+
+User-agent: *
+Disallow: /Admin/
+Disallow: /Test/
+Disallow: /Script/
+Disallow: /Style/
+Disallow: /img/
+Disallow: /Assets/
+Disallow: /header.html
+Disallow: /footer.html
+Disallow: /Assistance.html
+Disallow: /404.html
+Disallow: /Contact/index.html
+Disallow: /status/riddle/
+
+Sitemap: https://cosnametech.com/sitemap.xml
