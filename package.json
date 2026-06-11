@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "firebase:config": "node scripts/generate-firebase-config.mjs",
-    "build": "npm run firebase:config && node scripts/build-site.mjs && tsc -p tsconfig.json && node scripts/strip-prod-admin.mjs",
+    "build": "npm run firebase:config && node scripts/build-site.mjs && tsc -p tsconfig.json",
     "copy:site": "node scripts/build-site.mjs && tsc -p tsconfig.json",
     "dev": "npm run firebase:config && npm run copy:site && tsc -p tsconfig.json && concurrently \"npm:watch\" \"npm:watch:site\" \"npm:serve\"",
     "watch": "tsc -p tsconfig.json --watch",

@@ -3,6 +3,7 @@
 # Only public marketing pages are indexed; internal assets and tools are blocked.
 
 User-agent: *
+Disallow: /Admin/
 Disallow: /Test/
 Disallow: /Script/
 Disallow: /Style/
