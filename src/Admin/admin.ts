@@ -43,6 +43,16 @@ interface NewsletterSubscriber {
   subscribedAt?: FirestoreTimestamp;
 }
 
+/** Remove credentials if the form submitted before JS loaded (cleanUrls + relative script path). */
+function stripCredentialQueryParams(): void {
+  if (!location.search) return;
+  const params = new URLSearchParams(location.search);
+  if (!params.has("email") && !params.has("password")) return;
+  history.replaceState(null, "", location.pathname + location.hash);
+}
+
+stripCredentialQueryParams();
+
 const loginPanel = document.getElementById("loginPanel")!;
 const appPanel = document.getElementById("appPanel")!;
 const adminHero = document.getElementById("adminHero");
